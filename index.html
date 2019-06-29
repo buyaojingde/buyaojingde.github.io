@@ -152,6 +152,355 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="ejs-dontWorry/杂项/编写LaTeX数学公式" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/29/dontWorry/杂项/编写LaTeX数学公式/">编写LaTeX数学公式</a>
+    </h1>
+  
+
+        
+        <a href="/2019/06/29/dontWorry/杂项/编写LaTeX数学公式/" class="archive-article-date">
+  	<time datetime="2019-06-29T08:59:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="编写LaTeX数学公式"><a href="#编写LaTeX数学公式" class="headerlink" title="编写LaTeX数学公式"></a>编写LaTeX数学公式</h1>
+LaTeX基本语法
+希腊字母
+三角函数与逻辑数学字符
+字体转换
+花括号用法
+多行数学式对齐
+矩阵与行列式
+括号的其他用法
+本节内容：目前CSDN写博客支持Markdown语言，而写博客经常要用到一些数学公式，在Markdown中写LaTeX数学公式则显得非常重要，本节将一些常用的数学公式的写法记录下来，以备日后查询。
+
+LATEXLATEX基本语法
+使用LaTeX
+
+$ y_k=\varphi(u_k+v_k)$ 
+$J\alpha(x) = \sum{m=0}^\infty \frac{(-1)^m}{m! \Gamma (m + \alpha + 1)} {\left({ \frac{x}{2} }\right)}^{2m + \alpha}$
+注意下面的写法：(右对齐)
+$$ y_k=\varphi(u_k+v_k)$$
+1
+2
+3
+4
+则依次显示为： 
+yk=φ(uk+vk)yk=φ(uk+vk) 
+Jα(x)=∑m=0∞(−1)mm!Γ(m+α+1)(x2)2m+αJα(x)=∑m=0∞(−1)mm!Γ(m+α+1)(x2)2m+α 
+yk=φ(uk+vk)
+yk=φ(uk+vk)
+输入上下标 
+^表示上标, _表示下标。如果上下标的内容多于一个字符，要用{}把这些内容括起来当成一个整体。上下标是可以嵌套的，也可以同时使用。例如：
+
+$x^{y^z}=(1+{\rm e}^x)^{-2xy^w}$
+$f(x)=x_2^3+1$
+如果要在左右两边都有上下标，可以用\sideset命令:
+$\sideset{^12}{^34}\bigotimes$
+1
+2
+3
+4
+5
+则显示如下： 
+xyz=(1+ex)−2xywxyz=(1+ex)−2xyw 
+f(x)=x32+1f(x)=x23+1 
+12⨂34⨂1⁡2⨂3⁡4
+输入括号和分隔符
+
+()、[]和|表示自己，{}表示{}。当要显示大号的括号或分隔符时，要用\left和\right命令：
+$f(x,y,z) = 3y^2z \left( 3+\frac{7x+5}{1+y^2} \right)$
+有时候要用\left.或\right.进行匹配而不显示本身：
+$\left. \frac{{\rm d}u}{{\rm d}x} \right| _{x=0}$
+1
+2
+3
+4
+显示为： 
+f(x,y,z)=3y2z(3+7x+51+y2)f(x,y,z)=3y2z(3+7x+51+y2) 
+dudx∣∣x=0dudx|x=0
+微分方程
+
+$\frac{du}{dt} and \frac{d^2 u}{dx^2}$
+1
+dudtandd2udx2dudtandd2udx2
+输入偏微分方程
+
+$$\frac{\partial u}{\partial t}
+= h^2 \left( \frac{\partial^2 u}{\partial x^2} 
++ \frac{\partial^2 u}{\partial y^2}  
++ \frac{\partial^2 u}{\partial z^2}\right)$$
+1
+2
+3
+4
+∂u∂t=h2(∂2u∂x2+∂2u∂y2+∂2u∂z2)
+∂u∂t=h2(∂2u∂x2+∂2u∂y2+∂2u∂z2)
+输入分数
+
+$\frac{1}{3}$
+$P(v)=\frac{1}{1+exp(-v/T)}$
+1
+2
+依次显示为： 
+1313 
+P(v)=11+exp(−v/T)P(v)=11+exp(−v/T)
+输入开方 
+\sqrt
+
+$\sqrt{2}$
+$\sqrt[n]{3}$
+1
+2
+2–√2 
+3–√n3n
+输入省略号 
+数学公式中常见的省略号有两种，\ldots表示与文本底线对齐的省略号，\cdots表示与文本中线对齐的省略号。
+
+$f(x1,x2,\ldots,xn) = x1^2 + x2^2 + \cdots + xn^2$
+1
+f(x1,x2,…,xn)=x12+x22+⋯+xn2f(x1,x2,…,xn)=x12+x22+⋯+xn2
+输入向量
+
+$\vec{a} \cdot \vec{b}=0$
+1
+a⃗ ⋅b⃗ =0a→⋅b→=0
+输入积分
+
+$\int_0^1 x^2 {\rm d}x$
+1
+∫10x2dx∫01x2dx
+输入极限运算
+
+$\lim_{n \rightarrow +\infty} \frac{1}{n(n+1)}$
+$\frac{1}{\lim_{u \rightarrow \infty}}, \frac{1}{\lim\limits_{u \rightarrow \infty}}$
+1
+2
+limn→+∞1n(n+1)limn→+∞1n(n+1) 
+1limu→∞,1limu→∞1limu→∞,1limu→∞
+输入累加、累乘运算
+
+$\sum_{i=0}^n \frac{1}{i^2}$
+$\prod_{i=0}^n \frac{1}{i^2}$
+1
+2
+∑ni=01i2∑i=0n1i2 
+∏ni=01i2∏i=0n1i2
+等效
+
+\begin{equation}
+\left \{ \frac{3}{5}  \left [ 3 + 2 * \left ( a + b \right ) \right ] \right \}
+\end{equation}
+$$
+\left \{ \frac{3}{5}  \left [ 3 + 2 * \left ( a + b \right ) \right ] \right \}
+$$
+1
+2
+3
+4
+5
+6
+{35[3+2∗(a+b)]}
+{35[3+2∗(a+b)]}
+希腊字母
+希腊字母(小写)	输入	希腊字母(大写)	输入
+α	\alpha	Α	A
+β	\beta	Β	B
+γ	\gamma	Γ	\Gamma
+δ	\delta	Δ	\Delta
+ε或ϵϵ	\epsilon或\varepsilon	Ε	E
+ζ	\zeta	Ζ	Z
+η	\eta	Η	H
+θ或ϑϑ	\theta或\vartheta	Θ	\Theta
+ι	\iota	Ι	I
+κ	\kappa	Κ	K
+λ	\lambda	Λ	\Lambda
+μ	\mu	Μ	M
+ν	\nu	Ν	N
+ξ	\xi	Ξ	\Xi
+ο	o	Ο	O
+π或ϖϖ	\pi或\varpi	Π	\Pi
+ρ或ϱϱ	\rho或\varrho	Ρ	P
+σ或ςς	\sigma或\varsigma	Σ	\Sigma
+τ	\tau	Τ	T
+υ	\upsilon	Υ	\Upsilon
+φ或φφ	\phi或\varphi	Φ	\Phi
+χ	\chi	Χ	X
+ψ	\psi	Ψ	\Psi
+ω	\omega	Ω	\Omega
+三角函数与逻辑数学字符
+数学字符	输入	数学字符	输入
+±±	\pm	××	\times
+÷÷	\div	∣∣	\mid
+∤∤	\nmid	⋅⋅	\cdot
+∘∘	\circ	∗∗	\ast
+⨀⨀	\bigodot	⨂⨂	\bigotimes
+⨁⨁	\bigoplus	≤≤	\leq
+≥≥	\geq	≠≠	\neq
+≈≈	\approx	≡≡	\equiv
+∑∑	\sum	∏∏	\prod
+∐∐	\coprod	∅∅	\emptyset
+∈∈	\in	∉∉	\notin
+⊂⊂	\subset	⊃⊃	\supset
+⊆⊆	\subseteq	⊇⊇	\supseteq
+⋂⋂	\bigcap	⋃⋃	\bigcup
+⋁⋁	\bigvee	⋀⋀	\bigwedge
+⨄⨄	\biguplus	⨆⨆	\bigsqcup
+loglog	\log	lglg	\lg
+lnln	\ln	⊥⊥	\bot
+∠∠	\angle	30∘30∘	30^\circ
+sinsin	\sin	coscos	\cos
+tantan	\tan	cotcot	\cot
+secsec	\sec	csccsc	\csc
+′′	\prime	∫∫	\int
+∬∬	\iint	∭∭	\iiint
+∬∬⨌	\iiiint	∮∮	\oint
+limlim	\lim	∞∞	\infty
+∇∇	\nabla	∵∵	\because
+∴∴	\therefore	∀∀	\forall
+∃∃	\exists	≠≠	\not=
+≯≯	\not>	⊄⊄	\not\subset
+y^y^	\hat{y}	yˇyˇ	\check{y}
+y˘y˘	\breve{y}	a+b+c+d¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯a+b+c+d¯	\overline{a+b+c+d}
+a+b+c+d–––––––––––––a+b+c+d_	\underline{a+b+c+d}	a+b+c1.0+d2.0a+b+c⏟1.0+d⏞2.0	\overbrace{a+\underbrace{b+c}{1.0}+d}^{2.0}
+↑↑	\uparrow	↓↓	\downarrow
+⇑⇑	\Uparrow	⇓⇓	\Downarrow
+→→	\rightarrow	←←	\leftarrow
+⇒⇒	\Rightarrow	⇐⇐	\Leftarrow
+⟶⟶	\longrightarrow	⟵⟵	\longleftarrow
+⟹⟹	\Longrightarrow	⟸⟸	\Longleftarrow
+  	\空格	##	#
+字体转换
+要对公式的某一部分字符进行字体转换，可以用{\rm 需转换的部分字符}命令，其中\rm可以参照下表选择合适的字体。一般情况下，公式默认为意大利体。 
+\rm　　罗马体　　　　 
+\it　　意大利体 
+\bf　　黑体　　　　　　　　　　　　　　 
+\sf　　等线体 
+\mit 　数学斜体　　　　　　 
+\tt　　打字机字体 
+\sc　　小体大写字母
+
+花括号用法
+类型1:
+
+$$ F^{HLLC}=\left\{
+\begin{array}{rcl}
+F_L       &      & {0      <      S_L}\\
+F^*_L     &      & {S_L \leq 0 < S_M}\\
+F^*_R     &      & {S_M \leq 0 < S_R}\\
+F_R       &      & {S_R \leq 0}
+\end{array} \right. $$
+1
+2
+3
+4
+5
+6
+7
+f(x)=⎧⎩⎨⎪⎪⎪⎪xyz===cos(t)sin(t)xy
+f(x)={x=cos⁡(t)y=sin⁡(t)z=xy
+类型2:
+
+$$ F^{HLLC}=\left\{
+\begin{array}{rcl}
+F_L       &      & {0      <      S_L}\\
+F^*_L     &      & {S_L \leq 0 < S_M}\\
+F^*_R     &      & {S_M \leq 0 < S_R}\\
+F_R       &      & {S_R \leq 0}
+\end{array} \right. $$
+1
+2
+3
+4
+5
+6
+7
+FHLLC=⎧⎩⎨⎪⎪⎪⎪⎪⎪⎪⎪FLF∗LF∗RFR0<slsl≤0<smsm≤0<srsr≤0 1 2 3 4 5 6 7 8 9 10 11 12 fhllc="{FL0<SLFL∗SL≤0<SMFR∗SM≤0<SRFRSR≤0" 类型3: $$f(x)="\begin{cases}" 0& \text{x="0}\\" 1& \text{x!="0}" \end{cases}$$ f(x)="{01x=0x!=0" 多行数学式对齐 利用&符号来对齐，在每个等号前添加&符号即可 \begin{eqnarray*} \cos 2\theta &="&" \cos^2 \theta - \sin^2 \\ 1. \end{eqnarray*} cos2θ="=cos2θ−sin2θ2cos2θ−1." cos⁡2θ="cos2⁡θ−sin2⁡θ=2cos2⁡θ−1." 设置特定格式 \begin{aligned} % requires amsmath; align* for no eq. number a y^2 \end{aligned} 矩阵与行列式 $ matrix \[ \left( \begin{array}{ccc} b c d e f g h i \end{array} \right)\]$ \chi(\lambda)="\left|" \lambda -b -c -d -f -g -h \right|.\] matrix[⎛⎝⎜adgbehcfi⎞⎠⎟]matrix[(abcdefghi)] [χ(λ)="∣∣∣∣λ−a−d−g−bλ−e−h−c−fλ−i∣∣∣∣.][χ(λ)=|λ−a−b−c−dλ−e−f−g−hλ−i|.]" 括号的其他用法 功能| 语法 |显示 ---------|----------|--------- 圆括号，小括号| \frac{a}{b} \right) | (ab)(ab) 方括号，中括号| \left{ \right}| {ab}{ab} 花括号，大括号| \right} $\left{ |\right\$ 角括号| \left \langle \right \rangle |⟨ab⟩⟨ab⟩ 单竖线，绝对值| \left| \right|| ∣∣ab∣∣|ab| 双竖线，范式| \| |∥∥ab∥∥‖ab‖ 取整函数| \lfloor \rfloor| ⌊ab⌋⌊ab⌋ 取顶函数| \lceil \frac{c}{d} \rceil| ⌈cd⌉⌈cd⌉ 斜线与反斜线| \backslash ab\ 上下箭头| \uparrow \downarrow |↑⏐⏐ab⏐↓⏐↑ab↓ 混合括号1 |\left [ 0,1 ) |[0,1)[0,1) 混合括号2| \psi ⟨ψ|⟨ψ| 单左括号| { . |{ab{ab 单右括号| } |ab} <table>
+<thead>
+<tr>
+<th>Column A</th>
+<th>Column B</th>
+<th>Column C</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>A1</td>
+<td>B1</td>
+<td>C1</td>
+</tr>
+<tr>
+<td>A2</td>
+<td>B2</td>
+<td>C2</td>
+</tr>
+<tr>
+<td>A3</td>
+<td>B3</td>
+<td>C3</td>
+</tr>
+</tbody>
+</slsl≤0<smsm≤0<srsr≤0>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Algorithm</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/06/29/dontWorry/杂项/编写LaTeX数学公式/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="ejs-dontWorry/Algorithm/矩阵TRS转换" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1518,128 +1867,6 @@ $$百人宽度指标={{N}\over{At}}b$$
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/06/17/dontWorry/xiaofang/建筑防火/生产和储存物品的火灾危险性分类/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="ejs-dontWorry/xiaofang/建筑防火/建筑防火" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/17/dontWorry/xiaofang/建筑防火/建筑防火/">建筑防火</a>
-    </h1>
-  
-
-        
-        <a href="/2019/06/17/dontWorry/xiaofang/建筑防火/建筑防火/" class="archive-article-date">
-  	<time datetime="2019-06-16T16:35:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="建筑防火"><a href="#建筑防火" class="headerlink" title="建筑防火"></a>建筑防火</h1><hr>
-<p>[TOC]</p>
-<h2 id="建筑火灾原因"><a href="#建筑火灾原因" class="headerlink" title="建筑火灾原因"></a>建筑火灾原因</h2><blockquote>
-<p>电气火灾,生产作业类火灾,生活用火不慎,吸烟,玩火,放火和自燃,雷击静电等其他原因.</p>
-</blockquote>
-<h2 id="建筑火灾危害"><a href="#建筑火灾危害" class="headerlink" title="建筑火灾危害"></a>建筑火灾危害</h2><blockquote>
-<p>危害人员生命,造成经济损失,破坏文明成果,影响社会稳定</p>
-</blockquote>
-<h2 id="建筑防火的原理和技术方法"><a href="#建筑防火的原理和技术方法" class="headerlink" title="建筑防火的原理和技术方法"></a>建筑防火的原理和技术方法</h2><h3 id="总体平面布置"><a href="#总体平面布置" class="headerlink" title="总体平面布置"></a>总体平面布置</h3><ul>
-<li>综合考虑,合理选择建筑物位置</li>
-<li>尽量将火灾危险性相同或相近的建筑集中布置,便于安全管理</li>
-<li>合理防火安全距离</li>
-<li>考虑扑救火灾时所必需的消防车通道,消防水源和消防扑救面<h3 id="建筑结构防火"><a href="#建筑结构防火" class="headerlink" title="建筑结构防火"></a>建筑结构防火</h3><blockquote>
-<p>建筑物的耐火等级是研究建筑防火措施,规定不同用途建筑物需采取相应防火措施的基本依据.</p>
-</blockquote>
-</li>
-</ul>
-<blockquote>
-<p>正确选择和确定建筑的耐火等级是防止建筑火灾发生和阻止火势蔓延扩大的一项治本措施.</p>
-</blockquote>
-<blockquote>
-<p>对耐火等级和燃烧性能达不到规范要求时,常用方法:</p>
-</blockquote>
-<pre><code>1. 增加构件的截面积
-2. 对钢筋混凝土构件增加保护层厚度
-3. 在构件表面涂覆防火涂料做耐火保护层
-4. 对钢梁,钢屋架及木结构做耐火吊顶和防火保护层包敷等. </code></pre><h3 id="建筑材料防火"><a href="#建筑材料防火" class="headerlink" title="建筑材料防火"></a>建筑材料防火</h3><p>建筑材料防火遵循的原则主要时:</p>
-<ul>
-<li>控制建筑材料中可燃物数量,受条件限制或装修特殊要求必须使用可燃材料的,应当对材料进行阻燃处理.</li>
-<li>与电气线路或发热物体接触的材料采用不燃材料或进行阻燃处理</li>
-<li>楼梯间,管道井等竖向通道和供人员疏散的走道应采用不燃材料</li>
-</ul>
-<h3 id="防火分区分隔"><a href="#防火分区分隔" class="headerlink" title="防火分区分隔"></a>防火分区分隔</h3><p>防火分区的划分应根据建筑的使用性质,火灾危险性以及建筑的耐火等级,建筑内容纳人员和可燃物的数量,消防扑救能力和消防设施配置,人员疏散难易程度及建筑投资等情况综合考虑. </p>
-<h3 id="安全疏散"><a href="#安全疏散" class="headerlink" title="安全疏散"></a>安全疏散</h3><p>安全疏散的目标就是要保证建筑内人员疏散完毕的时间必须小于火灾发展到危险状态的时间.</p>
-<blockquote>
-<p>基本要求:</p>
-</blockquote>
-<pre><code>1. 每个防火分区必须设至少两个安全出口
-2. 疏散路线必须满足室内最远点到房门,房门到最近安全出口或楼梯间的行走距离极限值.
-3. 疏散方向应尽量为双向疏散,疏散出口应分散布置,减少袋型走道的设置
-4. 楼梯间因为安全的区域,不受烟火侵袭,楼梯间人口应设置可自行关闭的防火门保护
-5. 通向地下室的楼梯间不得与地上楼梯相连,如必须相连应采用防火墙分隔,通过防火门出入
-6. 疏散宽度应保证不出现拥堵,采取有效措施,在清晰空间高度内为人员疏散提供引导</code></pre><h3 id="防排烟"><a href="#防排烟" class="headerlink" title="防排烟"></a>防排烟</h3><p>防烟系统:是指采用机械加压送风方式或自然通风方式,防止烟气进入疏散通道<br>排烟系统:采用机械排烟或自然通风方式,将烟气排至建筑外</p>
-<h3 id="建筑防爆和电气防火"><a href="#建筑防爆和电气防火" class="headerlink" title="建筑防爆和电气防火"></a>建筑防爆和电气防火</h3><blockquote>
-<p>在建筑防火设计时,根据爆炸规律与爆炸效应,对有爆炸可能的建筑,提出相应的防止爆炸危险区域,合理设计防爆结构和泄爆面积,准确选用防爆设备</p>
-</blockquote>
-<blockquote>
-<p>建筑的用电负荷,供配电源,电气设备,电气线路极其安装敷设等应采用安全可靠,经济合理的防火技术措施.</p>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">消防</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/17/dontWorry/xiaofang/建筑防火/建筑防火/">展开全文 >></a>
         </p>
       
 
