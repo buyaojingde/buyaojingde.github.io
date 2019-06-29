@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://buyaojingde.github.io">
   <title>矩阵TRS转换 | buyaojingde</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="矩阵TRS转换 平移矩阵  $$ \left{ \begin{matrix}   1 &amp;amp; 0 &amp;amp; 0 &amp;amp; T_x \   0 &amp;amp; 1 &amp;amp; 0 &amp;amp; T_y \   0 &amp;amp; 0 &amp;amp; 1 &amp;amp; T_z \   0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 1  \end{matrix}  \right} \tag{2}$$  缩放矩">
+  <meta name="description" content="矩阵TRS转换 平移矩阵 $$  \left\{  \begin{matrix}    1 &amp; 0 &amp; 0 &amp; T_x \\    0 &amp; 1 &amp; 0 &amp; T_y \\    0 &amp; 0 &amp; 1 &amp; T_z \\    0 &amp; 0 &amp; 0 &amp; 1   \end{matrix}   \right\} \tag{2} $$ * 缩放矩阵  $$  \left\{  \begin{matrix}">
 <meta name="keywords" content="Algorithm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="矩阵TRS转换">
 <meta property="og:url" content="https://buyaojingde.github.io/2019/06/28/dontWorry/Algorithm/矩阵TRS转换/index.html">
 <meta property="og:site_name" content="buyaojingde">
-<meta property="og:description" content="矩阵TRS转换 平移矩阵  $$ \left{ \begin{matrix}   1 &amp;amp; 0 &amp;amp; 0 &amp;amp; T_x \   0 &amp;amp; 1 &amp;amp; 0 &amp;amp; T_y \   0 &amp;amp; 0 &amp;amp; 1 &amp;amp; T_z \   0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 1  \end{matrix}  \right} \tag{2}$$  缩放矩">
+<meta property="og:description" content="矩阵TRS转换 平移矩阵 $$  \left\{  \begin{matrix}    1 &amp; 0 &amp; 0 &amp; T_x \\    0 &amp; 1 &amp; 0 &amp; T_y \\    0 &amp; 0 &amp; 1 &amp; T_z \\    0 &amp; 0 &amp; 0 &amp; 1   \end{matrix}   \right\} \tag{2} $$ * 缩放矩阵  $$  \left\{  \begin{matrix}">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-27T17:45:42.051Z">
+<meta property="og:updated_time" content="2019-06-29T08:58:08.461Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="矩阵TRS转换">
-<meta name="twitter:description" content="矩阵TRS转换 平移矩阵  $$ \left{ \begin{matrix}   1 &amp;amp; 0 &amp;amp; 0 &amp;amp; T_x \   0 &amp;amp; 1 &amp;amp; 0 &amp;amp; T_y \   0 &amp;amp; 0 &amp;amp; 1 &amp;amp; T_z \   0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 1  \end{matrix}  \right} \tag{2}$$  缩放矩">
+<meta name="twitter:description" content="矩阵TRS转换 平移矩阵 $$  \left\{  \begin{matrix}    1 &amp; 0 &amp; 0 &amp; T_x \\    0 &amp; 1 &amp; 0 &amp; T_y \\    0 &amp; 0 &amp; 1 &amp; T_z \\    0 &amp; 0 &amp; 0 &amp; 1   \end{matrix}   \right\} \tag{2} $$ * 缩放矩阵  $$  \left\{  \begin{matrix}">
   
     <link rel="alternative" href="/atom.xml" title="buyaojingde" type="application/atom+xml">
   
@@ -176,20 +176,68 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="矩阵TRS转换"><a href="#矩阵TRS转换" class="headerlink" title="矩阵TRS转换"></a><strong>矩阵TRS转换</strong></h1><ul>
-<li>平移矩阵</li>
+<li>平移矩阵
+$$
+ \left\{
+ \begin{matrix}
+   1 & 0 & 0 & T_x \\
+   0 & 1 & 0 & T_y \\
+   0 & 0 & 1 & T_z \\
+   0 & 0 & 0 & 1
+  \end{matrix}
+  \right\} \tag{2}
+$$
+* 缩放矩阵
+
+$$
+ \left\{
+ \begin{matrix}
+   S_x & 0 & 0 & 0 \\
+   0 & S_y & 0 & 0 \\
+   0 & 0 & S_z & 0 \\
+   0 & 0 & 0 & 1
+  \end{matrix}
+  \right\} \tag{2}
+$$
+
+* 旋转矩阵
+
+$$
+R_x = {\left\{
+ \begin{matrix}
+   1 & 0 & 0 & 0 \\
+   0 & \cos\theta & -\sin\theta & 0 \\
+   0 & 0 \sin\theta & \cos\theta & 0 \\
+   0 & 0 & 0 & 1
+  \end{matrix}
+  \right\} \tag{2}}
+$$
+
+$$
+R_y = {\left\{
+ \begin{matrix}
+   \cos\theta & 0 & \sin\theta & 0 \\
+   0 & 1 & 0 & 0 \\
+   -\sin\theta & 0 &\cos\theta & 0 \\
+   0 & 0 & 0 & 1
+  \end{matrix}
+  \right\} \tag{2}}
+$$
+
+$$
+R_z = {\left\{
+ \begin{matrix}
+   \cos\theta & -\sin\theta & 0 & 0 \\
+   \sin\theta & \cos\theta & 0 & 0 \\
+   0 & 0 & 1 & 0 \\
+   0 & 0 & 0 & 1
+  \end{matrix}
+  \right\} \tag{2}}
+$$
+
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Quaternion <span class="title">GetRotation</span>(<span class="params"><span class="keyword">this</span> Matrix4x4 matrix</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        Quaternion q = <span class="keyword">new</span> Quaternion();</span><br><span class="line">        q.w = Mathf.Sqrt(Mathf.Max(<span class="number">0</span>, <span class="number">1</span> + matrix.m00 + matrix.m11 + matrix.m22)) / <span class="number">2</span>;</span><br><span class="line">        q.x = Mathf.Sqrt(Mathf.Max(<span class="number">0</span>, <span class="number">1</span> + matrix.m00 - matrix.m11 - matrix.m22)) / <span class="number">2</span>;</span><br><span class="line">        q.y = Mathf.Sqrt(Mathf.Max(<span class="number">0</span>, <span class="number">1</span> - matrix.m00 + matrix.m11 - matrix.m22)) / <span class="number">2</span>;</span><br><span class="line">        q.z = Mathf.Sqrt(Mathf.Max(<span class="number">0</span>, <span class="number">1</span> - matrix.m00 - matrix.m11 + matrix.m22)) / <span class="number">2</span>;</span><br><span class="line">        q.x = _copysign(q.x, matrix.m21 - matrix.m12);</span><br><span class="line">        q.y = _copysign(q.y, matrix.m02 - matrix.m20);</span><br><span class="line">        q.z = _copysign(q.z, matrix.m10 - matrix.m01);</span><br><span class="line">        <span class="keyword">return</span> q;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Vector3 <span class="title">GetPosition</span>(<span class="params"><span class="keyword">this</span> Matrix4x4 matrix</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">var</span> x = matrix.m03;</span><br><span class="line">        <span class="keyword">var</span> y = matrix.m13;</span><br><span class="line">        <span class="keyword">var</span> z = matrix.m23;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Vector3(x, y, z);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Vector3 <span class="title">GetScale</span>(<span class="params"><span class="keyword">this</span> Matrix4x4 m</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">var</span> x = Mathf.Sqrt(m.m00 * m.m00 + m.m01 * m.m01 + m.m02 * m.m02);</span><br><span class="line">        <span class="keyword">var</span> y = Mathf.Sqrt(m.m10 * m.m10 + m.m11 * m.m11 + m.m12 * m.m12);</span><br><span class="line">        <span class="keyword">var</span> z = Mathf.Sqrt(m.m20 * m.m20 + m.m21 * m.m21 + m.m22 * m.m22);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Vector3(x, y, z);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
-<p>$$<br> \left{<br> \begin{matrix}<br>   1 &amp; 0 &amp; 0 &amp; T_x \<br>   0 &amp; 1 &amp; 0 &amp; T_y \<br>   0 &amp; 0 &amp; 1 &amp; T_z \<br>   0 &amp; 0 &amp; 0 &amp; 1<br>  \end{matrix}<br>  \right} \tag{2}<br>$$</p>
-<ul>
-<li>缩放矩阵</li>
-</ul>
-<p>$$<br> \left{<br> \begin{matrix}<br>   S_x &amp; 0 &amp; 0 &amp; 0 \<br>   0 &amp; S_y &amp; 0 &amp; 0 \<br>   0 &amp; 0 &amp; S_z &amp; 0 \<br>   0 &amp; 0 &amp; 0 &amp; 1<br>  \end{matrix}<br>  \right} \tag{2}<br>$$</p>
-<ul>
-<li>旋转矩阵</li>
-</ul>
-<p>$$<br>R_x = {\left{<br> \begin{matrix}<br>   1 &amp; 0 &amp; 0 &amp; 0 \<br>   0 &amp; \cos\theta &amp; -\sin\theta &amp; 0 \<br>   0 &amp; 0 \sin\theta &amp; \cos\theta &amp; 0 \<br>   0 &amp; 0 &amp; 0 &amp; 1<br>  \end{matrix}<br>  \right} \tag{2}}<br>$$</p>
-<p>$$<br>R_y = {\left{<br> \begin{matrix}<br>   \cos\theta &amp; 0 &amp; \sin\theta &amp; 0 \<br>   0 &amp; 1 &amp; 0 &amp; 0 \<br>   -\sin\theta &amp; 0 &amp;\cos\theta &amp; 0 \<br>   0 &amp; 0 &amp; 0 &amp; 1<br>  \end{matrix}<br>  \right} \tag{2}}<br>$$</p>
-<p>$$<br>R_z = {\left{<br> \begin{matrix}<br>   \cos\theta &amp; -\sin\theta &amp; 0 &amp; 0 \<br>   \sin\theta &amp; \cos\theta &amp; 0 &amp; 0 \<br>   0 &amp; 0 &amp; 1 &amp; 0 \<br>   0 &amp; 0 &amp; 0 &amp; 1<br>  \end{matrix}<br>  \right} \tag{2}}<br>$$</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Quaternion <span class="title">GetRotation</span>(<span class="params"><span class="keyword">this</span> Matrix4x4 matrix</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        Quaternion q = <span class="keyword">new</span> Quaternion();</span><br><span class="line">        q.w = Mathf.Sqrt(Mathf.Max(<span class="number">0</span>, <span class="number">1</span> + matrix.m00 + matrix.m11 + matrix.m22)) / <span class="number">2</span>;</span><br><span class="line">        q.x = Mathf.Sqrt(Mathf.Max(<span class="number">0</span>, <span class="number">1</span> + matrix.m00 - matrix.m11 - matrix.m22)) / <span class="number">2</span>;</span><br><span class="line">        q.y = Mathf.Sqrt(Mathf.Max(<span class="number">0</span>, <span class="number">1</span> - matrix.m00 + matrix.m11 - matrix.m22)) / <span class="number">2</span>;</span><br><span class="line">        q.z = Mathf.Sqrt(Mathf.Max(<span class="number">0</span>, <span class="number">1</span> - matrix.m00 - matrix.m11 + matrix.m22)) / <span class="number">2</span>;</span><br><span class="line">        q.x = _copysign(q.x, matrix.m21 - matrix.m12);</span><br><span class="line">        q.y = _copysign(q.y, matrix.m02 - matrix.m20);</span><br><span class="line">        q.z = _copysign(q.z, matrix.m10 - matrix.m01);</span><br><span class="line">        <span class="keyword">return</span> q;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Vector3 <span class="title">GetPosition</span>(<span class="params"><span class="keyword">this</span> Matrix4x4 matrix</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">var</span> x = matrix.m03;</span><br><span class="line">        <span class="keyword">var</span> y = matrix.m13;</span><br><span class="line">        <span class="keyword">var</span> z = matrix.m23;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Vector3(x, y, z);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Vector3 <span class="title">GetScale</span>(<span class="params"><span class="keyword">this</span> Matrix4x4 m</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">var</span> x = Mathf.Sqrt(m.m00 * m.m00 + m.m01 * m.m01 + m.m02 * m.m02);</span><br><span class="line">        <span class="keyword">var</span> y = Mathf.Sqrt(m.m10 * m.m10 + m.m11 * m.m11 + m.m12 * m.m12);</span><br><span class="line">        <span class="keyword">var</span> z = Mathf.Sqrt(m.m20 * m.m20 + m.m21 * m.m21 + m.m22 * m.m22);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Vector3(x, y, z);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
       
 
       
