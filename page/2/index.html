@@ -152,6 +152,115 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="ejs-dontWorry/Algorithm/git常用命令" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/28/dontWorry/Algorithm/git常用命令/">git常用命令</a>
+    </h1>
+  
+
+        
+        <a href="/2019/06/28/dontWorry/Algorithm/git常用命令/" class="archive-article-date">
+  	<time datetime="2019-06-27T17:26:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="git常用命令"><a href="#git常用命令" class="headerlink" title="git常用命令"></a><strong>git常用命令</strong></h1><ul>
+<li><p>git branch -vv 查看链接</p>
+</li>
+<li><p>git branch –set-upstream-to=origin/hotfix/lianbo 建立链接</p>
+</li>
+<li><p>git branch -r 查看远程分支</p>
+</li>
+<li><p>git push origin hotfix/lianbo:hotfix/lianbo 推送本地分支到远程</p>
+</li>
+<li><p>git push –set-upstream origin feature/wallquickdrag  推送本地分支到远程</p>
+</li>
+<li><p>git push origin -D <em>BranchName</em> 删除远程分支</p>
+</li>
+<li><p>git merge –no-ff mater 合并master</p>
+</li>
+<li><p>git reflog –date=local | grep feature/cornerMerge@lianbo 查看当前分支是从哪个分支分出来的</p>
+</li>
+<li><p>git push origin –delete <em>BranchName</em>  删除本地分支</p>
+</li>
+<li><p>git checkout -b develop origni/develop 检出远程分支到本地</p>
+</li>
+<li><p>git stash save “” 储存</p>
+</li>
+<li><p>git stash apply stash@{0} // 取出储存的第一条</p>
+</li>
+<li><p>git reset –hard 75c26377 回滚到一个版本</p>
+</li>
+<li><p>git 单个文件回滚到某个版本<br>  1、git log WallHide.ts<br>  2、git checkout 6530c1358d1a0b66e9f5cf6106873431ddcec6c9 WallHide.ts</p>
+</li>
+<li><p><strong>git错误处理</strong></p>
+</li>
+</ul>
+<p>Git操作的过程中突然显示Another git process semms to be running in this repository, e.g. an editor opened by ‘git commit’. Please make sure all processes are terminated then try again. If it still fails, a git process remove the file manually to continue…<br>    rm -f .git/index.lock // 删除index.lock文件</p>
+<ul>
+<li>Chrome 护眼命令</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.getElementsByTagName(&apos;body&apos;)[0].style.background=&apos;#cce8cc&apos;;x=document.getElementsByTagName(&apos;div&apos;);for(var i=0;i&lt;x.length;i++)&#123;x[i].style.background=&apos;#cce8cc&apos;&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Algorithm</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/06/28/dontWorry/Algorithm/git常用命令/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="ejs-dontWorry/xiaofang/建筑防火/防火防烟分区与分隔" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1700,252 +1809,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/06/16/dontWorry/xiaofang/基础/火灾/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="ejs-dontWorry/xiaofang/基础/易燃易爆危险品" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/16/dontWorry/xiaofang/基础/易燃易爆危险品/">易燃易爆危险品</a>
-    </h1>
-  
-
-        
-        <a href="/2019/06/16/dontWorry/xiaofang/基础/易燃易爆危险品/" class="archive-article-date">
-  	<time datetime="2019-06-16T12:56:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="易燃易爆危险品"><a href="#易燃易爆危险品" class="headerlink" title="易燃易爆危险品"></a><strong>易燃易爆危险品</strong></h1><!-- TOC -->
-
-<ul>
-<li><a href="#易燃易爆危险品"><strong>易燃易爆危险品</strong></a><ul>
-<li><a href="#爆炸品">爆炸品</a></li>
-<li><a href="#易燃气体">易燃气体</a><ul>
-<li><a href="#易燃气体分级">易燃气体分级</a></li>
-<li><a href="#易燃气体的火灾危险性">易燃气体的火灾危险性</a></li>
-<li><a href="#易燃气雾剂">易燃气雾剂</a></li>
-</ul>
-</li>
-<li><a href="#易燃液体">易燃液体</a><ul>
-<li><a href="#易燃气体的火灾危险性-1">易燃气体的火灾危险性</a></li>
-</ul>
-</li>
-<li><a href="#易燃固体易自燃的物质遇水放出自燃气体的物质">易燃固体,易自燃的物质,遇水放出自燃气体的物质</a><ul>
-<li><a href="#易燃固体">易燃固体</a></li>
-<li><a href="#易于自燃的物质">易于自燃的物质</a></li>
-<li><a href="#遇水放出自燃气体的物质">遇水放出自燃气体的物质</a></li>
-</ul>
-</li>
-<li><a href="#氧化性物质和有机过氧化物">氧化性物质和有机过氧化物</a><ul>
-<li><a href="#氧化性物质">氧化性物质</a></li>
-<li><a href="#有机过氧化物">有机过氧化物</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<!-- /TOC -->
-<p>危险品系指爆炸,易燃,毒害,腐蚀,放射性等性质在运输,装卸和存储保管过程中,易造成人身伤亡和财产损失而需要特别防护的物品.</p>
-<h2 id="爆炸品"><a href="#爆炸品" class="headerlink" title="爆炸品"></a>爆炸品</h2><blockquote>
-<p>火药,炸药,爆炸性药品及其制品的总称</p>
-</blockquote>
-<h3 id="爆炸品分类"><a href="#爆炸品分类" class="headerlink" title="爆炸品分类"></a>爆炸品分类</h3><blockquote>
-<p>按爆炸危险性的大小分类</p>
-<ul>
-<li>具有整体危险性的物品 <em>瞬间影响几乎全部装入量的爆炸</em></li>
-<li>具有迸射危险</li>
-<li>燃烧危险并有局部爆炸危险或局部迸射危险</li>
-<li>不呈现重大危险的物质和物品</li>
-<li>有整体爆炸危险的非常不敏感物质</li>
-<li>无整体爆炸危险的极端不敏感物质</li>
-</ul>
-</blockquote>
-<h3 id="爆炸品的特性和参数"><a href="#爆炸品的特性和参数" class="headerlink" title="爆炸品的特性和参数"></a>爆炸品的特性和参数</h3><blockquote>
-<p>主要危险特性包括爆炸性和敏感性</p>
-</blockquote>
-<ul>
-<li>爆炸性 </li>
-<li>敏感度 <em>化学组成和结构决定敏感度的内在因素,外在因素还有温度,杂质,结晶,密度</em></li>
-</ul>
-<hr>
-<h2 id="易燃气体"><a href="#易燃气体" class="headerlink" title="易燃气体"></a>易燃气体</h2><h3 id="易燃气体分级"><a href="#易燃气体分级" class="headerlink" title="易燃气体分级"></a>易燃气体分级</h3><ul>
-<li>1级: 爆炸下限＜10%;或爆炸极限范围≧12个百分点</li>
-<li>2级: 10%≦爆炸下限＜13%,或爆炸极限范围＜12个百分点<blockquote>
-<p>实际应用中,通常将将爆炸下限＜10%的气体归为甲类火险物质,爆炸下限≧10%的气体归为乙类物质</p>
-</blockquote>
-<h3 id="易燃气体的火灾危险性"><a href="#易燃气体的火灾危险性" class="headerlink" title="易燃气体的火灾危险性"></a>易燃气体的火灾危险性</h3><blockquote>
-<p>易燃易爆性 </p>
-<blockquote>
-<p>1).比液体固体易燃,燃烧速度快<br>2).由简单气体组成<br>3).价键不饱和的气体比饱和气体危险性更大</p>
-</blockquote>
-</blockquote>
-</li>
-</ul>
-<blockquote>
-<p>扩散性 </p>
-<p>可缩性和膨胀性  </p>
-<blockquote>
-<ol>
-<li>气体的体积与温度成正比  </li>
-<li>气体的体积与压力成反比  </li>
-<li>气体的温度与压力成正比 </li>
-</ol>
-</blockquote>
-</blockquote>
-<blockquote>
-<p>带电性  <em>带电性是评定可燃气体火灾危险性的参数之一</em></p>
-<blockquote>
-<ol>
-<li>杂质越多,产生的静电荷越多  </li>
-<li>流速越快,产生的静电荷越多</li>
-</ol>
-</blockquote>
-<p>腐蚀性毒害性</p>
-</blockquote>
-<h3 id="易燃气雾剂"><a href="#易燃气雾剂" class="headerlink" title="易燃气雾剂"></a>易燃气雾剂</h3><blockquote>
-<p>分为喷雾气雾剂和泡沫气雾剂</p>
-</blockquote>
-<hr>
-<h2 id="易燃液体"><a href="#易燃液体" class="headerlink" title="易燃液体"></a>易燃液体</h2><blockquote>
-<p>闪点＜61℃的液体,液体混合物或含有固体混合物的液体</p>
-</blockquote>
-<h3 id="易燃气体的火灾危险性-1"><a href="#易燃气体的火灾危险性-1" class="headerlink" title="易燃气体的火灾危险性"></a>易燃气体的火灾危险性</h3><ul>
-<li>易燃性</li>
-<li>爆炸性</li>
-<li>受热膨胀性</li>
-<li>流动性</li>
-<li>带电性</li>
-<li>毒害性</li>
-</ul>
-<hr>
-<h2 id="易燃固体-易自燃的物质-遇水放出自燃气体的物质"><a href="#易燃固体-易自燃的物质-遇水放出自燃气体的物质" class="headerlink" title="易燃固体,易自燃的物质,遇水放出自燃气体的物质"></a>易燃固体,易自燃的物质,遇水放出自燃气体的物质</h2><h3 id="易燃固体"><a href="#易燃固体" class="headerlink" title="易燃固体"></a>易燃固体</h3><blockquote>
-<p>易燃固体(低于300℃的固体)  </p>
-<blockquote>
-<p>一级  燃点低,易燃烧,燃烧迅速,并放出有毒气体<br>二级 燃点较高,燃烧较慢,燃烧产物毒性也较小 </p>
-</blockquote>
-</blockquote>
-<blockquote>
-<p>易燃固体的范围  </p>
-<blockquote>
-<p>固态退敏爆炸品<br>自反应物质  </p>
-</blockquote>
-</blockquote>
-<blockquote>
-<p>火灾危险性  </p>
-<blockquote>
-<p>燃点低,易点燃<br>遇酸,氧化剂易燃易爆<br>本身或燃烧产物有毒  </p>
-</blockquote>
-</blockquote>
-<h3 id="易于自燃的物质"><a href="#易于自燃的物质" class="headerlink" title="易于自燃的物质"></a>易于自燃的物质</h3><blockquote>
-<p>分类  </p>
-<blockquote>
-<p>发火物质<br>自热物质  </p>
-</blockquote>
-</blockquote>
-<blockquote>
-<p>火灾危险性  </p>
-<blockquote>
-<p>遇空气自燃性<br>遇湿自燃性<br>积热自燃性 </p>
-</blockquote>
-</blockquote>
-<h3 id="遇水放出自燃气体的物质"><a href="#遇水放出自燃气体的物质" class="headerlink" title="遇水放出自燃气体的物质"></a>遇水放出自燃气体的物质</h3><blockquote>
-<p>遇水或遇酸燃烧性  </p>
-<blockquote>
-<p>着火时不能用水及泡沫灭火器扑灭</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<p>自燃性  </p>
-<blockquote>
-<p>这类物质存储必循与水和潮气隔离 </p>
-</blockquote>
-</blockquote>
-<blockquote>
-<p>爆炸性  </p>
-<blockquote>
-<p>遇水放出易燃气体物质</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<p>其他  </p>
-<blockquote>
-<p>除了易燃还有毒性,放出热量巨大</p>
-</blockquote>
-</blockquote>
-<hr>
-<h2 id="氧化性物质和有机过氧化物"><a href="#氧化性物质和有机过氧化物" class="headerlink" title="氧化性物质和有机过氧化物"></a>氧化性物质和有机过氧化物</h2><h3 id="氧化性物质"><a href="#氧化性物质" class="headerlink" title="氧化性物质"></a>氧化性物质</h3><p>   氧化物分类 <em>一级二级</em></p>
-<p>氧化性物质的火灾危险性  </p>
-<ul>
-<li>受热,被撞分解性</li>
-<li>可燃性</li>
-<li>与可燃液体作用自燃性</li>
-<li>与酸作用分解性</li>
-<li>与水作用分解性</li>
-<li>强氧化性物质与弱氧化锌物质作用分解性</li>
-<li>腐蚀毒害性  <h3 id="有机过氧化物"><a href="#有机过氧化物" class="headerlink" title="有机过氧化物"></a>有机过氧化物</h3>一种含有过氧基的有机物质,也可能是过氧化氢的衍生物<br>火灾危险性:<ul>
-<li>分解爆炸性</li>
-<li>易燃性</li>
-</ul>
-</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">消防</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/16/dontWorry/xiaofang/基础/易燃易爆危险品/">展开全文 >></a>
         </p>
       
 
