@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://buyaojingde.github.io">
-  <title>Tag: Algorithm | buyaojingde</title>
+  <title>法线变换和齐次坐标 | buyaojingde</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="buyaojingde">
-<meta property="og:url" content="https://buyaojingde.github.io/tags/Algorithm/index.html">
+  <meta name="description" content="法线变换和齐次坐标法线变换关于法线变换只说结论吧,只有使用原变换矩阵的逆转置矩阵来变换法线,即:   $${(M_{A→B}^T)}^{-1}$$ * 如果$M_{A→B}$是正交矩阵,那么$M_{A→B}^{-1} = M^T_{A→B}$ ,所以${M_{A→B}^T}^{-1} =M_{A→B}$ * 如果变换只有旋转变换,那么变换矩阵就是正交矩阵 * 如果只包含旋转和统一缩放矩阵,使用统一">
+<meta name="keywords" content="杂项">
+<meta property="og:type" content="article">
+<meta property="og:title" content="法线变换和齐次坐标">
+<meta property="og:url" content="https://buyaojingde.github.io/2019/08/24/dontWorry/杂项/法线变换和齐次坐标/index.html">
 <meta property="og:site_name" content="buyaojingde">
+<meta property="og:description" content="法线变换和齐次坐标法线变换关于法线变换只说结论吧,只有使用原变换矩阵的逆转置矩阵来变换法线,即:   $${(M_{A→B}^T)}^{-1}$$ * 如果$M_{A→B}$是正交矩阵,那么$M_{A→B}^{-1} = M^T_{A→B}$ ,所以${M_{A→B}^T}^{-1} =M_{A→B}$ * 如果变换只有旋转变换,那么变换矩阵就是正交矩阵 * 如果只包含旋转和统一缩放矩阵,使用统一">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-08-24T18:16:40.578Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="buyaojingde">
+<meta name="twitter:title" content="法线变换和齐次坐标">
+<meta name="twitter:description" content="法线变换和齐次坐标法线变换关于法线变换只说结论吧,只有使用原变换矩阵的逆转置矩阵来变换法线,即:   $${(M_{A→B}^T)}^{-1}$$ * 如果$M_{A→B}$是正交矩阵,那么$M_{A→B}^{-1} = M^T_{A→B}$ ,所以${M_{A→B}^T}^{-1} =M_{A→B}$ * 如果变换只有旋转变换,那么变换矩阵就是正交矩阵 * 如果只包含旋转和统一缩放矩阵,使用统一">
   
     <link rel="alternative" href="/atom.xml" title="buyaojingde" type="application/atom+xml">
   
@@ -150,174 +155,181 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="ejs-dontWorry/杂项/法线变换和齐次坐标" class="article article-type-ejs " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      法线变换和齐次坐标
+    </h1>
+  
+
+        
+        <a href="/2019/08/24/dontWorry/杂项/法线变换和齐次坐标/" class="archive-article-date">
+  	<time datetime="2019-08-24T11:08:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-24</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="法线变换和齐次坐标"><a href="#法线变换和齐次坐标" class="headerlink" title="法线变换和齐次坐标"></a>法线变换和齐次坐标</h1><h2 id="法线变换"><a href="#法线变换" class="headerlink" title="法线变换"></a>法线变换</h2><p>关于法线变换只说结论吧,只有使用原变换矩阵的逆转置矩阵来变换法线,即:</p>
+
+
+$${(M_{A→B}^T)}^{-1}$$
+* 如果$M_{A→B}$是正交矩阵,那么$M_{A→B}^{-1} = M^T_{A→B}$ ,所以${M_{A→B}^T}^{-1} =M_{A→B}$
+* 如果变换只有旋转变换,那么变换矩阵就是正交矩阵
+* 如果只包含旋转和统一缩放矩阵,使用统一缩放系数k的矩阵为$\frac{1}{k}M_{A→B}$
+* 如果是非统一变换,就只能求接逆矩阵
+
+<h2 id="齐次坐标"><a href="#齐次坐标" class="headerlink" title="齐次坐标"></a>齐次坐标</h2><p>齐次这个名字就很奇怪,好的名字应该能望文生义.在图形学中为了方便矩阵计算引入齐次坐标的概念,可以把他想象成4维空间在三维空间下的投影.</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/wxPay.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-ejs">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/28/dontWorry/Algorithm/矩阵TRS转换/" class="archive-article-date">
-  	<time datetime="2019-06-27T17:26:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/28/dontWorry/Algorithm/矩阵TRS转换/">矩阵TRS转换</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Algorithm</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂项</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://buyaojingde.github.io/2019/08/24/dontWorry/杂项/法线变换和齐次坐标/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-ejs">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/28/dontWorry/Algorithm/A星算法的一些关键点/" class="archive-article-date">
-  	<time datetime="2019-06-27T17:26:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-28</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/07/24/dontWorry/xiaofang/建筑消防设施/气体灭火系统/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">气体灭火系统</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/28/dontWorry/Algorithm/A星算法的一些关键点/">A星算法的一些关键点</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Algorithm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-ejs">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/28/dontWorry/Algorithm/git常用命令/" class="archive-article-date">
-  	<time datetime="2019-06-27T17:26:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/28/dontWorry/Algorithm/git常用命令/">git常用命令</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Algorithm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-ejs">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/18/dontWorry/Algorithm/牛顿法求平方根/" class="archive-article-date">
-  	<time datetime="2019-06-17T16:06:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/18/dontWorry/Algorithm/牛顿法求平方根/">牛顿法求平方根</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Algorithm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -340,9 +352,9 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
