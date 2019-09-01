@@ -158,6 +158,192 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="ejs-dontWorry/杂项/C#多线程的常识" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/31/dontWorry/杂项/C#多线程的常识/">C#多线程的常识</a>
+    </h1>
+  
+
+        
+        <a href="/2019/08/31/dontWorry/杂项/C#多线程的常识/" class="archive-article-date">
+  	<time datetime="2019-08-31T09:59:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-31</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="C-多线程的常识"><a href="#C-多线程的常识" class="headerlink" title="C#多线程的常识"></a>C#多线程的常识</h1><ul>
+<li><p><strong>Unity不是不能使用多线程,而是unity的对象都只能在主线程中进行调用</strong></p>
+</li>
+<li><p><strong>Unity的DebugLog不管前台后台线程,在播放停止或暂停后,还是都会继续执行</strong></p>
+</li>
+<li><p>Sleep : <code>Thread.Sleep(TimeSpan.FromSeconds(1));</code> 阻塞线程1秒</p>
+</li>
+<li><p>Join : <code>t.Join();</code> 主线程停止执行,等待子线程执行完成后,继续执行</p>
+</li>
+<li><p>Abort : <code>t.Abort();</code> 终止线程(给线程注入ThreadAbortException,导致线程终止,<font color="red">不推荐使用</font>)</p>
+</li>
+<li><p><code>Process.GetCurrentProcess().ProcessorAffinity = new IntPtr(1); //把所有的线程放在单个CPU上运行</code></p>
+</li>
+<li><p>在Unity中所有的子线程的Priority都是Lowest(不知道为啥)</p>
+</li>
+<li><p>前台进程就是亲生的,后台线程就是后娘养的,后台进程会随着主线的结束而结束.前台进程会直至执行结束而退出</p>
+</li>
+<li><p>下面是一些基本的原则：对于一些在后台运行的线程，当程序结束时这些线程没有必要继续运行了，那么这些线程就应该设置为后台线程。比如一个程序启动了一个进行大量运算的线程，可是只要程序一旦结束，那个线程就失去了继续存在的意义，那么那个线程就该是作为后台线程的。而对于一些服务于用户界面的线程往往是要设置为前台线程的，因为即使程序的主线程结束了，其他的用户界面的线程很可能要继续存在来显示相关的信息，所以不能立即终止它们。这里我只是给出了一些原则，具体到实际的运用往往需要编程者的进一步仔细斟酌。</p>
+</li>
+<li><p>线程传递参数的三种方法  </p>
+<ol>
+<li>通过类传递参数</li>
+<li>Start方法传入参数,当时方法必须有一个Object的参数</li>
+<li>lambda表达式传入参数()=&gt;fun(arg)</li>
+</ol>
+</li>
+<li><p>线程锁,lock关键字</p>
+<ol>
+<li>lock是关键字,指定一个临界区,当一个线程访问时,阻止其他线程进行访问,等于加了一把锁</li>
+<li>这个锁就是lock(o)中的o,所以要确保线程锁的正确性,必须保证所有线程访问的o都是同一个,不然各用各的锁,就不存在锁的作用了</li>
+<li>lock时Monitor的语法糖</li>
+<li>Monitor.TryEnter(obj,timespan)—-timeout之后，就不执行这段代码了。lock可是一直会死等的。</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">lock</span>(o)&#123;&#125;</span><br><span class="line"><span class="comment">// 等价于</span></span><br><span class="line"><span class="keyword">try</span>&#123; Monitor.Enter(o);&#125;</span><br><span class="line"><span class="keyword">catch</span>&#123;&#125;</span><br><span class="line"><span class="keyword">finally</span>&#123;Monitor.Exit(o);&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂项</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/31/dontWorry/杂项/C#多线程的常识/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="ejs-dontWorry/Unity3d/Unity快捷键" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/31/dontWorry/Unity3d/Unity快捷键/">Unity快捷键</a>
+    </h1>
+  
+
+        
+        <a href="/2019/08/31/dontWorry/Unity3d/Unity快捷键/" class="archive-article-date">
+  	<time datetime="2019-08-31T09:28:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-31</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Unity快捷键"><a href="#Unity快捷键" class="headerlink" title="Unity快捷键"></a>Unity快捷键</h1><ul>
+<li>快捷键操作Unity,基于Editor<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> UnityEditor;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">%-CTRL 在Windows / CMD在OSX</span></span><br><span class="line"><span class="comment"># -Shift</span></span><br><span class="line"><span class="comment">&amp; -Alt</span></span><br><span class="line"><span class="comment">LEFT/RIGHT/UP/DOWN-光标键</span></span><br><span class="line"><span class="comment">F1…F12</span></span><br><span class="line"><span class="comment">HOME,END,PGUP,PDDN</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">GameObjectAct</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//快捷键控制游戏对象的开关 alt + `</span></span><br><span class="line">    [<span class="meta">MenuItem(<span class="meta-string">"Tools/Custom/Active GameObject &amp;`"</span>)</span>]</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">ActiveGameObject</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        GameObject go = Selection.activeGameObject;</span><br><span class="line">        <span class="keyword">if</span> (go == <span class="literal">null</span>) &#123; <span class="keyword">return</span>; &#125;</span><br><span class="line">        <span class="keyword">bool</span> isActive = !go.activeSelf;</span><br><span class="line">        go.SetActive(isActive);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//快捷键控制保存Prefab alt + f</span></span><br><span class="line"></span><br><span class="line">    [<span class="meta">MenuItem(<span class="meta-string">"Tools/Custom/Apply GameObject &amp;f"</span>)</span>]</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">ApplyPrefab</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        GameObject go = Selection.activeGameObject;</span><br><span class="line">        <span class="keyword">if</span> (go == <span class="literal">null</span>) &#123; <span class="keyword">return</span>; &#125;</span><br><span class="line">        PrefabType type = PrefabUtility.GetPrefabType(go);</span><br><span class="line">        <span class="keyword">if</span> (type == PrefabType.PrefabInstance)</span><br><span class="line">        &#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span> UNITY_2019</span></span><br><span class="line">            Object target = PrefabUtility.GetCorrespondingObjectFromSource(go);</span><br><span class="line">            PrefabUtility.ReplacePrefab(go, target, ReplacePrefabOptions.ConnectToPrefab);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 清空日志 ctrl + L</span></span><br><span class="line">    [<span class="meta">MenuItem(<span class="meta-string">"Tools/ClearConsole %l"</span>, false, 37)</span>]</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">ClearConsole</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="comment">// This simply does "LogEntries.Clear()" the long way:</span></span><br><span class="line">        <span class="keyword">var</span> logEntries = System.Type.GetType(<span class="string">"UnityEditorInternal.LogEntries,UnityEditor.dll"</span>);</span><br><span class="line">        <span class="keyword">var</span> clearMethod = logEntries.GetMethod(<span class="string">"Clear"</span>, System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.Public);</span><br><span class="line">        clearMethod.Invoke(<span class="literal">null</span>, <span class="literal">null</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Unity3d</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/31/dontWorry/Unity3d/Unity快捷键/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="ejs-dontWorry/Unity3d/顶点的纹理坐标理解" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -852,159 +1038,6 @@ $${(M_{A→B}^T)}^{-1}$$
 
 
   
-    <article id="ejs-dontWorry/xiaofang/建筑消防设施/自动喷水灭火系统" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/14/dontWorry/xiaofang/建筑消防设施/自动喷水灭火系统/">自动喷水灭火系统</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/14/dontWorry/xiaofang/建筑消防设施/自动喷水灭火系统/" class="archive-article-date">
-  	<time datetime="2019-07-14T13:34:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="自动喷水灭火系统"><a href="#自动喷水灭火系统" class="headerlink" title="自动喷水灭火系统"></a>自动喷水灭火系统</h1><!-- TOC -->
-
-<ul>
-<li><a href="#自动喷水灭火系统">自动喷水灭火系统</a><ul>
-<li><a href="#系统的分类与组成">系统的分类与组成</a></li>
-<li><a href="#系统的工作原理与适用范围">系统的工作原理与适用范围</a></li>
-<li><a href="#系统设计主要参数">系统设计主要参数</a></li>
-<li><a href="#系统主要组件及设置要求">系统主要组件及设置要求</a></li>
-</ul>
-</li>
-</ul>
-<!-- /TOC -->
-<p>自动喷水灭火系统是由洒水喷头,报警阀组,水流报警装置(水流指示器或压力开关)等组件组成,以及管道,供水设施组成</p>
-<h2 id="系统的分类与组成"><a href="#系统的分类与组成" class="headerlink" title="系统的分类与组成"></a>系统的分类与组成</h2><ul>
-<li>根据使用喷头的型式分为闭式自动喷水灭火系统和开式自动喷水灭火系统</li>
-<li>根据用途和配置分为湿式系统,干式系统,预作用系统,雨淋系统,水幕系统,自动喷水-泡沫联用系统</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>类别</th>
-<th>特点</th>
-<th>组成</th>
-<th>作用范围</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>湿式</td>
-<td>有压水</td>
-<td>闭式喷头,湿式报警阀组</td>
-<td>4℃≦环境温度≦70℃</td>
-</tr>
-<tr>
-<td>干式</td>
-<td>开放信号为有压气体</td>
-<td>干式报警阀组</td>
-<td>环境温度＞70℃,＜4℃</td>
-</tr>
-<tr>
-<td>预作用</td>
-<td>由火灾报警系统启动雨淋阀,转为湿式系统</td>
-<td>预作用阀组</td>
-<td>严禁误碰场所,替代干式</td>
-</tr>
-<tr>
-<td>雨淋</td>
-<td>雨淋阀控制喷水范围,火灾自动报警系统启动雨淋阀</td>
-<td>雨淋阀组,水流报警装置</td>
-<td>特别危险场所</td>
-</tr>
-<tr>
-<td>水幕</td>
-<td>挡烟阻火,冷却分隔</td>
-<td>开式喷头,雨淋报警阀组</td>
-<td>局部防火分隔处</td>
-</tr>
-<tr>
-<td>自动喷水-泡沫</td>
-<td>喷水和泡沫联用</td>
-<td>泡沫混合液</td>
-<td></td>
-</tr>
-<tr>
-<td>## 系统的工作原理与适用范围</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>* 湿式工作原理</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<pre><code>1. 末端试水装置,检验系统的可靠性,同时可测试充水时间(每个报警阀组控制的最不利点喷头处设置试水装置)
-2. 出水口的流量系数应与最小流量系数洒水喷头相等
-3. 水流指示器,及时报告发生火灾的部位
-4. 每个防火分区和每个楼层应设置水流指示器
-5. 仓库内和货架也要装水流指示器
-6. </code></pre><h2 id="系统设计主要参数"><a href="#系统设计主要参数" class="headerlink" title="系统设计主要参数"></a>系统设计主要参数</h2><h2 id="系统主要组件及设置要求"><a href="#系统主要组件及设置要求" class="headerlink" title="系统主要组件及设置要求"></a>系统主要组件及设置要求</h2>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">消防</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/14/dontWorry/xiaofang/建筑消防设施/自动喷水灭火系统/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="ejs-dontWorry/xiaofang/建筑消防设施/水喷雾灭火系统" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1269,62 +1302,107 @@ $${(M_{A→B}^T)}^{-1}$$
 
 
   
-    <article id="ejs-dontWorry/杂项/第一段汇编程序" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
+    <article id="ejs-dontWorry/xiaofang/建筑消防设施/自动喷水灭火系统" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/14/dontWorry/杂项/第一段汇编程序/">第一段汇编程序</a>
+      <a class="article-title" href="/2019/07/14/dontWorry/xiaofang/建筑消防设施/自动喷水灭火系统/">自动喷水灭火系统</a>
     </h1>
   
 
         
-        <a href="/2019/07/14/dontWorry/杂项/第一段汇编程序/" class="archive-article-date">
-  	<time datetime="2019-07-13T18:03:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-14</time>
+        <a href="/2019/07/14/dontWorry/xiaofang/建筑消防设施/自动喷水灭火系统/" class="archive-article-date">
+  	<time datetime="2019-07-14T13:34:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-14</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="第一段汇编程序"><a href="#第一段汇编程序" class="headerlink" title="第一段汇编程序"></a>第一段汇编程序</h1><ul>
-<li><a href="http://www.masm32.com/download.htm" target="_blank" rel="noopener">下载</a>masm32</li>
-<li>代码</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">; first asm program</span><br><span class="line">.386</span><br><span class="line">.model flat, stdcall</span><br><span class="line">option casemap:none</span><br><span class="line"></span><br><span class="line">include windows.inc</span><br><span class="line">include masm32.inc</span><br><span class="line">includelib masm32.lib</span><br><span class="line">include kernel32.inc</span><br><span class="line">includelib kernel32.lib</span><br><span class="line"></span><br><span class="line">.data</span><br><span class="line">msg1 BYTE &apos;Hello World&apos;,0</span><br><span class="line"></span><br><span class="line">.code</span><br><span class="line">start:</span><br><span class="line">    invoke StdOut, addr msg1</span><br><span class="line">    invoke ExitProcess, 0</span><br><span class="line">end start</span><br></pre></td></tr></table></figure>
+        <h1 id="自动喷水灭火系统"><a href="#自动喷水灭火系统" class="headerlink" title="自动喷水灭火系统"></a>自动喷水灭火系统</h1><!-- TOC -->
 
 <ul>
-<li>配置环境变量</li>
+<li><a href="#自动喷水灭火系统">自动喷水灭火系统</a><ul>
+<li><a href="#系统的分类与组成">系统的分类与组成</a></li>
+<li><a href="#系统的工作原理与适用范围">系统的工作原理与适用范围</a></li>
+<li><a href="#系统设计主要参数">系统设计主要参数</a></li>
+<li><a href="#系统主要组件及设置要求">系统主要组件及设置要求</a></li>
 </ul>
-<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">set</span> Masm32Dir=F:\masm32</span><br><span class="line"><span class="built_in">set</span> include=<span class="variable">%Masm32Dir%</span>\include;<span class="variable">%include%</span></span><br><span class="line"><span class="built_in">set</span> lib=<span class="variable">%Masm32Dir%</span>\lib;<span class="variable">%lib%</span></span><br><span class="line"><span class="built_in">set</span> <span class="built_in">path</span>=<span class="variable">%Masm32Dir%</span>\bin;<span class="variable">%Masm32Dir%</span>;<span class="variable">%PATH%</span></span><br><span class="line"><span class="built_in">set</span> Masm32Dir=</span><br><span class="line"><span class="built_in">echo</span> on</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>编译步骤</li>
+</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ml /c /coff asmProgram.asm // 编译成功后会生成一个asmProgram.obj</span><br><span class="line">link /subsystem:console asmProgram.obj // console 表示控制台程序</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>基础理论知识ASM Structure</li>
+<!-- /TOC -->
+<p>自动喷水灭火系统是由洒水喷头,报警阀组,水流报警装置(水流指示器或压力开关)等组件组成,以及管道,供水设施组成</p>
+<h2 id="系统的分类与组成"><a href="#系统的分类与组成" class="headerlink" title="系统的分类与组成"></a>系统的分类与组成</h2><ul>
+<li>根据使用喷头的型式分为闭式自动喷水灭火系统和开式自动喷水灭火系统</li>
+<li>根据用途和配置分为湿式系统,干式系统,预作用系统,雨淋系统,水幕系统,自动喷水-泡沫联用系统</li>
 </ul>
 <table>
 <thead>
 <tr>
-<th>Label</th>
-<th>Opcode</th>
-<th>Operand</th>
-<th>Comment</th>
+<th>类别</th>
+<th>特点</th>
+<th>组成</th>
+<th>作用范围</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>num main</td>
-<td>.date DWORD .code PROC mov ret endp</td>
-<td>? num1, 5</td>
-<td>;表示注释</td>
+<td>湿式</td>
+<td>有压水</td>
+<td>闭式喷头,湿式报警阀组</td>
+<td>4℃≦环境温度≦70℃</td>
+</tr>
+<tr>
+<td>干式</td>
+<td>开放信号为有压气体</td>
+<td>干式报警阀组</td>
+<td>环境温度＞70℃,＜4℃</td>
+</tr>
+<tr>
+<td>预作用</td>
+<td>由火灾报警系统启动雨淋阀,转为湿式系统</td>
+<td>预作用阀组</td>
+<td>严禁误碰场所,替代干式</td>
+</tr>
+<tr>
+<td>雨淋</td>
+<td>雨淋阀控制喷水范围,火灾自动报警系统启动雨淋阀</td>
+<td>雨淋阀组,水流报警装置</td>
+<td>特别危险场所</td>
+</tr>
+<tr>
+<td>水幕</td>
+<td>挡烟阻火,冷却分隔</td>
+<td>开式喷头,雨淋报警阀组</td>
+<td>局部防火分隔处</td>
+</tr>
+<tr>
+<td>自动喷水-泡沫</td>
+<td>喷水和泡沫联用</td>
+<td>泡沫混合液</td>
+<td></td>
+</tr>
+<tr>
+<td>## 系统的工作原理与适用范围</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>* 湿式工作原理</td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 </tbody></table>
-
+<pre><code>1. 末端试水装置,检验系统的可靠性,同时可测试充水时间(每个报警阀组控制的最不利点喷头处设置试水装置)
+2. 出水口的流量系数应与最小流量系数洒水喷头相等
+3. 水流指示器,及时报告发生火灾的部位
+4. 每个防火分区和每个楼层应设置水流指示器
+5. 仓库内和货架也要装水流指示器
+6. </code></pre><h2 id="系统设计主要参数"><a href="#系统设计主要参数" class="headerlink" title="系统设计主要参数"></a>系统设计主要参数</h2><h2 id="系统主要组件及设置要求"><a href="#系统主要组件及设置要求" class="headerlink" title="系统主要组件及设置要求"></a>系统主要组件及设置要求</h2>
       
 
       
@@ -1337,7 +1415,7 @@ $${(M_{A→B}^T)}^{-1}$$
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂项</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">消防</a>
         		</li>
       		
 		</ul>
@@ -1347,7 +1425,7 @@ $${(M_{A→B}^T)}^{-1}$$
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/14/dontWorry/杂项/第一段汇编程序/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/07/14/dontWorry/xiaofang/建筑消防设施/自动喷水灭火系统/">展开全文 >></a>
         </p>
       
 
@@ -1437,342 +1515,6 @@ $${(M_{A→B}^T)}^{-1}$$
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/07/14/dontWorry/杂项/ebp和esp的理解/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="ejs-dontWorry/xiaofang/建筑消防设施/室内外消防给水系统" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/08/dontWorry/xiaofang/建筑消防设施/室内外消防给水系统/">室内外消防给水系统</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/08/dontWorry/xiaofang/建筑消防设施/室内外消防给水系统/" class="archive-article-date">
-  	<time datetime="2019-07-07T16:27:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="室内外消防给水系统"><a href="#室内外消防给水系统" class="headerlink" title="室内外消防给水系统"></a>室内外消防给水系统</h1><!-- TOC -->
-
-<ul>
-<li><a href="#室内外消防给水系统">室内外消防给水系统</a><ul>
-<li><a href="#建筑消防设施的作用及分类">建筑消防设施的作用及分类</a></li>
-<li><a href="#建筑消防设施的设置与管理">建筑消防设施的设置与管理</a></li>
-<li><a href="#消防给水设施">消防给水设施</a><ul>
-<li><a href="#消防水泵">消防水泵</a></li>
-<li><a href="#消防供水管道">消防供水管道</a></li>
-<li><a href="#消防水泵接合器">消防水泵接合器</a></li>
-<li><a href="#增稳设备">增(稳)设备</a></li>
-<li><a href="#消防水池和消防水箱">消防水池和消防水箱</a></li>
-</ul>
-</li>
-<li><a href="#室外消火栓系统">室外消火栓系统</a></li>
-<li><a href="#室内消防栓系统">室内消防栓系统</a></li>
-</ul>
-</li>
-</ul>
-<!-- /TOC -->
-<p>安全疏散是确保火灾中人员的生命安全具有重要作用</p>
-<h2 id="建筑消防设施的作用及分类"><a href="#建筑消防设施的作用及分类" class="headerlink" title="建筑消防设施的作用及分类"></a>建筑消防设施的作用及分类</h2><ul>
-<li><p>建筑消防设施的作用时及时发现和扑救火灾,限制火灾蔓延的范围,为扑灭火灾创造有利条件</p>
-</li>
-<li><p>建筑消防设施的分类</p>
-<ol>
-<li>建筑防火分隔设施</li>
-<li>安全疏散设施</li>
-<li>消防给水设施</li>
-<li>防烟与排烟设施</li>
-<li>消防供配电设施</li>
-<li>火灾自动报警系统</li>
-<li>自动喷水灭火系统</li>
-<li>水喷雾灭火系统</li>
-<li>细水雾灭火系统</li>
-<li>泡沫灭火系统</li>
-<li>气体灭火系统</li>
-<li>干粉灭火系统</li>
-<li>可燃气体报警系统</li>
-<li>消防通信设施</li>
-<li>移动式灭火器材</li>
-</ol>
-</li>
-</ul>
-<h2 id="建筑消防设施的设置与管理"><a href="#建筑消防设施的设置与管理" class="headerlink" title="建筑消防设施的设置与管理"></a>建筑消防设施的设置与管理</h2><ul>
-<li><p>消防设施的设置要求</p>
-<ol>
-<li>按照消防法律,法规和消化技术标准</li>
-<li>消防设施的安装单位具有相应的资质</li>
-</ol>
-</li>
-<li><p>建筑消防设施管理职责</p>
-<ol>
-<li>各级政府及相关部门职责</li>
-<li>单位自主管理职责</li>
-<li>消防监督管理职责</li>
-</ol>
-</li>
-</ul>
-<h2 id="消防给水设施"><a href="#消防给水设施" class="headerlink" title="消防给水设施"></a>消防给水设施</h2><ul>
-<li>消防给水设施包括消防水源(消防水池),消防水泵,消防供水通道,增(稳)压设备(消防气压罐),消防水泵接合器和消防水箱等.</li>
-</ul>
-<h3 id="消防水泵"><a href="#消防水泵" class="headerlink" title="消防水泵"></a>消防水泵</h3><ul>
-<li><p>可不设备用泵</p>
-<ol>
-<li>工厂仓库,堆场和储罐的室外消防用水量小于或等于25L/s</li>
-<li>建筑的室内消防用水量小于或等于10L/s</li>
-</ol>
-</li>
-</ul>
-<ul>
-<li><p>水泵的出水量应满足消防水量的要求</p>
-</li>
-<li><p>水泵的扬程应在满足消防流量的条件下,保证最不利点消防栓的水压要求</p>
-</li>
-<li><p>最好使用Q-H特性曲线平缓的水泵</p>
-</li>
-<li><p>消防水泵不少于两台,一台工作,一台备用</p>
-</li>
-<li><p>消防泵串联增加扬程,并联增加流量</p>
-</li>
-<li><p>自灌式消防水泵即泵轴的高程要低于水源的最低可用水位,非自灌式吸水,水池水位低于泵轴线,启动水泵时需要引水.</p>
-</li>
-<li><p>消防水泵的布置要求</p>
-<ol>
-<li>吸水管保证不漏气</li>
-<li>水泵宜采用自灌式吸水</li>
-<li>直接从市政管网吸水时,应在消防水泵出水管上设置减压倒流防止器</li>
-<li>当吸水口处无吸水井时,吸水口处应设置旋转防止器</li>
-<li>每台消防水泵应独立的吸水管</li>
-<li>当消防主泵为两台或两台以上,备用泵和主泵共用一条吸水管</li>
-<li>吸水管应尽管简短</li>
-<li>吸水管宜有向水泵的上升坡度,一般坡度为0.005.</li>
-<li>吸水管直径小于DN250时,水流速度宜为1.0<del>1.2m/s,直径大于DN250时,水流速度宜为1.2</del>1.6m/s</li>
-</ol>
-</li>
-<li><p>消防水泵的启动装置分为手动和自动,采用自动的应同时采用手动,手动采用按钮,自动一般为压力开关,稳压泵,变频调速水泵等</p>
-</li>
-<li><p>动力装置采用供电和内燃机,保证有不间断的动力供应</p>
-</li>
-<li><p>消防水泵房直通本单位消防控制中心的通信设备</p>
-</li>
-</ul>
-<h3 id="消防供水管道"><a href="#消防供水管道" class="headerlink" title="消防供水管道"></a>消防供水管道</h3><ul>
-<li><p>室外消化水管布置成环状,当用水量小于15L/s,可布置成枝状</p>
-</li>
-<li><p>向环状管网的进水管不应少于两条</p>
-</li>
-<li><p>环状管道应采用阀门分成若干独立段,每段室外消防栓的数量不超过5个</p>
-</li>
-<li><p>室外消防给水管道直径不应小于DN100,有条件不应小于DN150</p>
-</li>
-<li><p>室外消防的其他的要求应符合国家规定</p>
-</li>
-<li><p>管材压力小于0.6MPa时,采用内搪水泥砂浆的给水铸铁管,大于0.6MPa时,采用水球墨铸铁罐或内外壁经防腐处理的钢管</p>
-</li>
-<li><p>敷设要求</p>
-<ol>
-<li>根据土质和管道荷载的情况,合理确定管道基础做法</li>
-<li>管径大于或等于150mm的管道,在弯头,三通和堵头的位置应设置钢筋混凝土支墩</li>
-<li>当管道交叉时,其他压力管道应避让稳高压消防给水系统的管道</li>
-<li>在管道的积气部位应设置自动排气阀,排气阀的管径不应小于15m</li>
-</ol>
-</li>
-<li><p>室内消防给水管道是室内消火栓给水系统的重要组成部分</p>
-<ol>
-<li>单层,多层建筑消防用水与其他用水合用的室内管道,当其他用水达到最大小时流量时,仍要保证供应全部消防用水量,高层建筑应与生活,生产给水系统分开独立</li>
-<li>除有特殊规定外,建筑物的室内消防给水管道应布置成环状,且两条进水管与室外环状管网相连接</li>
-<li>室外消防给水管道应采用阀门分成若干独立段</li>
-<li>高层民用建筑内每根消防给水竖管直径小于100mm</li>
-<li>室内消防给水栓给水管网与自动喷水灭火系统(局部应用系统)的管网分开设置</li>
-<li>室内消火栓给水管材通常采用热镀锌钢管,根据压力采用无缝钢管和有缝钢管</li>
-</ol>
-</li>
-</ul>
-<h3 id="消防水泵接合器"><a href="#消防水泵接合器" class="headerlink" title="消防水泵接合器"></a>消防水泵接合器</h3><ul>
-<li><p>以下场所使用消防水泵接合器</p>
-<ol>
-<li>高层民用建筑</li>
-<li>设有消防给水的住宅,超过5层的其他多层民用建筑</li>
-<li>超过2层或建筑面积大于10000m²的地下和半地下建筑,室内消火栓设计流量大于10L/s平战结合的人防工程</li>
-<li>高层工业建筑和超过4层的多层工业建筑</li>
-<li>城市交通隧道</li>
-</ol>
-</li>
-<li><p>消防水泵接合器的给水流量宜按每个10~15L/s计算</p>
-</li>
-<li><p>水泵接合器有地上式,地下式和墙壁式3种,方便连接消防水泵,距水泵接合器15~40m的范围,应设有室外消火栓或消防水池</p>
-</li>
-<li><p>水泵接合器是由阀门,安全阀,止回阀,栓口放水阀以及连接弯管等组成.</p>
-<h3 id="增-稳-设备"><a href="#增-稳-设备" class="headerlink" title="增(稳)设备"></a>增(稳)设备</h3></li>
-<li><p>当消防箱设置高度不能满足系统最不利点灭火设备所需的水压要求时,应设置增(稳)压设备</p>
-</li>
-<li><p>一般由稳压泵,隔膜式气压罐,管道附件及控制装置等组成</p>
-<h3 id="消防水池和消防水箱"><a href="#消防水池和消防水箱" class="headerlink" title="消防水池和消防水箱"></a>消防水池和消防水箱</h3></li>
-<li><p>室内外消防用水大于25L/s的建(构)筑物应设置消防水池</p>
-</li>
-<li><p>消防水池的有效容量应满足在火灾延续时间内建(构)筑物室内消防用水量和室外消防用水不足部分之和的要求</p>
-</li>
-<li><p>高压消防给水系统,采用临时高压消防给水系统时,高位消防水箱的设置应符合下列规定:</p>
-<ol>
-<li>高压民用建筑和总建筑面积大于10000m²,且层数超过两层的公共建筑和其他重要建筑,必须设置高位消防水箱</li>
-<li>应设置高位消防水箱,设置由困难的,应设置稳压泵</li>
-<li>当市政供水管能满足生产生活最大小时用水量后,可以不用高位消防水箱</li>
-</ol>
-</li>
-<li><p>消防用水与其他用水合用的水箱,应采取确保消防用水不作他用的技术措施</p>
-<h2 id="室外消火栓系统"><a href="#室外消火栓系统" class="headerlink" title="室外消火栓系统"></a>室外消火栓系统</h2></li>
-<li><p>室外消火栓给水系统通常是指室外消防给水系统给,是设置建筑物外墙的消防给水系统,主要承担城市,集镇,居住区等的消防室外部分消防给水任务</p>
-</li>
-<li><p>常高压消防给水系统官网应经常保持足够的压力和消防用水量</p>
-</li>
-<li><p>临时高压消防给水系统的消防泵,平时官网的压力较低</p>
-</li>
-<li><p>低压消防给水系统平时压力低,火灾发生时,通过消防车加压灭火</p>
-</li>
-<li><p>在建筑规划和设计中,同时设计消防给水系统,城市,居住区应设市政消火栓</p>
-</li>
-<li><p>民用建筑,厂房(仓库),储罐,堆场应设室外消火栓</p>
-</li>
-<li><p>耐火等级不低于二级,且建筑物面积小于或等于3000m³,居住区人数不超过500人,且建筑层数不超过两层的居住区,可不设置室外消防给水系统</p>
-</li>
-<li><p>室外消火栓应沿街道设置,当道路宽度大于60m时,宜在路的两边设置,宜靠近十字路口设置</p>
-</li>
-<li><p>甲乙类类液体储罐区和液化石油气储罐区的消火栓应设置在防火堤和防护墙后,距储罐15m范围内的消火栓不计算在内</p>
-</li>
-<li><p>间距不应大于120m</p>
-</li>
-<li><p>保护半径不应大于150m,在市政消火栓保护半径以内,室外消防用水量小于或等于15L/s的可不设置室外消火栓</p>
-</li>
-<li><p>按保护半径和消防用水量计算,每个应按10<del>15L/s计算,保护对象5</del>40m范围内的市政消火栓,计算在内</p>
-</li>
-<li><p>宜采用地上式消火栓,DN150或DN160的栓口和两个DN65的栓口,地下式的应有DN100和DN65两个,寒冷地区设置的室外消火栓应有防冻措施</p>
-</li>
-<li><p>距离路边不大于2m,距离房屋外墙不大于5m</p>
-</li>
-<li><p>工艺装置区的消火栓距离不大于60m,宽度大于120m,设置在路边</p>
-</li>
-<li><p>设置相应的永久性固定标识</p>
-</li>
-<li><p>室外消火栓设置有困难的,设置水鹤等为消火车加水的设施</p>
-<h2 id="室内消防栓系统"><a href="#室内消防栓系统" class="headerlink" title="室内消防栓系统"></a>室内消防栓系统</h2></li>
-<li><p>既可供火灾现场人员使用消火栓箱内的消防水喉,水枪扑救初期火灾,也可供消防队员扑救建筑物的大火.</p>
-</li>
-<li><p>室内消火栓包括水带水枪水喉等供消化人员使用的主要工具</p>
-</li>
-<li><p>室内消火栓通常采用临时高压消防给水系统</p>
-</li>
-<li><p>应设置室内消火栓系统的建筑</p>
-<ol>
-<li>建筑占地面积大于300m²的厂房</li>
-<li>体积大于5000³的车站,码头,机场的候车楼,展览建筑,商店,旅馆,病房,图书馆</li>
-<li>特等,甲等剧场,超过800个座位的其他等级的剧场和电影院,超过1200个座位的礼堂,体育馆</li>
-<li>建筑高度大于15m或体积大于10000m³的办公楼,教学楼,非住宅居住建筑等其他民用建筑</li>
-<li>建筑高度大于21m的住宅建筑,有困难可设置干式消防竖管和不带消火栓箱的DN65的室内消火栓,消防竖管的直径不应小于65mm</li>
-<li>国家级文物保护单位的重点砖木或木结构的古建筑</li>
-</ol>
-</li>
-<li><p>可不设置室内消火栓系统的建筑</p>
-<ol>
-<li>存在与水接触能引燃爆炸的物品</li>
-<li>耐火等级为一二级且可燃物较少的单层,多层丁戊厂房</li>
-<li>粮食仓库,金库以及远离城镇且无人值班的独立建筑</li>
-</ol>
-</li>
-<li><p>高层建筑都应设置室内消防栓</p>
-</li>
-<li><p>室内消火栓的布置应保证有两支水枪的充实水柱同时到达室内任何部位</p>
-</li>
-<li><p>建筑高度小于或等于24m,且体积小于或等于5000m³的库房,可采用一支水枪的充实水柱到达室内任何部位</p>
-</li>
-<li><p>室内消火栓应设在明显,易于取用的地点</p>
-</li>
-<li><p>冷库的室内消火栓应设在常温穿堂或楼梯间内</p>
-</li>
-<li><p>应在平屋顶设置试验和检查用的消火栓</p>
-</li>
-<li><p>消防电梯前室应设室内消火栓</p>
-</li>
-<li><p>室内消火栓的间距应由计算确定</p>
-</li>
-<li><p>高位消防水箱不能满足最不利点消火栓要求的建筑</p>
-</li>
-<li><p>消火栓应采用同一型号规格</p>
-</li>
-<li><p>高层建筑的屋顶应设有一个装有压力显示装置的检查用消火栓,采暖地区可设在顶层出口处和水箱间内</p>
-</li>
-<li><p>屋顶直升飞机停机坪和超高层建筑避难层,避难区应设置室内消火栓</p>
-</li>
-<li><p>充实水柱是指由水枪喷嘴起至射流90%的水柱水量穿过直径为380mm圆孔处的一段射流长度</p>
-</li>
-<li><p>消火栓栓口的出水压力大于0.50MPa时,应采取减压措施</p>
-</li>
-<li><p>高层建筑,厂房,库房和室内净空高度超过8m的民用建筑等场所,其消火栓口压力不应小于0.35MPa,且充实水柱应达到13m,其他场所不应小于0.25MPa,充实水柱高度应达到10m</p>
-</li>
-<li><p>消防软管卷盘的设置</p>
-<ol>
-<li>栓口直径应为25mm,配备的胶带内径不应小于19mm,长度不应超过40m,水喉喷嘴口径不应小于6mm</li>
-<li>旅馆,办公楼,商业楼,软管卷盘应设在走道内</li>
-<li>剧院,会堂闷顶内的消防软管卷盘应设在马道入口处.</li>
-</ol>
-</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">消防</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/08/dontWorry/xiaofang/建筑消防设施/室内外消防给水系统/">展开全文 >></a>
         </p>
       
 

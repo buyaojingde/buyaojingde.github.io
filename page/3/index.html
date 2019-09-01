@@ -158,6 +158,342 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="ejs-dontWorry/Algorithm/矩阵TRS转换" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/28/dontWorry/Algorithm/矩阵TRS转换/">矩阵TRS转换</a>
+    </h1>
+  
+
+        
+        <a href="/2019/06/28/dontWorry/Algorithm/矩阵TRS转换/" class="archive-article-date">
+  	<time datetime="2019-06-27T17:26:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="矩阵TRS转换"><a href="#矩阵TRS转换" class="headerlink" title="矩阵TRS转换"></a><strong>矩阵TRS转换</strong></h1><ul>
+<li><p>平移矩阵</p>
+
+$$
+ \left\{
+ \begin{matrix}
+   1 & 0 & 0 & T_x \\
+   0 & 1 & 0 & T_y \\
+   0 & 0 & 1 & T_z \\
+   0 & 0 & 0 & 1
+  \end{matrix}
+  \right\} \tag{2}
+$$
+* 缩放矩阵
+
+$$
+ \left\{
+ \begin{matrix}
+   S_x & 0 & 0 & 0 \\
+   0 & S_y & 0 & 0 \\
+   0 & 0 & S_z & 0 \\
+   0 & 0 & 0 & 1
+  \end{matrix}
+  \right\} \tag{2}
+$$
+
+* 旋转矩阵
+
+$$
+R_x = {\left\{
+ \begin{matrix}
+   1 & 0 & 0 & 0 \\
+   0 & \cos\theta & -\sin\theta & 0 \\
+   0 & 0 \sin\theta & \cos\theta & 0 \\
+   0 & 0 & 0 & 1
+  \end{matrix}
+  \right\} \tag{2}}
+$$
+
+$$
+R_y = {\left\{
+ \begin{matrix}
+   \cos\theta & 0 & \sin\theta & 0 \\
+   0 & 1 & 0 & 0 \\
+   -\sin\theta & 0 &\cos\theta & 0 \\
+   0 & 0 & 0 & 1
+  \end{matrix}
+  \right\} \tag{2}}
+$$
+
+$$
+R_z = {\left\{
+ \begin{matrix}
+   \cos\theta & -\sin\theta & 0 & 0 \\
+   \sin\theta & \cos\theta & 0 & 0 \\
+   0 & 0 & 1 & 0 \\
+   0 & 0 & 0 & 1
+  \end{matrix}
+  \right\} \tag{2}}
+$$
+
+</li>
+<li><p>从矩阵中提取RTS</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Quaternion <span class="title">GetRotation</span>(<span class="params"><span class="keyword">this</span> Matrix4x4 matrix</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        Quaternion q = <span class="keyword">new</span> Quaternion();</span><br><span class="line">        q.w = Mathf.Sqrt(Mathf.Max(<span class="number">0</span>, <span class="number">1</span> + matrix.m00 + matrix.m11 + matrix.m22)) / <span class="number">2</span>;</span><br><span class="line">        q.x = Mathf.Sqrt(Mathf.Max(<span class="number">0</span>, <span class="number">1</span> + matrix.m00 - matrix.m11 - matrix.m22)) / <span class="number">2</span>;</span><br><span class="line">        q.y = Mathf.Sqrt(Mathf.Max(<span class="number">0</span>, <span class="number">1</span> - matrix.m00 + matrix.m11 - matrix.m22)) / <span class="number">2</span>;</span><br><span class="line">        q.z = Mathf.Sqrt(Mathf.Max(<span class="number">0</span>, <span class="number">1</span> - matrix.m00 - matrix.m11 + matrix.m22)) / <span class="number">2</span>;</span><br><span class="line">        q.x = _copysign(q.x, matrix.m21 - matrix.m12);</span><br><span class="line">        q.y = _copysign(q.y, matrix.m02 - matrix.m20);</span><br><span class="line">        q.z = _copysign(q.z, matrix.m10 - matrix.m01);</span><br><span class="line">        <span class="keyword">return</span> q;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Vector3 <span class="title">GetPosition</span>(<span class="params"><span class="keyword">this</span> Matrix4x4 matrix</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">var</span> x = matrix.m03;</span><br><span class="line">        <span class="keyword">var</span> y = matrix.m13;</span><br><span class="line">        <span class="keyword">var</span> z = matrix.m23;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Vector3(x, y, z);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Vector3 <span class="title">GetScale</span>(<span class="params"><span class="keyword">this</span> Matrix4x4 m</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">var</span> x = Mathf.Sqrt(m.m00 * m.m00 + m.m01 * m.m01 + m.m02 * m.m02);</span><br><span class="line">        <span class="keyword">var</span> y = Mathf.Sqrt(m.m10 * m.m10 + m.m11 * m.m11 + m.m12 * m.m12);</span><br><span class="line">        <span class="keyword">var</span> z = Mathf.Sqrt(m.m20 * m.m20 + m.m21 * m.m21 + m.m22 * m.m22);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Vector3(x, y, z);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Algorithm</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/06/28/dontWorry/Algorithm/矩阵TRS转换/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="ejs-dontWorry/Algorithm/A星算法的一些关键点" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/28/dontWorry/Algorithm/A星算法的一些关键点/">A星算法的一些关键点</a>
+    </h1>
+  
+
+        
+        <a href="/2019/06/28/dontWorry/Algorithm/A星算法的一些关键点/" class="archive-article-date">
+  	<time datetime="2019-06-27T17:26:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="A星算法的一些关键点"><a href="#A星算法的一些关键点" class="headerlink" title="A星算法的一些关键点"></a>A星算法的一些关键点</h1><!-- TOC -->
+
+<ul>
+<li><a href="#a%e6%98%9f%e7%ae%97%e6%b3%95%e7%9a%84%e4%b8%80%e4%ba%9b%e5%85%b3%e9%94%ae%e7%82%b9">A星算法的一些关键点</a></li>
+</ul>
+<!-- /TOC -->
+<p><a href="https://www.cnblogs.com/zhoug2020/p/3468167.html" target="_blank" rel="noopener">基本原理</a><br>C#代码</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">internal</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title">AStarData</span></span><br><span class="line">   &#123;</span><br><span class="line">       <span class="keyword">public</span> <span class="keyword">int</span> FSum =&gt; _gSum + _hSum;</span><br><span class="line">       <span class="keyword">private</span> <span class="keyword">int</span> _gSum;</span><br><span class="line">       <span class="keyword">private</span> <span class="keyword">int</span> _hSum;</span><br><span class="line">       <span class="keyword">public</span> <span class="keyword">int</span> Direction; <span class="comment">// 路径的方向</span></span><br><span class="line"></span><br><span class="line">       <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">       <span class="comment"><span class="doctag">///</span> 计算估算的距离,有很多选择,比如曼哈顿距离, 对角线距离, 欧几里得距离, 平方后的欧几里得距离</span></span><br><span class="line">       <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">       <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;returns&gt;</span><span class="doctag">&lt;/returns&gt;</span></span></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">int</span> <span class="title">CalcH</span>(<span class="params"></span>)</span>;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   class AStar&lt;T&gt; where T: AStarData</span><br><span class="line">   &#123;</span><br><span class="line">       <span class="keyword">private</span> List&lt;T&gt; _closeList = <span class="keyword">new</span> List&lt;T&gt;();</span><br><span class="line">       <span class="keyword">private</span> List&lt;T&gt; _openList = <span class="keyword">new</span> List&lt;T&gt;();</span><br><span class="line">       <span class="keyword">private</span> T _start;</span><br><span class="line">       <span class="keyword">private</span> T _end;</span><br><span class="line">       <span class="function"><span class="keyword">public</span> List&lt;T&gt; <span class="title">MainAStar</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>       &#123;</span><br><span class="line">           <span class="keyword">var</span> path = <span class="keyword">new</span> List&lt;T&gt;();</span><br><span class="line">           <span class="keyword">var</span> currentLocation = <span class="keyword">this</span>._start;</span><br><span class="line">           <span class="keyword">while</span> (currentLocation != <span class="keyword">this</span>._end)</span><br><span class="line">           &#123;</span><br><span class="line">               currentLocation = <span class="keyword">this</span>.ValidLocations(currentLocation)[<span class="number">0</span>];</span><br><span class="line">               <span class="keyword">this</span>._openList.RemoveAt(<span class="number">0</span>);</span><br><span class="line">               <span class="keyword">this</span>._closeList.Add(currentLocation);</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="keyword">var</span> nextLocation = <span class="keyword">this</span>._end;</span><br><span class="line">           <span class="keyword">while</span> (nextLocation != <span class="keyword">this</span>._start)</span><br><span class="line">           &#123;</span><br><span class="line">               nextLocation = <span class="keyword">this</span>.CalcLocationReverse(nextLocation.Direction);</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="keyword">return</span> path;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">       <span class="comment"><span class="doctag">///</span> 根据寻找的时候的方向,计算找到的路径</span></span><br><span class="line">       <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">       <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="direction"&gt;</span><span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">       <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;returns&gt;</span><span class="doctag">&lt;/returns&gt;</span></span></span><br><span class="line">       <span class="function"><span class="keyword">private</span> T <span class="title">CalcLocationReverse</span>(<span class="params"><span class="keyword">int</span> direction</span>)</span></span><br><span class="line"><span class="function"></span>       &#123;</span><br><span class="line">           <span class="keyword">throw</span> <span class="keyword">new</span> NotImplementedException();</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">       <span class="comment"><span class="doctag">///</span> 根据当前位置,找到所有可能的位置(需要考虑封闭的路径)</span></span><br><span class="line">       <span class="comment"><span class="doctag">///</span> 需要提供要给一个方向值</span></span><br><span class="line">       <span class="comment"><span class="doctag">///</span> 需要提供已经走过的距离长度</span></span><br><span class="line">       <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">       <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="start"&gt;</span><span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">       <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;returns&gt;</span><span class="doctag">&lt;/returns&gt;</span></span></span><br><span class="line">       <span class="function"><span class="keyword">private</span> List&lt;T&gt; <span class="title">CalcLocation</span>(<span class="params">T start</span>)</span></span><br><span class="line"><span class="function"></span>       &#123;</span><br><span class="line">           <span class="keyword">throw</span> <span class="keyword">new</span> NotImplementedException();</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="function"><span class="keyword">private</span> List&lt;T&gt; <span class="title">ValidLocations</span>(<span class="params">T current</span>)</span></span><br><span class="line"><span class="function"></span>       &#123;</span><br><span class="line">           <span class="keyword">var</span> currentLocations = <span class="keyword">this</span>.CalcLocation(current);</span><br><span class="line">           <span class="keyword">this</span>._openList.AddRange(currentLocations);</span><br><span class="line">           <span class="keyword">this</span>._openList.Sort((x, y) =&gt;</span><br><span class="line">           &#123;</span><br><span class="line">               <span class="comment">// 从小到大排列</span></span><br><span class="line">               <span class="keyword">if</span> (x.FSum &lt; y.FSum) &#123; <span class="keyword">return</span> <span class="number">-1</span>; &#125;</span><br><span class="line">               <span class="keyword">if</span> (x.FSum == y.FSum) &#123; <span class="keyword">return</span> <span class="number">0</span>; &#125;</span><br><span class="line">               <span class="keyword">return</span> x.FSum &gt; y.FSum ? <span class="number">1</span> : <span class="number">0</span>;</span><br><span class="line">           &#125;);</span><br><span class="line">           <span class="keyword">return</span> _openList;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>路径的距离计算根据业务场景不同,自己实现</li>
+<li>路径的方向也要具体定义</li>
+<li>估算距离也要选择合适的实现</li>
+<li><strong>所有可到达的方格都要加入到OpenList</strong></li>
+<li><strong>找到终点后,还要进行回溯来确定路径</strong></li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Algorithm</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/06/28/dontWorry/Algorithm/A星算法的一些关键点/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="ejs-dontWorry/Algorithm/git常用命令" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/28/dontWorry/Algorithm/git常用命令/">git常用命令</a>
+    </h1>
+  
+
+        
+        <a href="/2019/06/28/dontWorry/Algorithm/git常用命令/" class="archive-article-date">
+  	<time datetime="2019-06-27T17:26:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="git常用命令"><a href="#git常用命令" class="headerlink" title="git常用命令"></a><strong>git常用命令</strong></h1><ul>
+<li><p>git branch -vv 查看链接</p>
+</li>
+<li><p>git branch –set-upstream-to=origin/hotfix/lianbo 建立链接</p>
+</li>
+<li><p>git branch -r 查看远程分支</p>
+</li>
+<li><p>git push origin hotfix/lianbo:hotfix/lianbo 推送本地分支到远程</p>
+</li>
+<li><p>git push –set-upstream origin feature/wallquickdrag  推送本地分支到远程</p>
+</li>
+<li><p>git push origin -D <em>BranchName</em> 删除远程分支</p>
+</li>
+<li><p>git merge –no-ff mater 合并master</p>
+</li>
+<li><p>git reflog –date=local | grep feature/cornerMerge@lianbo 查看当前分支是从哪个分支分出来的</p>
+</li>
+<li><p>git push origin –delete <em>BranchName</em>  删除本地分支</p>
+</li>
+<li><p>git checkout -b develop origni/develop 检出远程分支到本地</p>
+</li>
+<li><p>git stash save “” 储存</p>
+</li>
+<li><p>git stash apply stash@{0} // 取出储存的第一条</p>
+</li>
+<li><p>git reset –hard 75c26377 回滚到一个版本</p>
+</li>
+<li><p>git 单个文件回滚到某个版本<br>  1、git log WallHide.ts<br>  2、git checkout 6530c1358d1a0b66e9f5cf6106873431ddcec6c9 WallHide.ts</p>
+</li>
+<li><p><strong>git错误处理</strong></p>
+</li>
+</ul>
+<p>Git操作的过程中突然显示Another git process semms to be running in this repository, e.g. an editor opened by ‘git commit’. Please make sure all processes are terminated then try again. If it still fails, a git process remove the file manually to continue…<br>    rm -f .git/index.lock // 删除index.lock文件</p>
+<ul>
+<li>Chrome 护眼命令</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.getElementsByTagName(&apos;body&apos;)[0].style.background=&apos;#cce8cc&apos;;x=document.getElementsByTagName(&apos;div&apos;);for(var i=0;i&lt;x.length;i++)&#123;x[i].style.background=&apos;#cce8cc&apos;&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Algorithm</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/06/28/dontWorry/Algorithm/git常用命令/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="ejs-dontWorry/xiaofang/建筑防火/防火防烟分区与分隔" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1434,493 +1770,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/06/17/dontWorry/xiaofang/建筑防火/建筑防火/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-dontWorry/README" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="dontworry"><a href="#dontworry" class="headerlink" title="dontworry"></a>dontworry</h1>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/16/dontWorry/README/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="ejs-dontWorry/xiaofang/基础/易燃易爆危险品" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/16/dontWorry/xiaofang/基础/易燃易爆危险品/">易燃易爆危险品</a>
-    </h1>
-  
-
-        
-        <a href="/2019/06/16/dontWorry/xiaofang/基础/易燃易爆危险品/" class="archive-article-date">
-  	<time datetime="2019-06-16T12:56:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="易燃易爆危险品"><a href="#易燃易爆危险品" class="headerlink" title="易燃易爆危险品"></a><strong>易燃易爆危险品</strong></h1><!-- TOC -->
-
-<ul>
-<li><a href="#易燃易爆危险品"><strong>易燃易爆危险品</strong></a><ul>
-<li><a href="#爆炸品">爆炸品</a></li>
-<li><a href="#易燃气体">易燃气体</a><ul>
-<li><a href="#易燃气体分级">易燃气体分级</a></li>
-<li><a href="#易燃气体的火灾危险性">易燃气体的火灾危险性</a></li>
-<li><a href="#易燃气雾剂">易燃气雾剂</a></li>
-</ul>
-</li>
-<li><a href="#易燃液体">易燃液体</a><ul>
-<li><a href="#易燃气体的火灾危险性-1">易燃气体的火灾危险性</a></li>
-</ul>
-</li>
-<li><a href="#易燃固体易自燃的物质遇水放出自燃气体的物质">易燃固体,易自燃的物质,遇水放出自燃气体的物质</a><ul>
-<li><a href="#易燃固体">易燃固体</a></li>
-<li><a href="#易于自燃的物质">易于自燃的物质</a></li>
-<li><a href="#遇水放出自燃气体的物质">遇水放出自燃气体的物质</a></li>
-</ul>
-</li>
-<li><a href="#氧化性物质和有机过氧化物">氧化性物质和有机过氧化物</a><ul>
-<li><a href="#氧化性物质">氧化性物质</a></li>
-<li><a href="#有机过氧化物">有机过氧化物</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<!-- /TOC -->
-<p>危险品系指爆炸,易燃,毒害,腐蚀,放射性等性质在运输,装卸和存储保管过程中,易造成人身伤亡和财产损失而需要特别防护的物品.</p>
-<h2 id="爆炸品"><a href="#爆炸品" class="headerlink" title="爆炸品"></a>爆炸品</h2><blockquote>
-<p>火药,炸药,爆炸性药品及其制品的总称</p>
-</blockquote>
-<h3 id="爆炸品分类"><a href="#爆炸品分类" class="headerlink" title="爆炸品分类"></a>爆炸品分类</h3><blockquote>
-<p>按爆炸危险性的大小分类</p>
-<ul>
-<li>具有整体危险性的物品 <em>瞬间影响几乎全部装入量的爆炸</em></li>
-<li>具有迸射危险</li>
-<li>燃烧危险并有局部爆炸危险或局部迸射危险</li>
-<li>不呈现重大危险的物质和物品</li>
-<li>有整体爆炸危险的非常不敏感物质</li>
-<li>无整体爆炸危险的极端不敏感物质</li>
-</ul>
-</blockquote>
-<h3 id="爆炸品的特性和参数"><a href="#爆炸品的特性和参数" class="headerlink" title="爆炸品的特性和参数"></a>爆炸品的特性和参数</h3><blockquote>
-<p>主要危险特性包括爆炸性和敏感性</p>
-</blockquote>
-<ul>
-<li>爆炸性 </li>
-<li>敏感度 <em>化学组成和结构决定敏感度的内在因素,外在因素还有温度,杂质,结晶,密度</em></li>
-</ul>
-<hr>
-<h2 id="易燃气体"><a href="#易燃气体" class="headerlink" title="易燃气体"></a>易燃气体</h2><h3 id="易燃气体分级"><a href="#易燃气体分级" class="headerlink" title="易燃气体分级"></a>易燃气体分级</h3><ul>
-<li>1级: 爆炸下限＜10%;或爆炸极限范围≧12个百分点</li>
-<li>2级: 10%≦爆炸下限＜13%,或爆炸极限范围＜12个百分点<blockquote>
-<p>实际应用中,通常将将爆炸下限＜10%的气体归为甲类火险物质,爆炸下限≧10%的气体归为乙类物质</p>
-</blockquote>
-<h3 id="易燃气体的火灾危险性"><a href="#易燃气体的火灾危险性" class="headerlink" title="易燃气体的火灾危险性"></a>易燃气体的火灾危险性</h3><blockquote>
-<p>易燃易爆性 </p>
-<blockquote>
-<p>1).比液体固体易燃,燃烧速度快<br>2).由简单气体组成<br>3).价键不饱和的气体比饱和气体危险性更大</p>
-</blockquote>
-</blockquote>
-</li>
-</ul>
-<blockquote>
-<p>扩散性 </p>
-<p>可缩性和膨胀性  </p>
-<blockquote>
-<ol>
-<li>气体的体积与温度成正比  </li>
-<li>气体的体积与压力成反比  </li>
-<li>气体的温度与压力成正比 </li>
-</ol>
-</blockquote>
-</blockquote>
-<blockquote>
-<p>带电性  <em>带电性是评定可燃气体火灾危险性的参数之一</em></p>
-<blockquote>
-<ol>
-<li>杂质越多,产生的静电荷越多  </li>
-<li>流速越快,产生的静电荷越多</li>
-</ol>
-</blockquote>
-<p>腐蚀性毒害性</p>
-</blockquote>
-<h3 id="易燃气雾剂"><a href="#易燃气雾剂" class="headerlink" title="易燃气雾剂"></a>易燃气雾剂</h3><blockquote>
-<p>分为喷雾气雾剂和泡沫气雾剂</p>
-</blockquote>
-<hr>
-<h2 id="易燃液体"><a href="#易燃液体" class="headerlink" title="易燃液体"></a>易燃液体</h2><blockquote>
-<p>闪点＜61℃的液体,液体混合物或含有固体混合物的液体</p>
-</blockquote>
-<h3 id="易燃气体的火灾危险性-1"><a href="#易燃气体的火灾危险性-1" class="headerlink" title="易燃气体的火灾危险性"></a>易燃气体的火灾危险性</h3><ul>
-<li>易燃性</li>
-<li>爆炸性</li>
-<li>受热膨胀性</li>
-<li>流动性</li>
-<li>带电性</li>
-<li>毒害性</li>
-</ul>
-<hr>
-<h2 id="易燃固体-易自燃的物质-遇水放出自燃气体的物质"><a href="#易燃固体-易自燃的物质-遇水放出自燃气体的物质" class="headerlink" title="易燃固体,易自燃的物质,遇水放出自燃气体的物质"></a>易燃固体,易自燃的物质,遇水放出自燃气体的物质</h2><h3 id="易燃固体"><a href="#易燃固体" class="headerlink" title="易燃固体"></a>易燃固体</h3><blockquote>
-<p>易燃固体(低于300℃的固体)  </p>
-<blockquote>
-<p>一级  燃点低,易燃烧,燃烧迅速,并放出有毒气体<br>二级 燃点较高,燃烧较慢,燃烧产物毒性也较小 </p>
-</blockquote>
-</blockquote>
-<blockquote>
-<p>易燃固体的范围  </p>
-<blockquote>
-<p>固态退敏爆炸品<br>自反应物质  </p>
-</blockquote>
-</blockquote>
-<blockquote>
-<p>火灾危险性  </p>
-<blockquote>
-<p>燃点低,易点燃<br>遇酸,氧化剂易燃易爆<br>本身或燃烧产物有毒  </p>
-</blockquote>
-</blockquote>
-<h3 id="易于自燃的物质"><a href="#易于自燃的物质" class="headerlink" title="易于自燃的物质"></a>易于自燃的物质</h3><blockquote>
-<p>分类  </p>
-<blockquote>
-<p>发火物质<br>自热物质  </p>
-</blockquote>
-</blockquote>
-<blockquote>
-<p>火灾危险性  </p>
-<blockquote>
-<p>遇空气自燃性<br>遇湿自燃性<br>积热自燃性 </p>
-</blockquote>
-</blockquote>
-<h3 id="遇水放出自燃气体的物质"><a href="#遇水放出自燃气体的物质" class="headerlink" title="遇水放出自燃气体的物质"></a>遇水放出自燃气体的物质</h3><blockquote>
-<p>遇水或遇酸燃烧性  </p>
-<blockquote>
-<p>着火时不能用水及泡沫灭火器扑灭</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<p>自燃性  </p>
-<blockquote>
-<p>这类物质存储必循与水和潮气隔离 </p>
-</blockquote>
-</blockquote>
-<blockquote>
-<p>爆炸性  </p>
-<blockquote>
-<p>遇水放出易燃气体物质</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<p>其他  </p>
-<blockquote>
-<p>除了易燃还有毒性,放出热量巨大</p>
-</blockquote>
-</blockquote>
-<hr>
-<h2 id="氧化性物质和有机过氧化物"><a href="#氧化性物质和有机过氧化物" class="headerlink" title="氧化性物质和有机过氧化物"></a>氧化性物质和有机过氧化物</h2><h3 id="氧化性物质"><a href="#氧化性物质" class="headerlink" title="氧化性物质"></a>氧化性物质</h3><p>   氧化物分类 <em>一级二级</em></p>
-<p>氧化性物质的火灾危险性  </p>
-<ul>
-<li>受热,被撞分解性</li>
-<li>可燃性</li>
-<li>与可燃液体作用自燃性</li>
-<li>与酸作用分解性</li>
-<li>与水作用分解性</li>
-<li>强氧化性物质与弱氧化锌物质作用分解性</li>
-<li>腐蚀毒害性  <h3 id="有机过氧化物"><a href="#有机过氧化物" class="headerlink" title="有机过氧化物"></a>有机过氧化物</h3>一种含有过氧基的有机物质,也可能是过氧化氢的衍生物<br>火灾危险性:<ul>
-<li>分解爆炸性</li>
-<li>易燃性</li>
-</ul>
-</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">消防</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/16/dontWorry/xiaofang/基础/易燃易爆危险品/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="ejs-dontWorry/xiaofang/基础/爆炸" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/16/dontWorry/xiaofang/基础/爆炸/">爆炸</a>
-    </h1>
-  
-
-        
-        <a href="/2019/06/16/dontWorry/xiaofang/基础/爆炸/" class="archive-article-date">
-  	<time datetime="2019-06-16T12:56:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="爆炸"><a href="#爆炸" class="headerlink" title="爆炸"></a><strong>爆炸</strong></h1><!-- TOC -->
-
-<ul>
-<li><a href="#爆炸"><strong>爆炸</strong></a><ul>
-<li><a href="#定义-分类-危害">定义 分类 危害</a><ul>
-<li><a href="#按物质产生爆炸的原因和性质分类">按物质产生爆炸的原因和性质分类</a><ul>
-<li><a href="#物理">物理</a></li>
-<li><a href="#化学-能直接造成火灾粉尘和空气的混合危害性很大">化学 <em>能直接造成火灾,粉尘和空气的混合危害性很大.</em></a></li>
-<li><a href="#核爆炸">核爆炸</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#爆炸极限">爆炸极限</a></li>
-<li><a href="#爆炸危险源">爆炸危险源</a></li>
-</ul>
-</li>
-</ul>
-<!-- /TOC -->
-<h2 id="定义-分类-危害"><a href="#定义-分类-危害" class="headerlink" title="定义 分类 危害"></a>定义 分类 危害</h2><ul>
-<li><p>定义</p>
-<blockquote>
-<p>从一种状态迅速转变成另一种状态,瞬间放出大量能量产生高温,放出大量气体,产生声响</p>
-</blockquote>
-</li>
-</ul>
-<h3 id="按物质产生爆炸的原因和性质分类"><a href="#按物质产生爆炸的原因和性质分类" class="headerlink" title="按物质产生爆炸的原因和性质分类"></a>按物质产生爆炸的原因和性质分类</h3><h4 id="物理"><a href="#物理" class="headerlink" title="物理"></a>物理</h4><blockquote>
-<p>前后化学成分不改变,本身没有进行燃烧,但冲击力可造成火灾.</p>
-</blockquote>
-<h4 id="化学-能直接造成火灾-粉尘和空气的混合危害性很大"><a href="#化学-能直接造成火灾-粉尘和空气的混合危害性很大" class="headerlink" title="化学 能直接造成火灾,粉尘和空气的混合危害性很大."></a>化学 <em>能直接造成火灾,粉尘和空气的混合危害性很大.</em></h4><ul>
-<li><p>炸药爆炸</p>
-<blockquote>
-<p>特点: 凝聚体系爆炸,化学反应速度极快.<br>破坏:</p>
-</blockquote>
-   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. 爆炸产物直接作用,高温高压高能量的产物直接膨胀冲击作用,只在近距离有效.</span><br><span class="line">2. 冲击波,一种巨大能量的超音速压力波,是爆炸的主要破坏物质.</span><br><span class="line">3. 外壳破片.</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>可燃气体爆炸</p>
-<blockquote>
-<p>定义: 物质以气体,蒸汽状态所发生的爆炸,按爆炸原理分为1. 混合气体爆炸2. 气体单分解爆炸. </p>
-</blockquote>
-</li>
-<li><p>受能量密度的制约,爆炸威力较小*</p>
-</li>
-<li><p>可燃粉尘爆炸</p>
-<blockquote>
-<p>必备的三个条件</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">    1. 粉尘具有爆炸性.</span><br><span class="line">    2. 粉尘悬浮空气中与空气混合到爆炸浓度</span><br><span class="line">    3. 引起粉尘爆炸的火源</span><br><span class="line"></span><br><span class="line">``` </span><br><span class="line">  &gt; 3个发展阶段</span><br></pre></td></tr></table></figure>
-
-<pre><code>1. 在热源下迅速干馏或汽化产生可燃气体
-2. 可燃气体与空气混合燃烧
-3. 粉尘燃烧放出热量,循环燃烧,反应速度加快,通过剧烈的燃烧,形成爆炸</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; 粉尘燃烧的特点</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>连续性爆炸</li>
-<li>所需的最小点火能量较高</li>
-<li>压力持续时间长,释放能量大,破坏力强</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&gt; 制约:</span><br></pre></td></tr></table></figure>
-
-<pre><code>1. 受颗粒的尺寸,颗粒越小,爆炸危险性越大.
-2. 粉尘爆炸上限值很大
-3. 空气的含水量越高,较小引爆能量越高
-4. 含氧量越高,爆炸浓度的极限范围越大
-5. 可燃气体含量,增加危险性</code></pre><p>```</p>
-<h4 id="核爆炸"><a href="#核爆炸" class="headerlink" title="核爆炸"></a>核爆炸</h4><h2 id="爆炸极限"><a href="#爆炸极限" class="headerlink" title="爆炸极限"></a>爆炸极限</h2><ul>
-<li><p>气体和液体蒸汽的爆炸极限 <em>气体分数表示</em></p>
-<blockquote>
-<p>影响因子</p>
-<ol>
-<li>火源能量越大,范围越大</li>
-<li>初始压力越大,范围越大,CO相反</li>
-<li>初温越高,范围越大</li>
-<li>惰性气体是上限降低,范围变小,超过一定量后,任何比例均不发生爆炸.</li>
-</ol>
-</blockquote>
-</li>
-<li><p>可燃粉尘的爆炸极限 <em>单位体积的质量表示,爆炸浓度上限太大,多数场合达不到,只应用下限</em></p>
-</li>
-<li><p>爆炸混合物浓度与危险性关系</p>
-<blockquote>
-<p>在爆炸下限 压力一般不超过 4×10⁵Pa,混合物浓度稍高于化学计量浓度时,释放热量最多,压力最大,然后呈下降趋势.</p>
-</blockquote>
-</li>
-<li><p>爆炸极限在消防上的应用</p>
-<ol>
-<li>爆炸极限是评定可燃气体危险性大小的依据,爆炸范围越大,下限越低,危险性越大</li>
-<li>爆炸极限是评定气体生产,储存场所火险类别的依据,选择电气防爆类型的依据</li>
-<li>确定建筑物耐火等级,层数,面积,防火墙占地面积,安全疏散距离和灭火设施</li>
-<li>确定安全操作规范</li>
-</ol>
-</li>
-</ul>
-<hr>
-<h2 id="爆炸危险源"><a href="#爆炸危险源" class="headerlink" title="爆炸危险源"></a>爆炸危险源</h2><blockquote>
-<p>爆炸基本要素,1. 爆炸介质. 2. 引爆能源</p>
-</blockquote>
-<h3 id="爆炸的直接原因"><a href="#爆炸的直接原因" class="headerlink" title="爆炸的直接原因"></a>爆炸的直接原因</h3><ol>
-<li><p>物料 </p>
-</li>
-<li><p>作业行为</p>
-</li>
-<li><p>生产设备</p>
-</li>
-<li><p>生产工艺</p>
-<h3 id="常见爆炸引火源"><a href="#常见爆炸引火源" class="headerlink" title="常见爆炸引火源"></a>常见爆炸引火源</h3><ol>
-<li>机械火源</li>
-<li>热火源 (高温表面,日光照射)</li>
-<li>电火源 (电火花,静电火花,雷电)</li>
-<li>化学火源<h3 id="最小点火能量"><a href="#最小点火能量" class="headerlink" title="最小点火能量"></a>最小点火能量</h3><blockquote>
-<p>采用焦耳作为点火能量单位</p>
-</blockquote>
-</li>
-</ol>
-</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">消防</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/16/dontWorry/xiaofang/基础/爆炸/">展开全文 >></a>
         </p>
       
 
