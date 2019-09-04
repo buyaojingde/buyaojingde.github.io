@@ -158,6 +158,284 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="ejs-dontWorry/杂项/C#HTTP常用方法" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/04/dontWorry/杂项/C#HTTP常用方法/">C#HTTP常用方法</a>
+    </h1>
+  
+
+        
+        <a href="/2019/09/04/dontWorry/杂项/C#HTTP常用方法/" class="archive-article-date">
+  	<time datetime="2019-09-03T17:42:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="CSharp-HTTP常用方法"><a href="#CSharp-HTTP常用方法" class="headerlink" title="CSharp HTTP常用方法"></a>CSharp HTTP常用方法</h1><!-- TOC -->
+
+<ul>
+<li><a href="#csharp-http常用方法">CSharp HTTP常用方法</a><ul>
+<li><a href="#get请求基本方法">get请求基本方法</a></li>
+<li><a href="#post请求">Post请求</a></li>
+<li><a href="#http下载文件">Http下载文件</a></li>
+<li><a href="#post上传文件和键值对">post上传文件和键值对</a></li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+
+<h2 id="get请求基本方法"><a href="#get请求基本方法" class="headerlink" title="get请求基本方法"></a>get请求基本方法</h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 发送Get请求</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="url"&gt;</span>地址<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="dic"&gt;</span>请求参数定义<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;returns&gt;</span><span class="doctag">&lt;/returns&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">string</span> <span class="title">Get</span>(<span class="params"><span class="keyword">string</span> url, Dictionary&lt;<span class="keyword">string</span>, <span class="keyword">string</span>&gt; dic</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">string</span> result = <span class="string">""</span>;</span><br><span class="line">    StringBuilder builder = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">    builder.Append(url);</span><br><span class="line">    <span class="keyword">if</span> (dic.Count &gt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        builder.Append(<span class="string">"?"</span>);</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">foreach</span> (<span class="keyword">var</span> item <span class="keyword">in</span> dic)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (i &gt; <span class="number">0</span>)</span><br><span class="line">            &#123; builder.Append(<span class="string">"&amp;"</span>); &#125;</span><br><span class="line">            builder.AppendFormat(<span class="string">"&#123;0&#125;=&#123;1&#125;"</span>, item.Key, item.Value);</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    HttpWebRequest req = (HttpWebRequest)WebRequest.Create(builder.ToString());</span><br><span class="line">    <span class="comment">//添加参数</span></span><br><span class="line">    HttpWebResponse resp = (HttpWebResponse)req.GetResponse();</span><br><span class="line">    Stream stream = resp.GetResponseStream();</span><br><span class="line">    <span class="keyword">try</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//获取内容</span></span><br><span class="line">        <span class="keyword">using</span> (StreamReader reader = <span class="keyword">new</span> StreamReader(stream))</span><br><span class="line">        &#123;</span><br><span class="line">            result = reader.ReadToEnd();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">finally</span></span><br><span class="line">    &#123;</span><br><span class="line">        stream.Close();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line"><span class="meta">## Post请求</span></span><br><span class="line">```CSharp</span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 创建POST方式的HTTP请求</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> HttpWebResponse <span class="title">CreatePostHttpResponse</span>(<span class="params"><span class="keyword">string</span> url, IDictionary&lt;<span class="keyword">string</span>, <span class="keyword">string</span>&gt; parameters,</span></span></span><br><span class="line"><span class="function"><span class="params">        <span class="keyword">int</span> timeout, <span class="keyword">string</span> userAgent, CookieCollection cookies</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    HttpWebRequest request = <span class="literal">null</span>;</span><br><span class="line">    <span class="comment">//如果是发送HTTPS请求</span></span><br><span class="line">    <span class="keyword">if</span> (url.StartsWith(<span class="string">"https"</span>, StringComparison.OrdinalIgnoreCase))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(CheckValidationResult);</span></span><br><span class="line">        request = WebRequest.Create(url) <span class="keyword">as</span> HttpWebRequest;</span><br><span class="line">        <span class="comment">//request.ProtocolVersion = HttpVersion.Version10;</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        request = WebRequest.Create(url) <span class="keyword">as</span> HttpWebRequest;</span><br><span class="line">    &#125;</span><br><span class="line">    request.Method = <span class="string">"POST"</span>;</span><br><span class="line">    request.ContentType = <span class="string">"application/x-www-form-urlencoded"</span>;</span><br><span class="line">    <span class="comment">//设置代理UserAgent和超时</span></span><br><span class="line">    <span class="comment">//request.UserAgent = userAgent;</span></span><br><span class="line">    <span class="comment">//request.Timeout = timeout;</span></span><br><span class="line">    <span class="keyword">if</span> (cookies != <span class="literal">null</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        request.CookieContainer = <span class="keyword">new</span> CookieContainer();</span><br><span class="line">        request.CookieContainer.Add(cookies);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//发送POST数据</span></span><br><span class="line">    <span class="keyword">if</span> (!(parameters == <span class="literal">null</span> || parameters.Count == <span class="number">0</span>))</span><br><span class="line">    &#123;</span><br><span class="line">        StringBuilder buffer = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">foreach</span> (<span class="keyword">string</span> key <span class="keyword">in</span> parameters.Keys)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (i &gt; <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                buffer.AppendFormat(<span class="string">"&amp;&#123;0&#125;=&#123;1&#125;"</span>, key, parameters[key]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                buffer.AppendFormat(<span class="string">"&#123;0&#125;=&#123;1&#125;"</span>, key, parameters[key]);</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">byte</span>[] data = Encoding.ASCII.GetBytes(buffer.ToString());</span><br><span class="line">        <span class="keyword">using</span> (Stream stream = request.GetRequestStream())</span><br><span class="line">        &#123;</span><br><span class="line">            stream.Write(data, <span class="number">0</span>, data.Length);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">string</span>[] values = request.Headers.GetValues(<span class="string">"Content-Type"</span>);</span><br><span class="line">    <span class="keyword">return</span> request.GetResponse() <span class="keyword">as</span> HttpWebResponse;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 获取请求的数据</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">string</span> <span class="title">GetResponseString</span>(<span class="params">HttpWebResponse webresponse</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">using</span> (Stream s = webresponse.GetResponseStream())</span><br><span class="line">    &#123;</span><br><span class="line">        StreamReader reader = <span class="keyword">new</span> StreamReader(s, Encoding.UTF8);</span><br><span class="line">        <span class="keyword">return</span> reader.ReadToEnd();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Http下载文件"><a href="#Http下载文件" class="headerlink" title="Http下载文件"></a>Http下载文件</h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> http下载文件</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="url"&gt;</span>下载文件地址<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="path"&gt;</span>文件存放地址，包含文件名<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;returns&gt;</span><span class="doctag">&lt;/returns&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">bool</span> <span class="title">HttpDownload</span>(<span class="params"><span class="keyword">string</span> url, <span class="keyword">string</span> path</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">string</span> tempPath = System.IO.Path.GetDirectoryName(path) + <span class="string">@"\temp"</span>;</span><br><span class="line">    System.IO.Directory.CreateDirectory(tempPath);  <span class="comment">//创建临时文件目录</span></span><br><span class="line">    <span class="keyword">string</span> tempFile = tempPath + <span class="string">@"\"</span> + System.IO.Path.GetFileName(path) + <span class="string">".temp"</span>; <span class="comment">//临时文件</span></span><br><span class="line">    <span class="keyword">if</span> (System.IO.File.Exists(tempFile))</span><br><span class="line">    &#123;</span><br><span class="line">        System.IO.File.Delete(tempFile);    <span class="comment">//存在则删除</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">try</span></span><br><span class="line">    &#123;</span><br><span class="line">        FileStream fs = <span class="keyword">new</span> FileStream(tempFile, FileMode.Append, FileAccess.Write, FileShare.ReadWrite);</span><br><span class="line">        <span class="comment">// 设置参数</span></span><br><span class="line">        HttpWebRequest request = WebRequest.Create(url) <span class="keyword">as</span> HttpWebRequest;</span><br><span class="line">        <span class="comment">//发送请求并获取相应回应数据</span></span><br><span class="line">        HttpWebResponse response = request.GetResponse() <span class="keyword">as</span> HttpWebResponse;</span><br><span class="line">        <span class="comment">//直到request.GetResponse()程序才开始向目标网页发送Post请求</span></span><br><span class="line">        Stream responseStream = response.GetResponseStream();</span><br><span class="line">        <span class="comment">//创建本地文件写入流</span></span><br><span class="line">        <span class="comment">//Stream stream = new FileStream(tempFile, FileMode.Create);</span></span><br><span class="line">        <span class="keyword">byte</span>[] bArr = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>];</span><br><span class="line">        <span class="keyword">int</span> size = responseStream.Read(bArr, <span class="number">0</span>, (<span class="keyword">int</span>)bArr.Length);</span><br><span class="line">        <span class="keyword">while</span> (size &gt; <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//stream.Write(bArr, 0, size);</span></span><br><span class="line">            fs.Write(bArr, <span class="number">0</span>, size);</span><br><span class="line">            size = responseStream.Read(bArr, <span class="number">0</span>, (<span class="keyword">int</span>)bArr.Length);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//stream.Close();</span></span><br><span class="line">        fs.Close();</span><br><span class="line">        responseStream.Close();</span><br><span class="line">        System.IO.File.Move(tempFile, path);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">catch</span> (Exception ex)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="post上传文件和键值对"><a href="#post上传文件和键值对" class="headerlink" title="post上传文件和键值对"></a>post上传文件和键值对</h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">string</span> <span class="title">HttpPostData</span>(<span class="params"><span class="keyword">string</span> url, <span class="keyword">string</span> id, <span class="keyword">string</span> filePath</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">string</span> ip = GetLocalIp();</span><br><span class="line">    <span class="keyword">string</span> taskId = id;</span><br><span class="line">    <span class="keyword">string</span> fileName = filePath;</span><br><span class="line">    <span class="keyword">byte</span>[] fileContentByte = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span> * <span class="number">1024</span>]; <span class="comment">// 文件内容二进制</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">region</span> 将文件转成二进制</span></span><br><span class="line">    FileStream fs = <span class="keyword">new</span> FileStream(filePath, FileMode.Open, FileAccess.Read);</span><br><span class="line">    fileContentByte = <span class="keyword">new</span> <span class="keyword">byte</span>[fs.Length]; <span class="comment">// 二进制文件</span></span><br><span class="line">    fs.Read(fileContentByte, <span class="number">0</span>, Convert.ToInt32(fs.Length));</span><br><span class="line">    fs.Close();</span><br><span class="line">    <span class="meta">#<span class="meta-keyword">endregion</span></span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">region</span> 定义请求体中的内容 并转成二进制</span></span><br><span class="line">    <span class="keyword">string</span> boundary = <span class="string">"---------------"</span> + DateTime.Now.Ticks.ToString(<span class="string">"x"</span>);</span><br><span class="line">    <span class="keyword">string</span> Enter = <span class="string">"\r\n"</span>;</span><br><span class="line">    <span class="keyword">string</span> localIp = <span class="string">"--"</span> + boundary + Enter</span><br><span class="line">                        + <span class="string">"Content-Disposition: form-data; name=\"ip\""</span> + Enter + Enter</span><br><span class="line">                        + ip + Enter;</span><br><span class="line">    <span class="keyword">string</span> fileContentStr = <span class="string">"--"</span> + boundary + Enter</span><br><span class="line">                            + <span class="string">"Content-Type:application/octet-stream"</span> + Enter</span><br><span class="line">                            + <span class="string">"Content-Disposition: form-data; name=\"file\"; filename=\""</span> + fileName + <span class="string">"\""</span> + Enter + Enter;</span><br><span class="line">    <span class="keyword">string</span> taskIdStr = Enter + <span class="string">"--"</span> + boundary + Enter</span><br><span class="line">                        + <span class="string">"Content-Disposition: form-data; name=\"id\""</span> + Enter + Enter</span><br><span class="line">                        + taskId;</span><br><span class="line">    <span class="keyword">var</span> localIpByte = Encoding.UTF8.GetBytes(localIp);<span class="comment">//ip所有字符串二进制</span></span><br><span class="line">    <span class="keyword">var</span> fileContentStrByte = Encoding.UTF8.GetBytes(fileContentStr);<span class="comment">//fileContent一些名称等信息的二进制（不包含文件本身）</span></span><br><span class="line">    <span class="keyword">var</span> taskIdByte = Encoding.UTF8.GetBytes(taskIdStr);<span class="comment">//id所有字符串二进制</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">endregion</span></span></span><br><span class="line">    HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);</span><br><span class="line">    request.Method = <span class="string">"POST"</span>;</span><br><span class="line">    request.ContentType = <span class="string">"multipart/form-data;boundary="</span> + boundary;</span><br><span class="line">    Stream myRequestStream = request.GetRequestStream();<span class="comment">//定义请求流</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">region</span></span></span><br><span class="line">    myRequestStream.Write(localIpByte, <span class="number">0</span>, localIpByte.Length);</span><br><span class="line">    myRequestStream.Write(fileContentStrByte, <span class="number">0</span>, fileContentStrByte.Length);</span><br><span class="line">    myRequestStream.Write(fileContentByte, <span class="number">0</span>, fileContentByte.Length);</span><br><span class="line">    myRequestStream.Write(taskIdByte, <span class="number">0</span>, taskIdByte.Length);</span><br><span class="line">    <span class="meta">#<span class="meta-keyword">endregion</span></span></span><br><span class="line">    HttpWebResponse response = (HttpWebResponse)request.GetResponse();<span class="comment">//发送</span></span><br><span class="line">    Stream myResponseStream = response.GetResponseStream();<span class="comment">//获取返回值</span></span><br><span class="line">    StreamReader myStreamReader = <span class="keyword">new</span> StreamReader(myResponseStream, Encoding.GetEncoding(<span class="string">"utf-8"</span>));</span><br><span class="line">    <span class="keyword">string</span> retString = myStreamReader.ReadToEnd();</span><br><span class="line">    myStreamReader.Close();</span><br><span class="line">    myResponseStream.Close();</span><br><span class="line">    File.Delete(filePath);<span class="comment">// 上传后删除文件</span></span><br><span class="line">    <span class="keyword">return</span> retString;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂项</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/04/dontWorry/杂项/C#HTTP常用方法/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="ejs-dontWorry/Unity3d/带颜色的调试log" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/04/dontWorry/Unity3d/带颜色的调试log/">带颜色的调试log</a>
+    </h1>
+  
+
+        
+        <a href="/2019/09/04/dontWorry/Unity3d/带颜色的调试log/" class="archive-article-date">
+  	<time datetime="2019-09-03T17:41:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="带颜色的调试log"><a href="#带颜色的调试log" class="headerlink" title="带颜色的调试log"></a>带颜色的调试log</h1><ul>
+<li><p>增加一个扩展方法,使输出的log带颜色,特别是和别人一起开发的时候能很好的区分自己和别人的log</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">Conditional (<span class="meta-string">"DEBUG"</span>)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title">DebugLogExtension</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">LbLogger</span>(<span class="params"><span class="keyword">this</span> <span class="keyword">object</span> obj, <span class="keyword">string</span> message</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">var</span> sb = <span class="keyword">new</span> StringBuilder(<span class="string">"&lt;color=#00EEEE&gt;"</span>);</span><br><span class="line">        sb.Append(message);</span><br><span class="line">        sb.Append(<span class="string">"&lt;/color&gt;"</span>);</span><br><span class="line">        Debug.Log(sb);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在本地写入日志<br>// TODO</p>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Unity3d</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/04/dontWorry/Unity3d/带颜色的调试log/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="ejs-dontWorry/杂项/开发方法论1.0" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/01/dontWorry/杂项/开发方法论1.0/">开发方法论1.0</a>
+    </h1>
+  
+
+        
+        <a href="/2019/09/01/dontWorry/杂项/开发方法论1.0/" class="archive-article-date">
+  	<time datetime="2019-09-01T15:08:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="开发方法论1-0"><a href="#开发方法论1-0" class="headerlink" title="开发方法论1.0"></a>开发方法论1.0</h1><!-- TOC -->
+
+<ul>
+<li><a href="#开发方法论10">开发方法论1.0</a><ul>
+<li><a href="#项目背景介绍">项目背景介绍</a></li>
+<li><a href="#完全未知的项目如何收集资料">完全未知的项目如何收集资料</a><ul>
+<li><a href="#rule">Rule</a></li>
+</ul>
+</li>
+<li><a href="#开发中技术细节">开发中技术细节</a></li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<h2 id="项目背景介绍"><a href="#项目背景介绍" class="headerlink" title="项目背景介绍"></a>项目背景介绍</h2><ul>
+<li>利用AutoCAD软件(Windows平台下)的二次开发功能,对户型CAD图做许多处理.然后输出DXF图,其中需要通过Http服务来进行获取图和输出图.</li>
+<li>在此之前,完全没有用过CAD软件</li>
+</ul>
+<h2 id="完全未知的项目如何收集资料"><a href="#完全未知的项目如何收集资料" class="headerlink" title="完全未知的项目如何收集资料"></a>完全未知的项目如何收集资料</h2><p>在此次项目中,我走了很多弯路,特别是对资料文档的获取.大多数人收集资料的的第一选择肯定是百度,这样没有问题,可是软件行业,几乎所有的基础和知识都是来源于英语世界.所以使用百度,搜索的东西大部分是中文国内的技术博客如CSDN,博客园等,以别人分享的博客为主.这类知识对于肤浅的认识是很快捷的,其实就是二手知识.二手知识的危害就不细说了.百度搜索到的内容,其实只能让你对要做的事情有一个基本概念, 比如CAD二次开发中使用的脚本语言就有4种,lisp,vb,C# ,C++.我当时几乎花了一天的时间去研究lisp怎么写.后来发现这方面的资料实在是太少了,非常不利于以后的开发.后来经过调研,决定使用C#,正好通过看视频,也发现了一些CAD二次开发的书籍(比较老了),确实给了我很大的帮助.这里要重点说一下<strong>视频</strong>, 视频可以算是新媒体.特别是技术上的东西,不需要讲理论,就是要最实际的东西,所以一部好的入门视频,会帮助开发者节省很多时间.等入门后,再去研究那些高深的理论,才是正常人类学习的正常流程.很多人学习成绩差,或者觉得书本上的知识都无用,可以说也是这种以书籍为核心学习方法的反人类导致的.</p>
+<h3 id="Rule"><a href="#Rule" class="headerlink" title="Rule"></a>Rule</h3><ul>
+<li>根据开发资料文档,确定技术选择,比如C#的资料明显多于lisp</li>
+<li>第一次见面,尽量使用视频媒体,多看相关视频,不用细看,只要知道一些基本概念,有一个第一印象很重要</li>
+<li>视频资料肯定会大大少于文档的资料,所以按照视频去开发是非常不现实的</li>
+<li>尽量使用国外的搜索引擎进行搜索(会发现很多问题直接指向的是<font color="red">官方论坛和官方文档</font>)</li>
+<li>官方的文档才是一手知识的,其他所有的都是二手知识</li>
+<li>英语很重要,多学英语</li>
+</ul>
+<h2 id="开发中技术细节"><a href="#开发中技术细节" class="headerlink" title="开发中技术细节"></a>开发中技术细节</h2><p>在具体开发中,主要分为两块  </p>
+<ol>
+<li>与后台对接的网络服务(收发),这一块没什么底,特别网络服务又要涉及到多线程,更加不熟悉</li>
+<li>CAD脚本开发</li>
+</ol>
+<p>在脚本开发过程中许多命令要输出,因为开始没有直接对照官方的文档,所以效率很低</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂项</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/01/dontWorry/杂项/开发方法论1.0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="ejs-dontWorry/杂项/C#多线程的常识" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -208,7 +486,7 @@
 <ol>
 <li>lock是关键字,指定一个临界区,当一个线程访问时,阻止其他线程进行访问,等于加了一把锁</li>
 <li>这个锁就是lock(o)中的o,所以要确保线程锁的正确性,必须保证所有线程访问的o都是同一个,不然各用各的锁,就不存在锁的作用了</li>
-<li>lock时Monitor的语法糖</li>
+<li>lock是Monitor的语法糖</li>
 <li>Monitor.TryEnter(obj,timespan)—-timeout之后，就不执行这段代码了。lock可是一直会死等的。</li>
 </ol>
 </li>
@@ -1038,515 +1316,9 @@ $${(M_{A→B}^T)}^{-1}$$
 
 
   
-    <article id="ejs-dontWorry/xiaofang/建筑消防设施/水喷雾灭火系统" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/14/dontWorry/xiaofang/建筑消防设施/水喷雾灭火系统/">水喷雾灭火系统</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/14/dontWorry/xiaofang/建筑消防设施/水喷雾灭火系统/" class="archive-article-date">
-  	<time datetime="2019-07-14T13:34:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="水喷雾灭火系统"><a href="#水喷雾灭火系统" class="headerlink" title="水喷雾灭火系统"></a>水喷雾灭火系统</h1><!-- TOC -->
-
-<ul>
-<li><a href="#水喷雾灭火系统">水喷雾灭火系统</a><ul>
-<li><a href="#系统灭火机理">系统灭火机理</a></li>
-<li><a href="#系统分类">系统分类</a></li>
-<li><a href="#系统工作原理与适用范围">系统工作原理与适用范围</a></li>
-<li><a href="#系统设计参数">系统设计参数</a></li>
-<li><a href="#系统组件及设置要求">系统组件及设置要求</a></li>
-</ul>
-</li>
-</ul>
-<!-- /TOC -->
-<h2 id="系统灭火机理"><a href="#系统灭火机理" class="headerlink" title="系统灭火机理"></a>系统灭火机理</h2><ul>
-<li>表面冷却,窒息,乳化和稀释作用,具有较高的电绝缘性能和良好的灭火性能.</li>
-<li>适用封闭空间内的可燃固体表面火灾,可燃液体火灾,带电设备的火灾</li>
-<li>不适用可燃固体深位火灾,能与水发生剧烈反应,产生大量有害物质的活泼金属及其化合物,可燃气体的火灾.<h2 id="系统分类"><a href="#系统分类" class="headerlink" title="系统分类"></a>系统分类</h2></li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>类别</th>
-<th>系统名称</th>
-<th>系统介绍</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>按启动方式</td>
-<td>电动启动雾灭火系统</td>
-<td>以普通的火灾报警系统为火灾探测系统,通过传统的点式感温,感烟探测器或缆式火灾探测器探测火灾</td>
-</tr>
-<tr>
-<td>按启动方式</td>
-<td>传动管启动水喷雾灭火系统</td>
-<td>以传动管作为火灾探测系统,传动管内充满压缩空气和压力水</td>
-</tr>
-</tbody></table>
-<h2 id="系统工作原理与适用范围"><a href="#系统工作原理与适用范围" class="headerlink" title="系统工作原理与适用范围"></a>系统工作原理与适用范围</h2><ul>
-<li>当系统火灾探测器发现火灾后,自动或手动打开雨淋报警阀组,同时发出火灾报警信号给报警控制器,并启动消防水泵,通过供水管网达到水雾喷头,水雾喷头喷水灭火 </li>
-</ul>
-<h2 id="系统设计参数"><a href="#系统设计参数" class="headerlink" title="系统设计参数"></a>系统设计参数</h2><table>
-<thead>
-<tr>
-<th>防护目的</th>
-<th>保护对象</th>
-<th>供给强度[L/(min * m²)]</th>
-<th>持续供给(h)</th>
-<th>响应时间(s)</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>灭火</td>
-<td>固体物质火灾</td>
-<td>15</td>
-<td>1</td>
-<td>60</td>
-</tr>
-<tr>
-<td>灭火</td>
-<td>输送机皮带</td>
-<td>10</td>
-<td>1</td>
-<td>60</td>
-</tr>
-<tr>
-<td>灭火</td>
-<td>液体火灾,闪点60~120℃</td>
-<td>20</td>
-<td>0.5</td>
-<td>60</td>
-</tr>
-<tr>
-<td>灭火</td>
-<td>液体火灾,闪点高于120℃</td>
-<td>13</td>
-<td>0.5</td>
-<td>60</td>
-</tr>
-<tr>
-<td>灭火</td>
-<td>液体火灾饮料酒</td>
-<td>20</td>
-<td>0.5</td>
-<td>60</td>
-</tr>
-<tr>
-<td>灭火</td>
-<td>电气火灾,油浸式电力变压器,油断路器</td>
-<td>20</td>
-<td>0.4</td>
-<td>60</td>
-</tr>
-<tr>
-<td>灭火</td>
-<td>电气火灾,油浸式电力变压器的集油坑</td>
-<td>6</td>
-<td>0.4</td>
-<td>60</td>
-</tr>
-<tr>
-<td>灭火</td>
-<td>电缆</td>
-<td>13</td>
-<td>0.4</td>
-<td>60</td>
-</tr>
-<tr>
-<td>防护冷却</td>
-<td>甲乙丙类液体储罐,固定顶罐</td>
-<td>2.5</td>
-<td>直径大于20m的固定顶罐为6h,其他为4h</td>
-<td>300</td>
-</tr>
-<tr>
-<td>防护冷却</td>
-<td>甲乙丙类液体储罐,浮顶罐</td>
-<td>2.0</td>
-<td>直径大于20m的固定顶罐为6h,其他为4h</td>
-<td>300</td>
-</tr>
-<tr>
-<td>防护冷却</td>
-<td>甲乙丙类液体储罐,相邻罐</td>
-<td>2.0</td>
-<td>直径大于20m的固定顶罐为6h,其他为4h</td>
-<td>300</td>
-</tr>
-<tr>
-<td>防护冷却</td>
-<td>液化烃或类似液体储罐,全压力,半冷冻式储罐</td>
-<td>9</td>
-<td>6</td>
-<td>300</td>
-</tr>
-<tr>
-<td>防护冷却</td>
-<td>液化烃或类似液体储罐,全冷冻式储罐,单双容罐,罐壁</td>
-<td>2.5</td>
-<td>6</td>
-<td>120</td>
-</tr>
-<tr>
-<td>防护冷却</td>
-<td>液化烃或类似液体储罐,全冷冻式储罐,单双容罐,罐顶</td>
-<td>4</td>
-<td>6</td>
-<td>120</td>
-</tr>
-<tr>
-<td>防护冷却</td>
-<td>液化烃或类似液体储罐,全冷冻式储罐,全容罐,罐顶泵平台,管道进出口</td>
-<td>20</td>
-<td>6</td>
-<td>120</td>
-</tr>
-<tr>
-<td>防护冷却</td>
-<td>液化烃或类似液体储罐,全冷冻式储罐,全容罐,管带</td>
-<td>10</td>
-<td>6</td>
-<td>120</td>
-</tr>
-<tr>
-<td>防护冷却</td>
-<td>液化烃或类似液体储罐,液氨储罐</td>
-<td>6</td>
-<td>6</td>
-<td>120</td>
-</tr>
-<tr>
-<td>防护冷却</td>
-<td>甲乙类液体及可燃气体生产,运输,装卸设施</td>
-<td>9</td>
-<td>6</td>
-<td>120</td>
-</tr>
-<tr>
-<td>防护冷却</td>
-<td>液化石油气罐瓶间,瓶库</td>
-<td>9</td>
-<td>6</td>
-<td>60</td>
-</tr>
-<tr>
-<td>## 系统组件及设置要求</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">消防</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/14/dontWorry/xiaofang/建筑消防设施/水喷雾灭火系统/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="ejs-dontWorry/xiaofang/建筑消防设施/自动喷水灭火系统" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/14/dontWorry/xiaofang/建筑消防设施/自动喷水灭火系统/">自动喷水灭火系统</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/14/dontWorry/xiaofang/建筑消防设施/自动喷水灭火系统/" class="archive-article-date">
-  	<time datetime="2019-07-14T13:34:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="自动喷水灭火系统"><a href="#自动喷水灭火系统" class="headerlink" title="自动喷水灭火系统"></a>自动喷水灭火系统</h1><!-- TOC -->
-
-<ul>
-<li><a href="#自动喷水灭火系统">自动喷水灭火系统</a><ul>
-<li><a href="#系统的分类与组成">系统的分类与组成</a></li>
-<li><a href="#系统的工作原理与适用范围">系统的工作原理与适用范围</a></li>
-<li><a href="#系统设计主要参数">系统设计主要参数</a></li>
-<li><a href="#系统主要组件及设置要求">系统主要组件及设置要求</a></li>
-</ul>
-</li>
-</ul>
-<!-- /TOC -->
-<p>自动喷水灭火系统是由洒水喷头,报警阀组,水流报警装置(水流指示器或压力开关)等组件组成,以及管道,供水设施组成</p>
-<h2 id="系统的分类与组成"><a href="#系统的分类与组成" class="headerlink" title="系统的分类与组成"></a>系统的分类与组成</h2><ul>
-<li>根据使用喷头的型式分为闭式自动喷水灭火系统和开式自动喷水灭火系统</li>
-<li>根据用途和配置分为湿式系统,干式系统,预作用系统,雨淋系统,水幕系统,自动喷水-泡沫联用系统</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>类别</th>
-<th>特点</th>
-<th>组成</th>
-<th>作用范围</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>湿式</td>
-<td>有压水</td>
-<td>闭式喷头,湿式报警阀组</td>
-<td>4℃≦环境温度≦70℃</td>
-</tr>
-<tr>
-<td>干式</td>
-<td>开放信号为有压气体</td>
-<td>干式报警阀组</td>
-<td>环境温度＞70℃,＜4℃</td>
-</tr>
-<tr>
-<td>预作用</td>
-<td>由火灾报警系统启动雨淋阀,转为湿式系统</td>
-<td>预作用阀组</td>
-<td>严禁误碰场所,替代干式</td>
-</tr>
-<tr>
-<td>雨淋</td>
-<td>雨淋阀控制喷水范围,火灾自动报警系统启动雨淋阀</td>
-<td>雨淋阀组,水流报警装置</td>
-<td>特别危险场所</td>
-</tr>
-<tr>
-<td>水幕</td>
-<td>挡烟阻火,冷却分隔</td>
-<td>开式喷头,雨淋报警阀组</td>
-<td>局部防火分隔处</td>
-</tr>
-<tr>
-<td>自动喷水-泡沫</td>
-<td>喷水和泡沫联用</td>
-<td>泡沫混合液</td>
-<td></td>
-</tr>
-<tr>
-<td>## 系统的工作原理与适用范围</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>* 湿式工作原理</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<pre><code>1. 末端试水装置,检验系统的可靠性,同时可测试充水时间(每个报警阀组控制的最不利点喷头处设置试水装置)
-2. 出水口的流量系数应与最小流量系数洒水喷头相等
-3. 水流指示器,及时报告发生火灾的部位
-4. 每个防火分区和每个楼层应设置水流指示器
-5. 仓库内和货架也要装水流指示器
-6. </code></pre><h2 id="系统设计主要参数"><a href="#系统设计主要参数" class="headerlink" title="系统设计主要参数"></a>系统设计主要参数</h2><h2 id="系统主要组件及设置要求"><a href="#系统主要组件及设置要求" class="headerlink" title="系统主要组件及设置要求"></a>系统主要组件及设置要求</h2>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">消防</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/14/dontWorry/xiaofang/建筑消防设施/自动喷水灭火系统/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="ejs-dontWorry/杂项/ebp和esp的理解" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/14/dontWorry/杂项/ebp和esp的理解/">ebp和esp的理解</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/14/dontWorry/杂项/ebp和esp的理解/" class="archive-article-date">
-  	<time datetime="2019-07-13T18:03:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="ebp和esp的理解"><a href="#ebp和esp的理解" class="headerlink" title="ebp和esp的理解"></a>ebp和esp的理解</h1><p>函数的调用在cpu中是怎么执行的?<br>函数的CallStack是怎么实现的<br>其实并不复杂,如下面这个例子</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">private foo() &#123;</span><br><span class="line">    <span class="keyword">this</span>.foo1(param0, param1);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private foo1(param0, param1) &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>ebp是一个指针,esp是一个指针永远指向的是栈顶,ebp指向foo,当执行到this.foo1时</p>
-<ol>
-<li>push param1</li>
-<li>push param2</li>
-<li>push foo1</li>
-<li>push ebp</li>
-<li>mov ebp esp</li>
-</ol>
-</li>
-<li><p>第四步和第五步是关键,就是让ebp保存函数调用的信息,这样往会捋的时候就不迷路了</p>
-</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂项</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/14/dontWorry/杂项/ebp和esp的理解/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 

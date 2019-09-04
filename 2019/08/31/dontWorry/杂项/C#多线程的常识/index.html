@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="buyaojingde">
 <meta property="og:description" content="C#多线程的常识 Unity不是不能使用多线程,而是unity的对象都只能在主线程中进行调用  Unity的DebugLog不管前台后台线程,在播放停止或暂停后,还是都会继续执行  Sleep : Thread.Sleep(TimeSpan.FromSeconds(1)); 阻塞线程1秒  Join : t.Join(); 主线程停止执行,等待子线程执行完成后,继续执行  Abort : t.Ab">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-01T14:54:42.175Z">
+<meta property="og:updated_time" content="2019-09-01T15:05:14.361Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C#多线程的常识">
 <meta name="twitter:description" content="C#多线程的常识 Unity不是不能使用多线程,而是unity的对象都只能在主线程中进行调用  Unity的DebugLog不管前台后台线程,在播放停止或暂停后,还是都会继续执行  Sleep : Thread.Sleep(TimeSpan.FromSeconds(1)); 阻塞线程1秒  Join : t.Join(); 主线程停止执行,等待子线程执行完成后,继续执行  Abort : t.Ab">
@@ -211,7 +211,7 @@
 <ol>
 <li>lock是关键字,指定一个临界区,当一个线程访问时,阻止其他线程进行访问,等于加了一把锁</li>
 <li>这个锁就是lock(o)中的o,所以要确保线程锁的正确性,必须保证所有线程访问的o都是同一个,不然各用各的锁,就不存在锁的作用了</li>
-<li>lock时Monitor的语法糖</li>
+<li>lock是Monitor的语法糖</li>
 <li>Monitor.TryEnter(obj,timespan)—-timeout之后，就不执行这段代码了。lock可是一直会死等的。</li>
 </ol>
 </li>
@@ -324,6 +324,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2019/09/01/dontWorry/杂项/开发方法论1.0/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          开发方法论1.0
+        
+      </div>
+    </a>
   
   
     <a href="/2019/08/31/dontWorry/Unity3d/Unity快捷键/" id="article-nav-older" class="article-nav-link-wrap">
