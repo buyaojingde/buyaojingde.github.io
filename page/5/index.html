@@ -158,176 +158,1087 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="ejs-dontWorry/xiaofang/基础/火灾" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
+    <article id="ejs-dontWorry/杂项/编写LaTeX数学公式" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/16/dontWorry/xiaofang/基础/火灾/">火灾</a>
+      <a class="article-title" href="/2019/06/29/dontWorry/杂项/编写LaTeX数学公式/">编写LaTeX数学公式</a>
     </h1>
   
 
         
-        <a href="/2019/06/16/dontWorry/xiaofang/基础/火灾/" class="archive-article-date">
-  	<time datetime="2019-06-16T12:56:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-16</time>
+        <a href="/2019/06/29/dontWorry/杂项/编写LaTeX数学公式/" class="archive-article-date">
+  	<time datetime="2019-06-29T08:59:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-29</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="火灾"><a href="#火灾" class="headerlink" title="火灾"></a><strong>火灾</strong></h1><!-- TOC -->
+        <h1 id="编写LaTeX数学公式"><a href="#编写LaTeX数学公式" class="headerlink" title="编写LaTeX数学公式"></a>编写LaTeX数学公式</h1><p><a href="https://blog.csdn.net/fzch_struggling/article/details/44998901#%E6%8B%AC%E5%8F%B7%E7%9A%84%E5%85%B6%E4%BB%96%E7%94%A8%E6%B3%95" target="_blank" rel="noopener">他山之石</a>  </p>
+
+
+
+## 输入上下标 
+
+^表示上标, _表示下标。如果上下标的内容多于一个字符，要用{}把这些内容括起来当成一个整体。上下标是可以嵌套的，也可以同时使用。例如：
+
+undefined
+
+$x^{y^z}=(1+{\rm e}^x)^{-2xy^w}$   
+$f(x)=x_2^3+1$  
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂项</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/06/29/dontWorry/杂项/编写LaTeX数学公式/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="ejs-dontWorry/Algorithm/A星算法的一些关键点" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/28/dontWorry/Algorithm/A星算法的一些关键点/">A星算法的一些关键点</a>
+    </h1>
+  
+
+        
+        <a href="/2019/06/28/dontWorry/Algorithm/A星算法的一些关键点/" class="archive-article-date">
+  	<time datetime="2019-06-27T17:26:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="A星算法的一些关键点"><a href="#A星算法的一些关键点" class="headerlink" title="A星算法的一些关键点"></a>A星算法的一些关键点</h1><!-- TOC -->
 
 <ul>
-<li><a href="#火灾"><strong>火灾</strong></a><ul>
-<li><a href="#定义-分类-危害">定义 分类 危害</a></li>
-<li><a href="#火灾发生的常见原因">火灾发生的常见原因</a></li>
-<li><a href="#建筑火灾蔓延">建筑火灾蔓延</a></li>
+<li><a href="#a%e6%98%9f%e7%ae%97%e6%b3%95%e7%9a%84%e4%b8%80%e4%ba%9b%e5%85%b3%e9%94%ae%e7%82%b9">A星算法的一些关键点</a></li>
+</ul>
+<!-- /TOC -->
+<p><a href="https://www.cnblogs.com/zhoug2020/p/3468167.html" target="_blank" rel="noopener">基本原理</a><br>C#代码</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">internal</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title">AStarData</span></span><br><span class="line">   &#123;</span><br><span class="line">       <span class="keyword">public</span> <span class="keyword">int</span> FSum =&gt; _gSum + _hSum;</span><br><span class="line">       <span class="keyword">private</span> <span class="keyword">int</span> _gSum;</span><br><span class="line">       <span class="keyword">private</span> <span class="keyword">int</span> _hSum;</span><br><span class="line">       <span class="keyword">public</span> <span class="keyword">int</span> Direction; <span class="comment">// 路径的方向</span></span><br><span class="line"></span><br><span class="line">       <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">       <span class="comment"><span class="doctag">///</span> 计算估算的距离,有很多选择,比如曼哈顿距离, 对角线距离, 欧几里得距离, 平方后的欧几里得距离</span></span><br><span class="line">       <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">       <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;returns&gt;</span><span class="doctag">&lt;/returns&gt;</span></span></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">int</span> <span class="title">CalcH</span>(<span class="params"></span>)</span>;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   class AStar&lt;T&gt; where T: AStarData</span><br><span class="line">   &#123;</span><br><span class="line">       <span class="keyword">private</span> List&lt;T&gt; _closeList = <span class="keyword">new</span> List&lt;T&gt;();</span><br><span class="line">       <span class="keyword">private</span> List&lt;T&gt; _openList = <span class="keyword">new</span> List&lt;T&gt;();</span><br><span class="line">       <span class="keyword">private</span> T _start;</span><br><span class="line">       <span class="keyword">private</span> T _end;</span><br><span class="line">       <span class="function"><span class="keyword">public</span> List&lt;T&gt; <span class="title">MainAStar</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>       &#123;</span><br><span class="line">           <span class="keyword">var</span> path = <span class="keyword">new</span> List&lt;T&gt;();</span><br><span class="line">           <span class="keyword">var</span> currentLocation = <span class="keyword">this</span>._start;</span><br><span class="line">           <span class="keyword">while</span> (currentLocation != <span class="keyword">this</span>._end)</span><br><span class="line">           &#123;</span><br><span class="line">               currentLocation = <span class="keyword">this</span>.ValidLocations(currentLocation)[<span class="number">0</span>];</span><br><span class="line">               <span class="keyword">this</span>._openList.RemoveAt(<span class="number">0</span>);</span><br><span class="line">               <span class="keyword">this</span>._closeList.Add(currentLocation);</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="keyword">var</span> nextLocation = <span class="keyword">this</span>._end;</span><br><span class="line">           <span class="keyword">while</span> (nextLocation != <span class="keyword">this</span>._start)</span><br><span class="line">           &#123;</span><br><span class="line">               nextLocation = <span class="keyword">this</span>.CalcLocationReverse(nextLocation.Direction);</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="keyword">return</span> path;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">       <span class="comment"><span class="doctag">///</span> 根据寻找的时候的方向,计算找到的路径</span></span><br><span class="line">       <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">       <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="direction"&gt;</span><span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">       <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;returns&gt;</span><span class="doctag">&lt;/returns&gt;</span></span></span><br><span class="line">       <span class="function"><span class="keyword">private</span> T <span class="title">CalcLocationReverse</span>(<span class="params"><span class="keyword">int</span> direction</span>)</span></span><br><span class="line"><span class="function"></span>       &#123;</span><br><span class="line">           <span class="keyword">throw</span> <span class="keyword">new</span> NotImplementedException();</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">       <span class="comment"><span class="doctag">///</span> 根据当前位置,找到所有可能的位置(需要考虑封闭的路径)</span></span><br><span class="line">       <span class="comment"><span class="doctag">///</span> 需要提供要给一个方向值</span></span><br><span class="line">       <span class="comment"><span class="doctag">///</span> 需要提供已经走过的距离长度</span></span><br><span class="line">       <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">       <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="start"&gt;</span><span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">       <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;returns&gt;</span><span class="doctag">&lt;/returns&gt;</span></span></span><br><span class="line">       <span class="function"><span class="keyword">private</span> List&lt;T&gt; <span class="title">CalcLocation</span>(<span class="params">T start</span>)</span></span><br><span class="line"><span class="function"></span>       &#123;</span><br><span class="line">           <span class="keyword">throw</span> <span class="keyword">new</span> NotImplementedException();</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="function"><span class="keyword">private</span> List&lt;T&gt; <span class="title">ValidLocations</span>(<span class="params">T current</span>)</span></span><br><span class="line"><span class="function"></span>       &#123;</span><br><span class="line">           <span class="keyword">var</span> currentLocations = <span class="keyword">this</span>.CalcLocation(current);</span><br><span class="line">           <span class="keyword">this</span>._openList.AddRange(currentLocations);</span><br><span class="line">           <span class="keyword">this</span>._openList.Sort((x, y) =&gt;</span><br><span class="line">           &#123;</span><br><span class="line">               <span class="comment">// 从小到大排列</span></span><br><span class="line">               <span class="keyword">if</span> (x.FSum &lt; y.FSum) &#123; <span class="keyword">return</span> <span class="number">-1</span>; &#125;</span><br><span class="line">               <span class="keyword">if</span> (x.FSum == y.FSum) &#123; <span class="keyword">return</span> <span class="number">0</span>; &#125;</span><br><span class="line">               <span class="keyword">return</span> x.FSum &gt; y.FSum ? <span class="number">1</span> : <span class="number">0</span>;</span><br><span class="line">           &#125;);</span><br><span class="line">           <span class="keyword">return</span> _openList;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>路径的距离计算根据业务场景不同,自己实现</li>
+<li>路径的方向也要具体定义</li>
+<li>估算距离也要选择合适的实现</li>
+<li><strong>所有可到达的方格都要加入到OpenList</strong></li>
+<li><strong>找到终点后,还要进行回溯来确定路径</strong></li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Algorithm</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/06/28/dontWorry/Algorithm/A星算法的一些关键点/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="ejs-dontWorry/Algorithm/矩阵TRS转换" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/28/dontWorry/Algorithm/矩阵TRS转换/">矩阵TRS转换</a>
+    </h1>
+  
+
+        
+        <a href="/2019/06/28/dontWorry/Algorithm/矩阵TRS转换/" class="archive-article-date">
+  	<time datetime="2019-06-27T17:26:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="矩阵TRS转换"><a href="#矩阵TRS转换" class="headerlink" title="矩阵TRS转换"></a><strong>矩阵TRS转换</strong></h1><ul>
+<li><p>平移矩阵</p>
+
+$$
+ \left\{
+ \begin{matrix}
+   1 & 0 & 0 & T_x \\
+   0 & 1 & 0 & T_y \\
+   0 & 0 & 1 & T_z \\
+   0 & 0 & 0 & 1
+  \end{matrix}
+  \right\} \tag{2}
+$$
+* 缩放矩阵
+
+$$
+ \left\{
+ \begin{matrix}
+   S_x & 0 & 0 & 0 \\
+   0 & S_y & 0 & 0 \\
+   0 & 0 & S_z & 0 \\
+   0 & 0 & 0 & 1
+  \end{matrix}
+  \right\} \tag{2}
+$$
+
+* 旋转矩阵
+
+$$
+R_x = {\left\{
+ \begin{matrix}
+   1 & 0 & 0 & 0 \\
+   0 & \cos\theta & -\sin\theta & 0 \\
+   0 & 0 \sin\theta & \cos\theta & 0 \\
+   0 & 0 & 0 & 1
+  \end{matrix}
+  \right\} \tag{2}}
+$$
+
+$$
+R_y = {\left\{
+ \begin{matrix}
+   \cos\theta & 0 & \sin\theta & 0 \\
+   0 & 1 & 0 & 0 \\
+   -\sin\theta & 0 &\cos\theta & 0 \\
+   0 & 0 & 0 & 1
+  \end{matrix}
+  \right\} \tag{2}}
+$$
+
+$$
+R_z = {\left\{
+ \begin{matrix}
+   \cos\theta & -\sin\theta & 0 & 0 \\
+   \sin\theta & \cos\theta & 0 & 0 \\
+   0 & 0 & 1 & 0 \\
+   0 & 0 & 0 & 1
+  \end{matrix}
+  \right\} \tag{2}}
+$$
+
+</li>
+<li><p>从矩阵中提取RTS</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Quaternion <span class="title">GetRotation</span>(<span class="params"><span class="keyword">this</span> Matrix4x4 matrix</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        Quaternion q = <span class="keyword">new</span> Quaternion();</span><br><span class="line">        q.w = Mathf.Sqrt(Mathf.Max(<span class="number">0</span>, <span class="number">1</span> + matrix.m00 + matrix.m11 + matrix.m22)) / <span class="number">2</span>;</span><br><span class="line">        q.x = Mathf.Sqrt(Mathf.Max(<span class="number">0</span>, <span class="number">1</span> + matrix.m00 - matrix.m11 - matrix.m22)) / <span class="number">2</span>;</span><br><span class="line">        q.y = Mathf.Sqrt(Mathf.Max(<span class="number">0</span>, <span class="number">1</span> - matrix.m00 + matrix.m11 - matrix.m22)) / <span class="number">2</span>;</span><br><span class="line">        q.z = Mathf.Sqrt(Mathf.Max(<span class="number">0</span>, <span class="number">1</span> - matrix.m00 - matrix.m11 + matrix.m22)) / <span class="number">2</span>;</span><br><span class="line">        q.x = _copysign(q.x, matrix.m21 - matrix.m12);</span><br><span class="line">        q.y = _copysign(q.y, matrix.m02 - matrix.m20);</span><br><span class="line">        q.z = _copysign(q.z, matrix.m10 - matrix.m01);</span><br><span class="line">        <span class="keyword">return</span> q;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Vector3 <span class="title">GetPosition</span>(<span class="params"><span class="keyword">this</span> Matrix4x4 matrix</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">var</span> x = matrix.m03;</span><br><span class="line">        <span class="keyword">var</span> y = matrix.m13;</span><br><span class="line">        <span class="keyword">var</span> z = matrix.m23;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Vector3(x, y, z);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Vector3 <span class="title">GetScale</span>(<span class="params"><span class="keyword">this</span> Matrix4x4 m</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">var</span> x = Mathf.Sqrt(m.m00 * m.m00 + m.m01 * m.m01 + m.m02 * m.m02);</span><br><span class="line">        <span class="keyword">var</span> y = Mathf.Sqrt(m.m10 * m.m10 + m.m11 * m.m11 + m.m12 * m.m12);</span><br><span class="line">        <span class="keyword">var</span> z = Mathf.Sqrt(m.m20 * m.m20 + m.m21 * m.m21 + m.m22 * m.m22);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Vector3(x, y, z);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Algorithm</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/06/28/dontWorry/Algorithm/矩阵TRS转换/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="ejs-dontWorry/杂项/git常用命令" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/28/dontWorry/杂项/git常用命令/">git常用命令</a>
+    </h1>
+  
+
+        
+        <a href="/2019/06/28/dontWorry/杂项/git常用命令/" class="archive-article-date">
+  	<time datetime="2019-06-27T17:26:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="git常用命令"><a href="#git常用命令" class="headerlink" title="git常用命令"></a><strong>git常用命令</strong></h1><ul>
+<li><p>git branch -vv 查看链接</p>
+</li>
+<li><p>git branch –set-upstream-to=origin/hotfix/lianbo 建立链接</p>
+</li>
+<li><p>git branch -r 查看远程分支</p>
+</li>
+<li><p>git push origin hotfix/lianbo:hotfix/lianbo 推送本地分支到远程</p>
+</li>
+<li><p>git push –set-upstream origin feature/wallquickdrag  推送本地分支到远程</p>
+</li>
+<li><p>git push origin -D <em>BranchName</em> 删除远程分支</p>
+</li>
+<li><p>git merge –no-ff mater 合并master</p>
+</li>
+<li><p>git reflog –date=local | grep feature/cornerMerge@lianbo 查看当前分支是从哪个分支分出来的</p>
+</li>
+<li><p>git push origin –delete <em>BranchName</em>  删除本地分支</p>
+</li>
+<li><p>git checkout -b develop origni/develop 检出远程分支到本地</p>
+</li>
+<li><p>git stash save “” 储存</p>
+</li>
+<li><p>git stash apply stash@{0} // 取出储存的第一条</p>
+</li>
+<li><p>git push -u origin dev -f // 强制推送本地仓库到远端,用来回滚版本</p>
+</li>
+<li><p>git reset –hard 75c26377 回滚到一个版本</p>
+</li>
+<li><p>git 单个文件回滚到某个版本<br>  1、git log WallHide.ts<br>  2、git checkout 6530c1358d1a0b66e9f5cf6106873431ddcec6c9 WallHide.ts  </p>
+</li>
+<li><p>查看配置项 <code>git config  [--local|--global|--system] -l</code></p>
+</li>
+<li><p>删除配置项 <code>git config  [--local|--global|--system] unset http.proxy</code></p>
+</li>
+<li><p>清理缓存 <code>git rm -r --cached .</code></p>
+</li>
+<li><p><strong>git错误处理</strong></p>
+</li>
+</ul>
+<p>Git操作的过程中突然显示Another git process semms to be running in this repository, e.g. an editor opened by ‘git commit’. Please make sure all processes are terminated then try again. If it still fails, a git process remove the file manually to continue…</p>
+<p>   <code>rm -f .git/index.lock // 删除index.lock文件</code><br>   œ</p>
+<ul>
+<li>git 删除某个文件的提交记录</li>
+</ul>
+<p><code>git filter-branch --force --index-filter &#39;git rm --cached --ignore-unmatch FILE_PATH&#39; --prune-empty --tag-name-filter cat -- --all</code><br>    <code>git push origin master --force
+    rm -rf .git/refs/original/
+    git reflog expire --expire=now --all
+    git gc --prune=now
+    git gc --aggressive --prune=now</code></p>
+<ul>
+<li>Chrome 护眼命令</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.getElementsByTagName(&apos;body&apos;)[0].style.background=&apos;#cce8cc&apos;;x=document.getElementsByTagName(&apos;div&apos;);for(var i=0;i&lt;x.length;i++)&#123;x[i].style.background=&apos;#cce8cc&apos;&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Algorithm</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/06/28/dontWorry/杂项/git常用命令/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="ejs-dontWorry/xiaofang/建筑防火/防火防烟分区与分隔" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/23/dontWorry/xiaofang/建筑防火/防火防烟分区与分隔/">防火防烟分区与分隔</a>
+    </h1>
+  
+
+        
+        <a href="/2019/06/23/dontWorry/xiaofang/建筑防火/防火防烟分区与分隔/" class="archive-article-date">
+  	<time datetime="2019-06-23T08:06:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="防火防烟分区与分隔"><a href="#防火防烟分区与分隔" class="headerlink" title="防火防烟分区与分隔"></a>防火防烟分区与分隔</h1><!-- TOC -->
+
+<ul>
+<li><a href="#防火防烟分区与分隔">防火防烟分区与分隔</a><ul>
+<li><a href="#防火分区">防火分区</a><ul>
+<li><a href="#厂房的防火分区">厂房的防火分区</a></li>
+<li><a href="#仓库的防火分区">仓库的防火分区</a></li>
+<li><a href="#民用建筑的防火分区">民用建筑的防火分区</a></li>
+<li><a href="#木结构建筑的防火分区">木结构建筑的防火分区</a></li>
+<li><a href="#城市交通隧道的防火分区">城市交通隧道的防火分区</a></li>
+</ul>
+</li>
+<li><a href="#防火分隔">防火分隔</a><ul>
+<li><a href="#防火分区分隔">防火分区分隔</a></li>
+<li><a href="#功能区域分隔">功能区域分隔</a></li>
+<li><a href="#设备用房分隔">设备用房分隔</a></li>
+<li><a href="#中庭防火分隔">中庭防火分隔</a></li>
+<li><a href="#玻璃幕墙防火分隔">玻璃幕墙防火分隔</a></li>
+<li><a href="#管道井防火分隔">管道井防火分隔</a></li>
+<li><a href="#变形缝防火分隔">变形缝防火分隔</a></li>
+<li><a href="#管道空隙防火封堵">管道空隙防火封堵</a></li>
+</ul>
+</li>
+<li><a href="#防火分隔设施与措施">防火分隔设施与措施</a><ul>
+<li><a href="#防火墙">防火墙</a></li>
+<li><a href="#防火卷帘">防火卷帘</a></li>
+<li><a href="#防火门窗">防火门窗</a><ul>
+<li><a href="#防火门">防火门</a></li>
+<li><a href="#防火窗">防火窗</a></li>
+</ul>
+</li>
+<li><a href="#防火分隔水幕">防火分隔水幕</a></li>
+<li><a href="#防火阀">防火阀</a></li>
+<li><a href="#排烟防火阀">排烟防火阀</a></li>
+</ul>
+</li>
+<li><a href="#防烟分区">防烟分区</a><ul>
+<li><a href="#防烟分区面积划分">防烟分区面积划分</a></li>
+<li><a href="#防烟分区分隔措施">防烟分区分隔措施</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <!-- /TOC -->
-<h2 id="定义-分类-危害"><a href="#定义-分类-危害" class="headerlink" title="定义 分类 危害"></a>定义 分类 危害</h2><ul>
-<li><p>定义</p>
-<blockquote>
-<p>时间和空间上失去控制的燃烧所造成的灾害</p>
-</blockquote>
+<p>在建筑物内划分防火分区,可有效地控制火势的蔓延,有利于人员安全疏散和扑救火灾,从而达到减少火灾损失的目的</p>
+<h2 id="防火分区"><a href="#防火分区" class="headerlink" title="防火分区"></a>防火分区</h2><p>防火分区是指采用具有较高耐火极限的墙和楼板等构件作为一个区域的边界构件划分出的.</p>
+<h3 id="厂房的防火分区"><a href="#厂房的防火分区" class="headerlink" title="厂房的防火分区"></a>厂房的防火分区</h3><ul>
+<li><p>甲类厂房除因生产工艺需要外,应尽量采用单层建筑</p>
 </li>
-<li><p>分类</p>
+<li><p>厂房设置自动灭火系统时,每个防火分区的最大允许建筑面积可按规定增加1.0倍.</p>
+<h3 id="仓库的防火分区"><a href="#仓库的防火分区" class="headerlink" title="仓库的防火分区"></a>仓库的防火分区</h3></li>
+<li><p>库房防火分区之间的水平分隔必须采用防火墙分隔,不能采用其他分隔方式.</p>
+</li>
+<li><p>甲乙类仓库类的防火分区之间应采用不开设门,窗,洞口的防火墙分隔,且甲类仓库应采用单层结构.</p>
+</li>
+<li><p>甲乙类仓库不应附设在建筑物的地下室他半地下室内.</p>
+<h3 id="民用建筑的防火分区"><a href="#民用建筑的防火分区" class="headerlink" title="民用建筑的防火分区"></a>民用建筑的防火分区</h3><p>总建筑面积大于20000㎡的地下或半地下商业营业厅,应采用无门,窗,洞口的防火墙,耐火极限不低于2.00好的楼板分隔多个建筑面积不大于20000㎡的区域.</p>
+<h3 id="木结构建筑的防火分区"><a href="#木结构建筑的防火分区" class="headerlink" title="木结构建筑的防火分区"></a>木结构建筑的防火分区</h3><p>建筑高度不大于18m的住宅建筑,建筑高度不大于24m的办公建筑或丁、戊类厂房(库房)的房间隔墙和非承重外墙可采用木骨架组合墙体.</p>
+<h3 id="城市交通隧道的防火分区"><a href="#城市交通隧道的防火分区" class="headerlink" title="城市交通隧道的防火分区"></a>城市交通隧道的防火分区</h3><p>隧道内的变电站,管廊,专用疏散通道,通风机房及其他辅助用房等,应采用耐火极限不低于2.00h的防火墙隔墙和甲级防火门等分隔措施与车行隧道分隔.</p>
+<h2 id="防火分隔"><a href="#防火分隔" class="headerlink" title="防火分隔"></a>防火分隔</h2><p>原则</p>
+</li>
+<li><p>同一建筑物内,不同的危险区域之间,不同用户之间,办公用房和生产车间之间,应进行防火分隔处理</p>
+</li>
+<li><p>作为避难通道使用的楼梯间,前室和具有避难功能的走廊,必须受到完全保护,保证其不受火灾侵害并畅通无阻</p>
 </li>
 </ul>
-<table>
+<h3 id="防火分区分隔"><a href="#防火分区分隔" class="headerlink" title="防火分区分隔"></a>防火分区分隔</h3><p>目的: 采取防火措施控制火灾蔓延,减少人员伤亡和经济损失</p>
+<ul>
+<li>水平防火分区,采用一定耐火极限的墙,楼板,门窗等防火分隔物按防火分区的面积进行分隔的空间.</li>
+<li>垂直防火分区,用楼板做分隔构件<h3 id="功能区域分隔"><a href="#功能区域分隔" class="headerlink" title="功能区域分隔"></a>功能区域分隔</h3></li>
+<li>歌舞娱乐放映游艺场所即使设置自动喷水灭火系统,面积也不能增加.</li>
+<li>观众厅,会议厅等人员密集场所,应设置火灾自动报警系统和自动喷水灭火系统等自动灭火系统,幕布的燃烧性能不应低于B1级.</li>
+<li>医院,疗养院建筑相邻护理单元之间应采用耐火极限不低于2.00h的防火墙分隔,隔墙上的门应采用乙级防火门,设置在走道上的防火门应采用常开防火门.</li>
+<li>住宅部分和非住宅部分采用耐火极限不低于1.50h的不燃楼板和耐火极限不低于2.00h且无门,窗,洞口的防火墙完全分隔</li>
+<li>商业服务网点的住`宅建筑,居住部分与商业服务网点之间应采用耐火极限不低于1.50h的不燃性楼板和耐火极限不低于2.00h且无门,窗,洞口的防火隔墙完全分隔.<h3 id="设备用房分隔"><a href="#设备用房分隔" class="headerlink" title="设备用房分隔"></a>设备用房分隔</h3>附设在建筑内的消防控制室,灭火设备室,消防水泵房和通风空气调节机房,变配电室等,应采用耐火极限不低于2.00好的防火隔墙和不低于1.50h的防火隔墙和不低于1.50h的楼板与其他部位分隔.<h3 id="中庭防火分隔"><a href="#中庭防火分隔" class="headerlink" title="中庭防火分隔"></a>中庭防火分隔</h3></li>
+<li>中庭应与周围相连的空间进行防火分隔</li>
+<li>高层建筑内的中庭回廊应设置自动喷水灭火系统和火灾自动报警系统</li>
+<li>中庭应设置排烟设施</li>
+<li>中庭内不应布置可燃物<h3 id="玻璃幕墙防火分隔"><a href="#玻璃幕墙防火分隔" class="headerlink" title="玻璃幕墙防火分隔"></a>玻璃幕墙防火分隔</h3>玻璃幕墙在火灾初期即会爆裂,导致火灾在建筑物内蔓延,垂直的玻璃幕墙和水平楼板,隔间的缝隙室火灾扩散的途径<br>防火措施的几方面的要求</li>
+</ul>
+<ol>
+<li><p>对于不设窗间墙的玻璃幕墙,应在楼板外沿,设置耐火极限不低于1.0h,高度不低于1.2m的不燃性实体墙或防火玻璃墙,当室外设置自动喷水灭火系统时,该部分墙体的高度不应小于0.8m</p>
+</li>
+<li><p>水平缝隙和垂直缝隙应该用防火封堵材料严密填实.</p>
+<h3 id="管道井防火分隔"><a href="#管道井防火分隔" class="headerlink" title="管道井防火分隔"></a>管道井防火分隔</h3><p>井道防火分隔要求</p>
+</li>
+<li><p>独立设置</p>
+</li>
+<li><p>严禁敷设可燃气体和甲乙丙类液体管道.</p>
+</li>
+<li><p>孔洞用防火材料或不燃材料严密填实.</p>
+<h3 id="变形缝防火分隔"><a href="#变形缝防火分隔" class="headerlink" title="变形缝防火分隔"></a>变形缝防火分隔</h3><p>采用防火封堵材料封堵</p>
+<h3 id="管道空隙防火封堵"><a href="#管道空隙防火封堵" class="headerlink" title="管道空隙防火封堵"></a>管道空隙防火封堵</h3><p>采用防火封堵材料封堵</p>
+<h2 id="防火分隔设施与措施"><a href="#防火分隔设施与措施" class="headerlink" title="防火分隔设施与措施"></a>防火分隔设施与措施</h2><p>防火分区的划分时通过防火分隔构件实现的</p>
+<h3 id="防火墙"><a href="#防火墙" class="headerlink" title="防火墙"></a>防火墙</h3><p>具有不少于3.00h耐火极限的不燃实体墙</p>
+</li>
+</ol>
+<p>六个要求</p>
+<ol>
+<li>直接设置在基础上或钢筋混凝土框架上,截断可燃性或难燃性墙体的屋顶结构,高出不燃性墙体屋面不小于40cm,高出可燃性墙体不小于50cm</li>
+<li>建筑物外墙为难燃性墙体时,防火墙应突出墙的外表面40cm,或宽度每侧不小于2m.</li>
+<li>防火墙距天窗大于4m时,且天窗端面为可燃材料,应采取防止火势蔓延的措施</li>
+<li>防火墙不设排气管和门窗洞</li>
+<li>不设在转角处</li>
+<li>考虑屋架,梁,楼板等受到火灾的影响而破坏时,不致使防火墙倒塌<h3 id="防火卷帘"><a href="#防火卷帘" class="headerlink" title="防火卷帘"></a>防火卷帘</h3>分类</li>
+</ol>
+<ul>
+<li>按叶板厚度分轻型,重型</li>
+<li>按卷帘动作分上卷和侧卷</li>
+<li>按材料分普通型钢质,复合型钢质,非金属的复合防火卷帘</li>
+</ul>
+<p>设置要求</p>
+<ol>
+<li>替代防火墙的防火卷帘应符合防火墙的耐火极限的判定条件</li>
+<li>在疏散走道的,具有延时下降的功能,电动手动控制</li>
+<li>需要自动降落的,应具有信号反馈功能</li>
+<li>应有防火防烟措施</li>
+<li>不宜采用侧式防火卷帘</li>
+<li>耐火极限不能低</li>
+</ol>
+<p>设置部位</p>
+<ul>
+<li>设置防火墙有困难的部位</li>
+</ul>
+<h3 id="防火门窗"><a href="#防火门窗" class="headerlink" title="防火门窗"></a>防火门窗</h3><h4 id="防火门"><a href="#防火门" class="headerlink" title="防火门"></a>防火门</h4><p>按耐火极限分 甲乙丙三级的耐火极限不低于1.50h,1.00h,0.50h,对应防火墙,疏散楼梯门,竖井检查门.<br>按材料,木质,钢质,复合材料防火门<br>按门扇结构: 带亮子,不带亮子,单扇,多扇  </p>
+<p>要求  </p>
+<ol>
+<li>应向疏散方向开启,关闭后应能从任一侧手动开启</li>
+<li>用于疏散走道,楼梯间和前室的防火门,应能自动关闭</li>
+<li>除了允许设置常开防火门的位置外,其他位置的防火门均应采用常闭防火门.</li>
+<li>设在变形缝的,门开启不应跨越变形缝,防止烟气通过变形缝蔓延.</li>
+<li>平时关闭具有防烟功能</li>
+</ol>
+<h4 id="防火窗"><a href="#防火窗" class="headerlink" title="防火窗"></a>防火窗</h4><ul>
+<li>耐火极限和防火门相同 </li>
+<li>固定窗扇不能开启,平时采光,遮风挡雨,发生火灾时阻止火势蔓延</li>
+<li>活动窗扇起火时自动关闭,开启时排除烟气,设手动和自动开关.<h3 id="防火分隔水幕"><a href="#防火分隔水幕" class="headerlink" title="防火分隔水幕"></a>防火分隔水幕</h3>起防火墙的作用,在防火墙安装不了的地方安装<h3 id="防火阀"><a href="#防火阀" class="headerlink" title="防火阀"></a>防火阀</h3>在管道内阻火的活动式封闭装置,平时开启,挡管道内烟气温度大于70℃,自动关闭</li>
+</ul>
+<p>设置部位</p>
+<ul>
+<li>穿越防火分区处</li>
+<li>穿越通风,空气调节机房的房间隔墙和楼板处</li>
+<li>穿越重要或火灾危险性大的房间隔墙和楼板处</li>
+<li>穿越防火分隔处的变形缝两端</li>
+<li>竖向风管与每层水平风管交接处的水平管段上.</li>
+<li>公共建筑的浴室,卫生间和厨房的竖向排风管</li>
+<li>公共建筑内厨房的排油烟管道安装150℃的防火阀</li>
+</ul>
+<p>设置要求</p>
+<ul>
+<li>靠近防火分区</li>
+<li>方便维护的检修口处</li>
+<li>两侧2.0m的风管及其绝热材料应采用不燃材料</li>
+<li>符合国家标准<h3 id="排烟防火阀"><a href="#排烟防火阀" class="headerlink" title="排烟防火阀"></a>排烟防火阀</h3></li>
+<li>安装在排烟系统管道上,起隔烟,阻火作用的阀门</li>
+<li>具有手动自动功能</li>
+<li>满足耐火稳定性和耐火完整性的要求</li>
+<li>当管道内的烟气达到280℃,排烟防火阀自动关闭</li>
+<li>安装在排烟管进入排风机房处,穿越防火分区的排烟管道上,排烟系统的支管上<h2 id="防烟分区"><a href="#防烟分区" class="headerlink" title="防烟分区"></a>防烟分区</h2>采用挡烟设施分隔而成</li>
+</ul>
+<p>目的</p>
+<ul>
+<li><p>将烟气控制在一定范围内</p>
+</li>
+<li><p>提高排烟口的排烟效果</p>
+<h3 id="防烟分区面积划分"><a href="#防烟分区面积划分" class="headerlink" title="防烟分区面积划分"></a>防烟分区面积划分</h3><p>要求</p>
+</li>
+<li><p>防烟分区应采用挡烟垂壁,隔墙,结构梁等划分</p>
+</li>
+<li><p>防烟区不应跨过防火分区</p>
+</li>
+<li><p>防烟分区的建筑面积不能超过规范要求</p>
+</li>
+<li><p>采用隔墙等形成封闭的分隔空间时,该空间宜作为一个防烟分区</p>
+</li>
+<li><p>储烟仓高度不应小于空间净高的10%,且不小于500mm</p>
+</li>
+<li><p>有特殊用途的场所应单独划分防烟分区</p>
+</li>
+</ul>
+<h3 id="防烟分区分隔措施"><a href="#防烟分区分隔措施" class="headerlink" title="防烟分区分隔措施"></a>防烟分区分隔措施</h3><ul>
+<li>挡烟垂壁,垂直安装在建筑顶棚,横梁或吊顶下.</li>
+<li>分为固定和活动式,活动式可从初始位置自动允许到挡烟位置</li>
+<li>建筑横梁的高度超过50cm,可做挡烟设施用.</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">消防</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/06/23/dontWorry/xiaofang/建筑防火/防火防烟分区与分隔/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="ejs-dontWorry/xiaofang/建筑防火/总平面布局和平面布置" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/23/dontWorry/xiaofang/建筑防火/总平面布局和平面布置/">总平面布局和平面布置</a>
+    </h1>
+  
+
+        
+        <a href="/2019/06/23/dontWorry/xiaofang/建筑防火/总平面布局和平面布置/" class="archive-article-date">
+  	<time datetime="2019-06-22T17:44:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="总平面布局和平面布置"><a href="#总平面布局和平面布置" class="headerlink" title="总平面布局和平面布置"></a>总平面布局和平面布置</h1><!-- TOC -->
+
+<ul>
+<li><a href="#总平面布局和平面布置">总平面布局和平面布置</a><ul>
+<li><a href="#建筑消防安全布局">建筑消防安全布局</a><ul>
+<li><a href="#建筑选址">建筑选址</a></li>
+</ul>
+</li>
+<li><a href="#建筑防火间距">建筑防火间距</a><ul>
+<li><a href="#防火间距的确定原则">防火间距的确定原则</a></li>
+<li><a href="#防火间距">防火间距</a></li>
+<li><a href="#防火间距不足时的消防技术措施">防火间距不足时的消防技术措施</a></li>
+</ul>
+</li>
+<li><a href="#建筑平面布置">建筑平面布置</a><ul>
+<li><a href="#布置原则">布置原则</a></li>
+<li><a href="#设备用房布置">设备用房布置</a></li>
+<li><a href="#人员密集场所布置">人员密集场所布置</a></li>
+<li><a href="#特殊场所布置">特殊场所布置</a></li>
+<li><a href="#工业建筑附属用房布置">工业建筑附属用房布置</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<h2 id="建筑消防安全布局"><a href="#建筑消防安全布局" class="headerlink" title="建筑消防安全布局"></a>建筑消防安全布局</h2><p> 建筑的总平面布局应满足城市规划和消防安全的要求</p>
+<h3 id="建筑选址"><a href="#建筑选址" class="headerlink" title="建筑选址"></a>建筑选址</h3><ul>
+<li><p>周围环境,要考虑周围环境的相互影响,既要考虑本单位的成本,又要考虑邻近的企业和居民的安全</p>
+</li>
+<li><p>地势条件,甲乙丙类液体仓库,宜布置在地势较低的地方</p>
+</li>
+<li><p>主导风向,散发可燃气体,可燃蒸汽和可燃粉尘的车间,装置等,宜布置在明火或散发火花地点的常年主导的下风或侧风向.</p>
+<h3 id="建筑总平面布局"><a href="#建筑总平面布局" class="headerlink" title="建筑总平面布局"></a>建筑总平面布局</h3><ul>
+<li>合理布置建筑,建筑之间留有足够的防火间距,以清除或减少建筑物之间及周边环境的相互影响和火灾危险.</li>
+<li>合理划分功能区域,尽量将火灾危险性相同的或相近的建筑集中布置.</li>
+</ul>
+</li>
+</ul>
+<h2 id="建筑防火间距"><a href="#建筑防火间距" class="headerlink" title="建筑防火间距"></a>建筑防火间距</h2><p>防火间距是一座建筑物着火后,火灾不会蔓延到相邻建筑物的空间间隔,他是针对相邻建筑间设置的.</p>
+<h3 id="防火间距的确定原则"><a href="#防火间距的确定原则" class="headerlink" title="防火间距的确定原则"></a>防火间距的确定原则</h3><p>火灾时建筑物可能产生的热辐射强度是确定防火间距应考虑的主要因素.</p>
+<ul>
+<li>防止火灾蔓延,根据建筑的实际情形,将一二级耐火等级多层建筑之间的防火间距定为6m.</li>
+<li>保障灭火救援场地需要,规定一二级耐火等级高层建筑之间的防火间距不应小于13m</li>
+<li>节约土地资源,如果设定的防火间距过大,会造成土地资源的浪费.</li>
+<li>防火间距的计算,应按相邻建筑物外墙的最近距离计算.</li>
+</ul>
+<h3 id="防火间距"><a href="#防火间距" class="headerlink" title="防火间距"></a>防火间距</h3><ul>
+<li>乙类厂房与重要公共建筑的防火间距不宜小于50m;与明火或散发火花的地点的防火间距不宜小于30m</li>
+</ul>
+<h3 id="防火间距不足时的消防技术措施"><a href="#防火间距不足时的消防技术措施" class="headerlink" title="防火间距不足时的消防技术措施"></a>防火间距不足时的消防技术措施</h3><ol>
+<li>改变建筑的生产和使用性质,降低火灾危险性,改变房屋耐火性能,提高耐火等级</li>
+<li>调整生产厂房的部分工艺流程,限制库房内储存物品的数量,提高部分构件的耐火极限和燃烧性能</li>
+<li>将建筑物的普通外墙改造为防火墙或减少相邻建筑的开口面积</li>
+<li>拆除部分耐火等级低,占地面积小使用价值低且与新建建筑物相邻的陈旧建筑</li>
+<li>设置独立的室外防火墙<h2 id="建筑平面布置"><a href="#建筑平面布置" class="headerlink" title="建筑平面布置"></a>建筑平面布置</h2></li>
+</ol>
+<h3 id="布置原则"><a href="#布置原则" class="headerlink" title="布置原则"></a>布置原则</h3><ol>
+<li>内部着火,限制火灾和烟气在建筑内部和外部蔓延,并为人员疏散,消防人员的救援和灭火提供保护</li>
+<li>内部发生火灾时,减少对邻近分隔区域的热辐射</li>
+<li>方便消防人员救援</li>
+<li>防止对人员和贵重设备造成影响或危害<h3 id="设备用房布置"><a href="#设备用房布置" class="headerlink" title="设备用房布置"></a>设备用房布置</h3><h4 id="锅炉房-变压器室布置"><a href="#锅炉房-变压器室布置" class="headerlink" title="锅炉房,变压器室布置"></a>锅炉房,变压器室布置</h4><h4 id="柴油发电机房布置"><a href="#柴油发电机房布置" class="headerlink" title="柴油发电机房布置"></a>柴油发电机房布置</h4><h4 id="消防室布置"><a href="#消防室布置" class="headerlink" title="消防室布置"></a>消防室布置</h4><h4 id="消防设备用房布置"><a href="#消防设备用房布置" class="headerlink" title="消防设备用房布置"></a>消防设备用房布置</h4><h3 id="人员密集场所布置"><a href="#人员密集场所布置" class="headerlink" title="人员密集场所布置"></a>人员密集场所布置</h3><h4 id="观众厅-会议厅-多功能厅"><a href="#观众厅-会议厅-多功能厅" class="headerlink" title="观众厅,会议厅,多功能厅"></a>观众厅,会议厅,多功能厅</h4><h4 id="歌舞娱乐放映游艺场所"><a href="#歌舞娱乐放映游艺场所" class="headerlink" title="歌舞娱乐放映游艺场所"></a>歌舞娱乐放映游艺场所</h4><h4 id="电影员-剧场-礼堂"><a href="#电影员-剧场-礼堂" class="headerlink" title="电影员,剧场,礼堂"></a>电影员,剧场,礼堂</h4><h3 id="特殊场所布置"><a href="#特殊场所布置" class="headerlink" title="特殊场所布置"></a>特殊场所布置</h3><h4 id="老年人建筑及儿童活动场所"><a href="#老年人建筑及儿童活动场所" class="headerlink" title="老年人建筑及儿童活动场所"></a>老年人建筑及儿童活动场所</h4><h4 id="医院的病房"><a href="#医院的病房" class="headerlink" title="医院的病房"></a>医院的病房</h4><h3 id="工业建筑附属用房布置"><a href="#工业建筑附属用房布置" class="headerlink" title="工业建筑附属用房布置"></a>工业建筑附属用房布置</h3><h4 id="办公室-休息室"><a href="#办公室-休息室" class="headerlink" title="办公室,休息室"></a>办公室,休息室</h4><h4 id="液体中间储罐"><a href="#液体中间储罐" class="headerlink" title="液体中间储罐"></a>液体中间储罐</h4><h4 id="附属仓库"><a href="#附属仓库" class="headerlink" title="附属仓库"></a>附属仓库</h4></li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">消防</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/06/23/dontWorry/xiaofang/建筑防火/总平面布局和平面布置/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="ejs-dontWorry/随笔/人贵有自知之明" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/22/dontWorry/随笔/人贵有自知之明/">人贵有自知之明</a>
+    </h1>
+  
+
+        
+        <a href="/2019/06/22/dontWorry/随笔/人贵有自知之明/" class="archive-article-date">
+  	<time datetime="2019-06-21T16:55:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="人贵有自知之明"><a href="#人贵有自知之明" class="headerlink" title="人贵有自知之明"></a>人贵有自知之明</h1><p>&emsp; &emsp;老子三十三章,知人者智也,自知者明也.大多数人理解的是人应该知道自己有几斤几两,不要自满,要谦虚,要认识到自己的不足.其实这种解释极其狭隘,因为人的一生所追求的修养的最高境界,就是认识自己.   </p>
+<p>&emsp; &emsp;人作为高级的智慧生物,肯定是不能满足于基本的生理需要的,必定要向各个方向去探索,不断的超越极限.人类文明的成果是向所有的方向进行探索的成果,可是有些成果很难被人所继承下来,特别是关于个人修养方面的.中国拥有深厚的文化底蕴,对于个人修养也从很多的角度做了阐述.我个人非常喜欢,”人贵有自知之明”这句话,我认为这是个人修养的终极目标. </p>
+<p>&emsp; &emsp;人的一生大多数的时间都是在和别人打交道,哪怕再孤僻的人也是如此,所以一个人对他人的认识的理解很实际的体现在他在社会中的适应程度.那些对此有天赋的人,或者造诣很深的人,注定会成为人上人,也就是现在流行所说的高情商的人.那些人一个个的都是人精,因为他们对人性的理解比一般人要深刻很多,而且对人的情绪变化极其敏感.所以他们总是能洞悉你内心的想法,可以让你觉得和他聊天如沐春风,也可以让你觉得无地自容,情绪崩溃.简单的讲,这也是人的一种高级思维活动,所以是由天赋和后天练习的结果.特别是在官场上混的人,一般都比普通人强点,因为一个官员的升或贬很大程度都是由他的直接领导决定的.所以他们无时无刻都在揣摩上意,自然比一般人会强点.每个人都是很难理解别人的,因为我们确实不懂,而且也知道不懂,一些人会花时间和精力去尝试理解别人,从而得到更多的所获.</p>
+<p>&emsp; &emsp;一千人心中有一千个哈姆雷特,这也是说明这部戏剧写的好,因为更接近真实.每个人在别人心中的形象也是完全不同的.每个人都认为自己是最懂自己的,这没有错,毕竟和自己相处的时间是最长.由于觉得自己很懂自己,反而从来都不想去了解自己,所以有自知之明才如此难得可贵.认识自己不是偷偷放了个屁,别人都不知道就自己知道,是你知道别人都不知道你放了个屁.如果别人都知道是你放的,唯独你自己以为别人都不知道,这就是严重的无自知之明了.</p>
+<p>&emsp; &emsp;可以用一个比喻解释什么叫自知之明,我们都是棋盘上的棋子,作为二维动物,我并不知道,我是在棋盘上的哪个坐标的.其他人也不知道,可是我知道我和他们的相对坐标.他们也有一个坐标系用来标记其他人,我们要找的就是我们在别人坐标系中我的坐标.这个坐标就是我们要找的自知之明.</p>
+<p>&emsp; &emsp;认识自己,不可能凭空认识,我们只能通过别人的反馈映射自己的内心来认识别人从而认识自己.首先感谢那些给我带来痛苦的人,我要将这些痛苦的每个细节都仔细的品味,然后用牙齿一点点的研磨吞下,警醒自己不要堕落到黑暗中.其次感谢那些阳光的人,你们擅长制造欢乐,我要学习你们的处世态度,让外界的伤害更难伤害我.</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/06/22/dontWorry/随笔/人贵有自知之明/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="ejs-dontWorry/xiaofang/建筑防火/建筑分类与耐火等级" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/20/dontWorry/xiaofang/建筑防火/建筑分类与耐火等级/">建筑分类与耐火等级</a>
+    </h1>
+  
+
+        
+        <a href="/2019/06/20/dontWorry/xiaofang/建筑防火/建筑分类与耐火等级/" class="archive-article-date">
+  	<time datetime="2019-06-19T17:46:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="建筑分类与耐火等级"><a href="#建筑分类与耐火等级" class="headerlink" title="建筑分类与耐火等级"></a>建筑分类与耐火等级</h1><!-- TOC -->
+
+<ul>
+<li><a href="#建筑分类与耐火等级">建筑分类与耐火等级</a><pre><code>- [建筑物燃烧性能分级](#建筑物燃烧性能分级)
+    - [建筑材料和制品的燃烧性能等级](#建筑材料和制品的燃烧性能等级)
+    - [建筑材料燃烧性能等级判据的主要参数及概念](#建筑材料燃烧性能等级判据的主要参数及概念)
+- [建筑材料燃烧性能等级的附加信息和标识](#建筑材料燃烧性能等级的附加信息和标识)
+- [建筑构件的燃烧性能](#建筑构件的燃烧性能)
+- [建筑构件的耐火极限](#建筑构件的耐火极限)</code></pre></li>
+</ul>
+<!-- /TOC -->
+
+<p>火灾造成的经济损失约占社会总产值的0.2%,其中建筑火灾约占总起数的75%,经济损失占86%.</p>
+<h2 id="建筑分类"><a href="#建筑分类" class="headerlink" title="建筑分类"></a>建筑分类</h2><table>
 <thead>
 <tr>
-<th>按燃烧对象分类</th>
-<th>对象</th>
+<th>使用性质</th>
+<th>特点</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>A类</td>
-<td>固体</td>
+<td>民用</td>
+<td>供人们居住或从事各类公共活动的建筑</td>
 </tr>
 <tr>
-<td>B类</td>
-<td>液体或可熔化固体物质</td>
+<td>工业</td>
+<td>工业生产性建筑</td>
 </tr>
 <tr>
-<td>C类</td>
-<td>气体</td>
-</tr>
-<tr>
-<td>D类</td>
-<td>金属</td>
-</tr>
-<tr>
-<td>E类</td>
-<td>带电火灾,物体带电燃烧的火灾 <em>变压器等设备的电气火灾</em></td>
-</tr>
-<tr>
-<td>F类</td>
-<td>烹饪器具类的烹饪物</td>
-</tr>
-<tr>
-<td>***</td>
-<td></td>
-</tr>
-<tr>
-<td>按损失程度分类</td>
-<td>死亡</td>
-</tr>
-<tr>
-<td>————–</td>
-<td>—–</td>
-</tr>
-<tr>
-<td>特别重大</td>
-<td>30⬆</td>
-</tr>
-<tr>
-<td>重大</td>
-<td>10-30</td>
-</tr>
-<tr>
-<td>较大</td>
-<td>3-10</td>
-</tr>
-<tr>
-<td>一般</td>
-<td>3⬇</td>
+<td>农业</td>
+<td>农副产业生产建筑</td>
 </tr>
 </tbody></table>
-<ul>
-<li>危害<ol>
-<li>危害生命安全</li>
-<li>造成经济损失</li>
-<li>破坏文明成果</li>
-<li>影响社会稳定</li>
-<li>破坏生态环境</li>
+<hr>
+<table>
+<thead>
+<tr>
+<th>建筑结构</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>木结构</td>
+<td>承重构件是木材</td>
+</tr>
+<tr>
+<td>钢结构</td>
+<td>主要承重结构采用钢材</td>
+</tr>
+<tr>
+<td>砖木结构</td>
+<td>承重构件是砖石和木材</td>
+</tr>
+<tr>
+<td>砖混结构</td>
+<td>竖向承重构件采用砖墙或砖柱,水平承重构件采用钢筋混凝土</td>
+</tr>
+<tr>
+<td>钢筋混凝土结构</td>
+<td>钢筋混凝土作主要承重结构,砖和其他轻质材料做墙体等围护构件</td>
+</tr>
+<tr>
+<td>钢混结构</td>
+<td>屋顶采用钢结构,其他主要承重构件采用钢筋混凝土结构</td>
+</tr>
+<tr>
+<td>其他结构</td>
+<td>如生土建筑,塑料建筑,充气建筑</td>
+</tr>
+</tbody></table>
+<hr>
+<table>
+<thead>
+<tr>
+<th>建筑高度</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>单层</td>
+<td>仅有一层结构的建筑</td>
+</tr>
+<tr>
+<td>多层</td>
+<td>建筑高度不大于27m的住宅建筑和建筑高度部大于24m非单层厂房,仓库和公共建筑</td>
+</tr>
+<tr>
+<td>高层建筑</td>
+<td>建筑高度大于27m的住宅建筑和其他建筑高度大于24m的非单层建筑</td>
+</tr>
+</tbody></table>
+<h2 id="建筑材料的燃烧性能及分级"><a href="#建筑材料的燃烧性能及分级" class="headerlink" title="建筑材料的燃烧性能及分级"></a>建筑材料的燃烧性能及分级</h2><h3 id="建筑物燃烧性能分级"><a href="#建筑物燃烧性能分级" class="headerlink" title="建筑物燃烧性能分级"></a>建筑物燃烧性能分级</h3><h4 id="建筑材料和制品的燃烧性能等级"><a href="#建筑材料和制品的燃烧性能等级" class="headerlink" title="建筑材料和制品的燃烧性能等级"></a>建筑材料和制品的燃烧性能等级</h4><table>
+<thead>
+<tr>
+<th>燃烧性能</th>
+<th>名称</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>A</td>
+<td>不燃材料(制品)</td>
+</tr>
+<tr>
+<td>B1</td>
+<td>难燃材料(制品)</td>
+</tr>
+<tr>
+<td>B2</td>
+<td>可燃材料(制品)</td>
+</tr>
+<tr>
+<td>B3</td>
+<td>易燃材料(制品)</td>
+</tr>
+</tbody></table>
+<h4 id="建筑材料燃烧性能等级判据的主要参数及概念"><a href="#建筑材料燃烧性能等级判据的主要参数及概念" class="headerlink" title="建筑材料燃烧性能等级判据的主要参数及概念"></a>建筑材料燃烧性能等级判据的主要参数及概念</h4><ul>
+<li>材料.指单一物质均匀分布的混合物</li>
+<li>燃烧滴落物/微粒.在燃烧试验过程中,从试样上分离的物质或微粒</li>
+<li>临界热辐射通量.火焰熄灭处的热辐射通量或试验30min时火焰传播到的最远处的热辐射通量</li>
+<li>燃烧增长速率指数——FIGRA.试样燃烧的热释放速率与其对应时间比值的最大值,用于燃烧性能分级.</li>
+<li>THR600s.试验开始后600s内试样的热释放总量.<h3 id="建筑材料燃烧性能等级的附加信息和标识"><a href="#建筑材料燃烧性能等级的附加信息和标识" class="headerlink" title="建筑材料燃烧性能等级的附加信息和标识"></a>建筑材料燃烧性能等级的附加信息和标识</h3>GB 8624 B1 (B-s1,d0,t1),表示属于难燃B1级建筑材料及制品,燃烧性能细化分级为B级,产烟  特性等级为s1级,燃烧滴落物/微粒等级为d0级,烟气毒性等级为t1级.<h2 id="建筑构件的燃烧性能和耐火极限"><a href="#建筑构件的燃烧性能和耐火极限" class="headerlink" title="建筑构件的燃烧性能和耐火极限"></a>建筑构件的燃烧性能和耐火极限</h2>建筑的耐火性能包括两部分 <ol>
+<li>构件的燃烧性能</li>
+<li>构件的耐火极限<h3 id="建筑构件的燃烧性能"><a href="#建筑构件的燃烧性能" class="headerlink" title="建筑构件的燃烧性能"></a>建筑构件的燃烧性能</h3>分类| 举例</li>
 </ol>
 </li>
 </ul>
-<h2 id="火灾发生的常见原因"><a href="#火灾发生的常见原因" class="headerlink" title="火灾发生的常见原因"></a>火灾发生的常见原因</h2><pre><code>1.电气
-2.吸烟
-3.生活用火不慎 
-4.生产作业不慎
-5.设备故障
-6.玩火
-7.放火
-8.雷击</code></pre><hr>
-<h2 id="建筑火灾蔓延"><a href="#建筑火灾蔓延" class="headerlink" title="建筑火灾蔓延"></a>建筑火灾蔓延</h2><ul>
-<li><p>建筑火灾蔓延的传热基础</p>
-<blockquote>
-<p>热传导 <em>导热率大的物质有利于火势的蔓延</em></p>
-</blockquote>
-<blockquote>
-<p>热对流 <em>流体中存在温度差,必然存在热传导</em></p>
-</blockquote>
-<blockquote>
-<p>热辐射 <em>火焰和烟雾能辐射热能,热值越大,火焰温度越高,热辐射越强</em></p>
-</blockquote>
+<p>——–|——–<br>不燃性 | 钢材,混凝土,砖,石,砌块,石膏板<br>难燃性 | 沥青混凝土,经助燃处理后的木材,塑料,水泥,刨花板,板条抹灰墙<br>可燃性 | 木材,竹子,刨花板,保丽板,塑料</p>
+<h3 id="建筑构件的耐火极限"><a href="#建筑构件的耐火极限" class="headerlink" title="建筑构件的耐火极限"></a>建筑构件的耐火极限</h3><h2 id="建筑耐火等级要求"><a href="#建筑耐火等级要求" class="headerlink" title="建筑耐火等级要求"></a>建筑耐火等级要求</h2><p>建筑构件的耐火极限是衡量建筑物的耐火等级的主要指标</p>
+<ul>
+<li><p>厂房,仓库的耐火等级,建筑面积,层数等与其生产或储存阿类型有着密不可分的关系,对于甲乙类生产或储存的厂房和仓库,由于其生产或储存的物品危险性大,因此这类生产场所或仓库不应设置在地下或半地下,而且这类场所的防火安全性能的要求也较之其他类型的生产和仓储要高,在设计,使用时都应特别加以注意.</p>
 </li>
-<li><p>建筑火灾的烟气蔓延</p>
-<blockquote>
-<p>烟气流动的方向通常是火势蔓延的方向,500℃以上的热烟所到之处会引起可燃物起火.</p>
-</blockquote>
-<blockquote>
-<p>烟气的扩散线路</p>
-</blockquote>
+<li><p>民用建筑的耐火等级应根据其建筑高度,使用功能,重要性和火灾扑救难度的确定</p>
 <ol>
-<li>着火房间➡走廊➡楼梯间➡上部各楼层➡室外  </li>
-<li>着火房间➡室外  </li>
-<li>着火房间➡相邻上层房间➡室外  </li>
-</ol>
-<blockquote>
-<p>烟气流动的驱动力</p>
-<ol>
-<li>烟囱效应 <em>烟气向上蔓延的主要因素,影响全楼</em></li>
-<li>外界风的作用 <em>烟气向下风方向的流动</em><br>烟气蔓延的途径<ol>
-<li>孔洞开口蔓延</li>
-<li>穿越墙壁的管线和缝隙蔓延</li>
-<li>闷顶内蔓延</li>
-<li>外墙面蔓延 <em>外墙窗口的形状,大小对火势蔓延有很大影响</em><br>对主体是耐火结构的建筑,造成蔓延的主要原因</li>
+<li>地下或半地下建筑和一类高层建筑的耐火等级不应低于一级</li>
+<li>单,多层重要公共建筑和二类高层建筑的耐火等级不应低于二级</li>
 </ol>
 </li>
-</ol>
-</blockquote>
-<pre><code>1. 未设有效防火区
-2. 洞口分隔处理不完善
-3. 防火隔墙与房间隔墙未砌至顶板
-4. 采用可燃构件和装饰物</code></pre><blockquote>
-<p>建筑物火灾发展的几个阶段</p>
-<ol>
-<li>初期增长阶段 <em>有可能形成火灾也可能自行熄灭</em></li>
-<li>充分发展阶段 <em>轰燃:在一限定空间内可燃物的表面全部卷入燃烧的瞬变状态,标志着火灾进入充分发展阶段</em></li>
-<li>衰减阶段 <em>可能出现死灰复燃</em><br>灭火的三种方法</li>
-<li>冷却灭火 <em>温度降到着火点一下</em></li>
-<li>隔离灭火 <em>隔离可燃物</em></li>
-<li>窒息灭火 <em>隔离助燃剂(氧化剂),氧浓度低于15%,不能维持燃烧</em></li>
-<li>化学抑制剂灭火 <em>抑制自由基的产生或降低自由基的浓度</em></li>
-</ol>
-</blockquote>
+<li><p>建筑高度大于100m的民用建筑,其楼板的耐火极限不应低于2.00h,一二级耐火等级建筑的上人平屋顶,其屋面板的耐火等级分别不应低于1.50h和1.00h.</p>
+</li>
+<li><p>一二级耐火建筑的屋面板应采用不燃材料,单屋面防水层可采用可燃材料</p>
+</li>
+<li><p>二级耐火等级的建筑采用难燃性房间隔墙,耐火极限不应低于0.75h</p>
+</li>
+<li><p>二级耐火等级的建筑内采用不燃材料的吊顶,其耐火极限不限</p>
+</li>
+<li><p>建筑内预制钢筋混凝土构件的节点外露部位,应采取防火保护措施,且节点的耐火极限不应低与相应构件的耐火极限.</p>
 </li>
 </ul>
 
@@ -353,7 +1264,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/16/dontWorry/xiaofang/基础/火灾/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/06/20/dontWorry/xiaofang/建筑防火/建筑分类与耐火等级/">展开全文 >></a>
         </p>
       
 
@@ -383,31 +1294,31 @@
 
 
   
-    <article id="ejs-dontWorry/随笔/敏感" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
+    <article id="ejs-dontWorry/Algorithm/牛顿法求平方根" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/16/dontWorry/随笔/敏感/">敏感</a>
+      <a class="article-title" href="/2019/06/18/dontWorry/Algorithm/牛顿法求平方根/">牛顿法求平方根</a>
     </h1>
   
 
         
-        <a href="/2019/06/16/dontWorry/随笔/敏感/" class="archive-article-date">
-  	<time datetime="2019-06-16T12:56:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-16</time>
+        <a href="/2019/06/18/dontWorry/Algorithm/牛顿法求平方根/" class="archive-article-date">
+  	<time datetime="2019-06-17T16:06:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-18</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="敏感"><a href="#敏感" class="headerlink" title="敏感"></a><strong>敏感</strong></h1><p>&emsp; &emsp;每个人都会随着年龄的增加，变得越来越不高兴。童年的时光是最快乐的时光，虽然没有很好的物质条件，也没有什么精神上的享受。但是最简单的游戏或者一颗糖果都能带来无穷的快乐。</p>
-<p>&emsp; &emsp;我以前以为是人经历的东西多了，变得麻木了，所以感受不到了。慢慢的发现，随着年龄的增加这种感受快乐的能力是在递减的。不是感受快乐的能力，是所有的感受都是递减的。婴儿的皮肤是最娇嫩的，也是最敏感的。能敏感的感受是一种属于年轻的能力，是很难保留的。杨振宁能在82岁娶一个28的女人为妻，除了是因为他是著名科学家以外，更重要的也许是他还能感受的到爱情吧。</p>
-<p>&emsp; &emsp;我一直都是唯物主义，人的感受其实也不过是大脑在长期进化中的一种适应性的表现而已。用进废退也是生理上的常识。人的衰老是所有器官的衰老，皮肤产生皱纹，新陈代谢变慢，身体各个机能开始退化。但是一般人觉得人的身体会先于大脑开始衰老，比如运动员的巅峰时期是远远短于脑力工作者的。我觉得这是误解，大脑发育基本都是3岁前已经发育完成的，那么在之后的时间中其实是持续衰老的，只不过量变导致质变而已。在青少年时期，因为不断的获取知识，而且速度太快了，掩盖了大脑衰老的现象。人的大脑机能最好的巅峰时期应该是在20岁左右，这个时间段，大脑的机能和知识的储备会得出一个最优解。</p>
-<p>&emsp; &emsp;大脑衰老的主要特征，不是记忆力衰退，记忆力衰退的原因只是大脑的感受能力变弱了。因为哪怕年纪再大的人，记忆重要事情的能力仍然和年轻人没什么区别。最敏感的感受一个事物的时候，是可以做到过目不忘的。记忆是指大脑调动了多少的神经元去处理这个影像或者其他，调动的越多，记的就越牢记得就越快。只有敏感的感受才能调动更多的神经元去处理，所以大脑衰老的本质是越来越不敏感了。</p>
-<p>&emsp; &emsp;人很难去对抗衰老，但是可以不去过那些一成不变的生活。可以每天做一件以前没做过的事情，感受不一样的东西。毕竟终归会老去，趁着还能感受这个的世界不一样的时候，多去感受一下。</p>
+        <h1 id="牛顿法求平方根"><a href="#牛顿法求平方根" class="headerlink" title="牛顿法求平方根"></a>牛顿法求平方根</h1><figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">impore</span> guess x)</span><br><span class="line">  (<span class="name">average</span> guess (<span class="name"><span class="builtin-name">/</span></span> x guess))</span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">improve</span> guess x)</span><br><span class="line">  (<span class="name"><span class="builtin-name">/</span></span> (<span class="name"><span class="builtin-name">+</span></span> (<span class="name"><span class="builtin-name">/</span></span> x (<span class="name">square</span> guess)) (<span class="name"><span class="builtin-name">*</span></span> <span class="number">2</span> guess)) <span class="number">3</span>))</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>数学公式<br>$${x/y³+2y}\over{3}$$</li>
+</ul>
 
       
 
@@ -421,28 +1332,17 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Algorithm</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/随笔//" class="article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/16/dontWorry/随笔/敏感/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/06/18/dontWorry/Algorithm/牛顿法求平方根/">展开全文 >></a>
         </p>
       
 
@@ -472,33 +1372,346 @@
 
 
   
-    <article id="ejs-dontWorry/随笔/just do it" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
+    <article id="ejs-dontWorry/xiaofang/建筑防火/生产和储存物品的火灾危险性分类" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/16/dontWorry/随笔/just do it/">just do it</a>
+      <a class="article-title" href="/2019/06/17/dontWorry/xiaofang/建筑防火/生产和储存物品的火灾危险性分类/">生产和储存物品的火灾危险性分类</a>
     </h1>
   
 
         
-        <a href="/2019/06/16/dontWorry/随笔/just do it/" class="archive-article-date">
-  	<time datetime="2019-06-16T12:56:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-16</time>
+        <a href="/2019/06/17/dontWorry/xiaofang/建筑防火/生产和储存物品的火灾危险性分类/" class="archive-article-date">
+  	<time datetime="2019-06-17T15:48:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-17</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="just-do-it"><a href="#just-do-it" class="headerlink" title="just do it"></a><strong>just do it</strong></h1><p>&emsp; &emsp;just do it 是nike品牌的广告语，表现的是一种马上就做的运动精神。人生会遇到很多想做的事情，人人都会瞻前顾后，犹豫不绝。因为一旦开始，就要付出很多的时间和精力。有些事情不是害怕失败，而是害怕没有意义。</p>
-<p>&emsp; &emsp;为什么去做一件有意义的事情，需要对自己有用才去做呢？为什么不能纯粹因为兴趣去做。为什么看电视，玩游戏，不需要下定决心去做呢？而随时都能开始，真正的just do it!我一直觉得人类能成为食物链的顶端生物，绝对不是靠知识，或者聪明的大脑，而是靠人的身体。人的大脑是为身体服务的。很多人都有的经验，就是在激烈的运动中，想分散注意力都很难。学习一些实用的技能，现在的小孩子玩手机学的很快。但是安静下来不动，特别是学习一些抽象的知识的时候，很容易分散注意力，而且学的异常慢。</p>
-<p>&emsp; &emsp;人的大脑是人体最重要的器官之一，也是消耗能量和氧气的大户。如此重要的东西的运作效率直接关系着人在整个自然界生态链的竞争力，所以它绝对不擅长做脱离实际的事情，只做有利于眼下关系到生存的事情。特别是数学这种抽象的学科，可以说是完全不适合人类的，因为这项技能本身就是大脑中一个不影响生存的附带的功能而已，没有经历过残酷的自然选择，所以数学天赋的个体差异极大。</p>
-<p>&emsp; &emsp;人的大脑最擅长的事情，应该具备两个基本条件，一是能直接感知，不管是看到摸到听到都算，最好是能调动所有感知器官。二是能马上产生实际的反馈。似乎越是高深的知识越是极力的避开这两点，先是创造出大量虚无缥缈的理论，然后结论也毫无实际用处。对于创造这些理论的人，他们肯定是通过大量的实验和观察而得出来的。但由于学习知识效率的原因，给后来者学习时只能直接上抽象的推理和结论，这对于学习者而言，难度是很大的。</p>
-<p>&emsp; &emsp;“just do it” 也不能瞎干，必须要掌握方法。要以实际问题为导向，通过寻找解决问题的方法来补充相关的知识，就像树根钻进地底一样，用深度来带动广度。而且千万不能只用眼睛去看，一定要动手，用手去带动大脑思考。这是最适合大脑的方法，是最轻松的方法，也是最能得到精髓的方法。但是却是最耗时的方法，真正急功近利的方法就是记忆，用最枯燥的方法，用最强大的意志去通过无数次的重复记忆下来。后面一种方法因为需要强大的意志力做支撑，基本是没有人能凭自己坚持下来的，但是它的优点在于不用投入过多的资源，只需要一本书就行了。这也就是如今教育所采用的方法，其实效率极其低下。整整9年的义务教育，学到的东西，却少的可怜。第一种方法是古代师傅带徒弟的方法，讲究的是言传身教，这种教育是奢侈品。</p>
-<p>&emsp; &emsp;尽管有很多困难，just do it!</p>
+        <h1 id="生产和储存物品的火灾危险性分类"><a href="#生产和储存物品的火灾危险性分类" class="headerlink" title="生产和储存物品的火灾危险性分类"></a>生产和储存物品的火灾危险性分类</h1><!-- TOC -->
 
+<ul>
+<li><a href="#生产和储存物品的火灾危险性分类">生产和储存物品的火灾危险性分类</a><ul>
+<li><a href="#生产的火灾危险性分类">生产的火灾危险性分类</a><ul>
+<li><a href="#评定物质火灾危险性的主要指标">评定物质火灾危险性的主要指标</a><ul>
+<li><a href="#评定气体火灾危险性的主要指标">评定气体火灾危险性的主要指标</a></li>
+<li><a href="#评定液体火灾危险性的主要指标">评定液体火灾危险性的主要指标</a></li>
+<li><a href="#评定固体火灾危险性的主要指标">评定固体火灾危险性的主要指标</a></li>
+</ul>
+</li>
+<li><a href="#生产火灾危险性分类方法">生产火灾危险性分类方法</a></li>
+</ul>
+</li>
+<li><a href="#储存物品的火灾危险性分类">储存物品的火灾危险性分类</a><ul>
+<li><a href="#储存物品的火灾危险性分类方法">储存物品的火灾危险性分类方法</a></li>
+<li><a href="#储存物品的火灾危险性特征">储存物品的火灾危险性特征</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<h2 id="生产的火灾危险性分类"><a href="#生产的火灾危险性分类" class="headerlink" title="生产的火灾危险性分类"></a>生产的火灾危险性分类</h2><p>生产火灾危险性是指生产过程中发生火灾、爆炸事故的原因、因素和条件以及火灾扩大蔓延条件的总和.</p>
+<p>厂房的火灾危险性类别是以生产过程中使用和产出物质的火灾危险性类别确定的,物质火灾危险性是确定生产的火灾危险性类别的基础.</p>
+<h3 id="评定物质火灾危险性的主要指标"><a href="#评定物质火灾危险性的主要指标" class="headerlink" title="评定物质火灾危险性的主要指标"></a>评定物质火灾危险性的主要指标</h3><p>主要依据:理化性质</p>
+<h4 id="评定气体火灾危险性的主要指标"><a href="#评定气体火灾危险性的主要指标" class="headerlink" title="评定气体火灾危险性的主要指标"></a>评定气体火灾危险性的主要指标</h4><ol>
+<li>爆炸浓度极限范围,爆炸下限,容易与空气或其他助燃气体形成爆炸性气体混合物</li>
+<li>自然点越低,火灾爆炸的危险性越大   </li>
+</ol>
+<ul>
+<li>气体的比重和扩散性   </li>
+<li>化学性质活泼  </li>
+<li>带电性以及热膨胀性</li>
+</ul>
+<ol>
+<li><p>气体化学活泼性越强,发生火灾爆炸的危险性越大</p>
+</li>
+<li><p>气体在空气中的扩散速度越快,火灾蔓延扩展的危险性越大</p>
+</li>
+<li><p>相对密度大的气体易聚集不散,遇明火容易造成火灾爆炸事故</p>
+</li>
+<li><p>易压缩液化的气体遇热后体积膨胀,容易发生火灾爆炸事故</p>
+<h4 id="评定液体火灾危险性的主要指标"><a href="#评定液体火灾危险性的主要指标" class="headerlink" title="评定液体火灾危险性的主要指标"></a>评定液体火灾危险性的主要指标</h4><p>闪点是评定液体火灾危险性的主要指标<br>对于可燃液体,通常还用自燃点作为评定火灾危险性的标志  </p>
+<p><strong>液体火灾危险性的标志</strong></p>
+</li>
+</ol>
+<ul>
+<li>爆炸温度极限</li>
+<li>受热蒸发性</li>
+<li>流动扩散性</li>
+<li>带电性</li>
+</ul>
+<h4 id="评定固体火灾危险性的主要指标"><a href="#评定固体火灾危险性的主要指标" class="headerlink" title="评定固体火灾危险性的主要指标"></a>评定固体火灾危险性的主要指标</h4><p>熔点和燃点是评定其火灾危险性的主要标志参数 </p>
+<blockquote>
+<p>许多低熔点的易燃固体还有闪燃现象  </p>
+</blockquote>
+<ul>
+<li>粉状可燃固体是以爆炸浓度下限作为标志</li>
+<li>遇水燃烧固体是以与水反应速度快慢和放热量的大小为标志</li>
+<li>自燃性固体物料师以其自燃点为标志</li>
+<li>受热分解可燃固体师以其分解温度作为评定标志</li>
+</ul>
+<h3 id="生产火灾危险性分类方法"><a href="#生产火灾危险性分类方法" class="headerlink" title="生产火灾危险性分类方法"></a>生产火灾危险性分类方法</h3><table>
+<thead>
+<tr>
+<th>类别</th>
+<th>特征</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>甲</td>
+<td>1.闪点小于28℃ 的液体</td>
+<td>橡胶制品涂胶和胶浆部分,苯酚厂房的磺化,蒸馏部位,甲醇,乙醇,集成电路工程的化学清洗间,植物油加工厂的浸出厂房</td>
+</tr>
+<tr>
+<td>甲</td>
+<td>2.爆炸下限小于10%的气体</td>
+<td>乙炔站,氢气站,氯乙烯厂房,乙烯聚合厂房,天然气、石油伴生气、矿井气、水煤气或焦炉煤气的净化(如脱硫)厂房压缩机室机鼓风机室,液化石油气罐瓶间,电解水或电解食盐厂房</td>
+</tr>
+<tr>
+<td>甲</td>
+<td>3.常温下自行分解或在空气中氧化即能导致迅速自燃或爆炸的物质</td>
+<td>硝化棉厂房极其应用部位,赛璐珞厂房</td>
+</tr>
+<tr>
+<td>甲</td>
+<td>4.常温下受到水或空气中水蒸气的作用,能产生可燃气体并引起燃烧或爆炸的物质</td>
+<td>金属钠,钾加工厂房极其应用部位,五氧化二磷厂房</td>
+</tr>
+<tr>
+<td>甲</td>
+<td>5.遇酸,受热,撞击,摩擦,催化以及遇有机物或硫磺等易燃无机物,极易引起燃烧或爆炸的强氧化剂</td>
+<td>氯酸钠,氯酸钾厂房及其应用部位,过氧化氢厂房,过氧化钠,过氧化钾厂房,次氯酸钙厂房</td>
+</tr>
+<tr>
+<td>甲</td>
+<td>6.受撞击,摩擦或与氧化剂,有机物接触时能引起燃烧或爆炸的物质</td>
+<td>五硫化二磷厂房及其引用部位</td>
+</tr>
+<tr>
+<td>甲</td>
+<td>7.在密闭设备内操作温度不小于物质本身自然点的生产</td>
+<td>洗涤剂厂房石蜡裂解部位</td>
+</tr>
+</tbody></table>
+<hr>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>特征</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>乙</td>
+<td>1. 闪点不小于28℃,但小于60℃的液体</td>
+<td>松节油或松香蒸馏厂房及其应用部位,甲酚厂房,樟脑提取部位,松针油精制部位,煤油灌桶间</td>
+</tr>
+<tr>
+<td>乙</td>
+<td>2. 爆炸下限不小于10% 的气体</td>
+<td>一氧化碳压缩机室及净化部位,发生炉煤气或鼓风炉煤气净化部位,氨压缩机房</td>
+</tr>
+<tr>
+<td>乙</td>
+<td>3.不属于甲类的氧化剂</td>
+<td>高锰酸钾厂房</td>
+</tr>
+<tr>
+<td>乙</td>
+<td>4. 不属于甲类的易燃固体</td>
+<td>樟脑或松香提炼厂房,硫磺回收厂房</td>
+</tr>
+<tr>
+<td>乙</td>
+<td>5. 助燃气体</td>
+<td>氧气站,空分厂房</td>
+</tr>
+<tr>
+<td>乙</td>
+<td>6. 能与空气形成爆炸性混合物的浮游状态的粉尘,闪点大于或等于60℃的液体雾滴</td>
+<td>铝粉或镁粉厂房,金属制品抛光部位,煤粉厂房,面粉厂的碾磨部位,活性炭制造及再生厂房</td>
+</tr>
+</tbody></table>
+<hr>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>特征</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>丙</td>
+<td>1. 闪点不小于60℃的液体</td>
+<td>香料厂的松油醇部位,焦化厂焦油厂房,甘油,桐油的制备厂房,油浸变压器室,机器油或变压油罐桶间,配电室(每台装油量大于60kg的设备),沥青加工厂房,植物油加工厂的精炼部位</td>
+</tr>
+<tr>
+<td>丙</td>
+<td>2. 可燃固体</td>
+<td>橡胶制品的压延,成型和硫化厂房,印染厂成品厂房,谷物加工房,集成电路工厂的氧化扩散间,光刻间,饲料加工厂房</td>
+</tr>
+</tbody></table>
+<hr>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>特征</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>丁</td>
+<td>1.对不燃烧物质进行加工,并在高温或熔化状态下经常产生强辐射热,火花或火焰的生产</td>
+<td>金属冶炼,热处理工厂</td>
+</tr>
+<tr>
+<td>丁</td>
+<td>2. 利用气体,液体,固体作为燃烧或将气体,液体进行燃烧作其他用的各种生产</td>
+<td>锅炉房,陶瓷制品的烘干,烧成厂房,石灰焙烧厂房,耐火材料烧成部位,硫酸车间焙烧部位</td>
+</tr>
+<tr>
+<td>丁</td>
+<td>3. 常温下使用或加工难燃烧物质的生产</td>
+<td>酚醛泡沫塑料的加工厂房,印染厂的漂炼部位</td>
+</tr>
+</tbody></table>
+<hr>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>特征</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>戊</td>
+<td>常温下使用或加工部燃烧物质的生产</td>
+<td>制砖车间,石棉加工车间,除镁合金外的金属冷加工车间,仪表,器械或车辆装配车间,水泥厂的轮窑厂房</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="储存物品的火灾危险性分类"><a href="#储存物品的火灾危险性分类" class="headerlink" title="储存物品的火灾危险性分类"></a>储存物品的火灾危险性分类</h2><h3 id="储存物品的火灾危险性分类方法"><a href="#储存物品的火灾危险性分类方法" class="headerlink" title="储存物品的火灾危险性分类方法"></a>储存物品的火灾危险性分类方法</h3><p>储存物品的火灾危险性分类</p>
+<table>
+<thead>
+<tr>
+<th>储存物品的火灾危险性类别</th>
+<th>储存物品的火灾危险性特征</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>甲</td>
+<td>1.闪点小于28℃ 的液体</td>
+<td>己烷、戊烷，石脑油，环戊烷，二硫化碳，苯，甲苯，甲醇，乙醇，乙醚，蚁酸甲酯，醋酸甲酯，硝酸乙酯，汽油，丙酮，丙烯，酒精度为 38°以上的白酒</td>
+</tr>
+<tr>
+<td>甲</td>
+<td>2、爆炸下限＜10%的气体，受到水或空气中水蒸气的作用能产生炸下限＜10%气体的固体物质</td>
+<td>乙炔，氢，甲烷，乙烯，丙烯，丁二烯，环氧乙烷，水煤气，硫化氢，氯乙烯，液化石油气，电石，碳化铝</td>
+</tr>
+<tr>
+<td>甲</td>
+<td>常温下能自行分解或在空气中氧化能导致迅速自燃或爆炸的物质</td>
+<td>硝化棉,硝化纤维胶片,喷漆棉,火胶棉,赛璐珞棉</td>
+</tr>
+<tr>
+<td>甲</td>
+<td>4.常温下受到水或空气中水蒸气的作用能产生可燃气体并引起燃烧或爆炸的物质</td>
+<td>金属钠,钾</td>
+</tr>
+<tr>
+<td>甲</td>
+<td>5.遇酸、受热、撞击、摩擦以及遇有机物或硫磺等易燃的无机物，极易引起燃烧或爆炸的强氧化剂</td>
+<td>氯酸钠,氯酸钾,过氧化氢,过氧化钠,过氧化钾,硝酸铵</td>
+</tr>
+<tr>
+<td>甲</td>
+<td>6.受撞击、摩擦或与氧化剂、有机物接触时能引起燃烧或爆炸的物质</td>
+<td>赤磷,五硫化二磷</td>
+</tr>
+</tbody></table>
+<hr>
+<table>
+<thead>
+<tr>
+<th>储存物品的火灾危险性类别</th>
+<th>储存物品的火灾危险性特征</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>乙</td>
+<td>1.闪点≧28°C至＜60°C的液体</td>
+<td>煤油,松节油,樟脑油</td>
+</tr>
+<tr>
+<td>乙</td>
+<td>2、爆炸下限≧10%的气体</td>
+<td>氨气,一氧化碳</td>
+</tr>
+<tr>
+<td>乙</td>
+<td>3. 不属于甲类的氧化剂</td>
+<td>硝酸,漂白粉</td>
+</tr>
+<tr>
+<td>乙</td>
+<td>4.不属于甲类的易燃固体</td>
+<td>镁粉,铝粉,赛璐珞板(片),樟脑,硝化纤维漆布,硝化纤维色片</td>
+</tr>
+<tr>
+<td>乙</td>
+<td>5.助燃气体</td>
+<td>氧气,液氯</td>
+</tr>
+<tr>
+<td>乙</td>
+<td>6.常温下与空气接触能缓慢氧化，积热不散引起自燃的物品</td>
+<td>漆布及其制品,油布及其制品,油纸及其制品,油绸及其制品</td>
+</tr>
+</tbody></table>
+<hr>
+<table>
+<thead>
+<tr>
+<th>储存物品的火灾危险性类别</th>
+<th>储存物品的火灾危险性特征</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>丙</td>
+<td>1.闪点≧60°C的液体</td>
+<td>动物油,植物油,沥青,润滑油,机油</td>
+</tr>
+<tr>
+<td>丙</td>
+<td>2、可燃固体</td>
+<td>粒径大于等于2mm的工业成型硫磺,天然橡胶及其制品</td>
+</tr>
+<tr>
+<td>丁</td>
+<td>难燃烧物品</td>
+<td>酚醛泡沫塑料及其制品,水泥刨花板</td>
+</tr>
+<tr>
+<td>戊</td>
+<td>不燃烧物品</td>
+<td>不燃气体,石膏及其无纸制品,膨胀珍珠岩</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="储存物品的火灾危险性特征"><a href="#储存物品的火灾危险性特征" class="headerlink" title="储存物品的火灾危险性特征"></a>储存物品的火灾危险性特征</h3>
       
 
       
@@ -511,7 +1724,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">消防</a>
         		</li>
       		
 		</ul>
@@ -521,7 +1734,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/16/dontWorry/随笔/just do it/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/06/17/dontWorry/xiaofang/建筑防火/生产和储存物品的火灾危险性分类/">展开全文 >></a>
         </p>
       
 
@@ -553,7 +1766,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
+      <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
     </nav>
   
 
@@ -565,7 +1778,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 buyaojingde
+    		&copy; 2020 buyaojingde
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten

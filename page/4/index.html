@@ -158,30 +158,41 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="ejs-dontWorry/Algorithm/牛顿法求平方根" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
+    <article id="ejs-dontWorry/杂项/ebp和esp的理解" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/18/dontWorry/Algorithm/牛顿法求平方根/">牛顿法求平方根</a>
+      <a class="article-title" href="/2019/07/14/dontWorry/杂项/ebp和esp的理解/">ebp和esp的理解</a>
     </h1>
   
 
         
-        <a href="/2019/06/18/dontWorry/Algorithm/牛顿法求平方根/" class="archive-article-date">
-  	<time datetime="2019-06-17T16:06:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-18</time>
+        <a href="/2019/07/14/dontWorry/杂项/ebp和esp的理解/" class="archive-article-date">
+  	<time datetime="2019-07-13T18:03:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-14</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="牛顿法求平方根"><a href="#牛顿法求平方根" class="headerlink" title="牛顿法求平方根"></a>牛顿法求平方根</h1><figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">impore</span> guess x)</span><br><span class="line">  (<span class="name">average</span> guess (<span class="name"><span class="builtin-name">/</span></span> x guess))</span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">improve</span> guess x)</span><br><span class="line">  (<span class="name"><span class="builtin-name">/</span></span> (<span class="name"><span class="builtin-name">+</span></span> (<span class="name"><span class="builtin-name">/</span></span> x (<span class="name">square</span> guess)) (<span class="name"><span class="builtin-name">*</span></span> <span class="number">2</span> guess)) <span class="number">3</span>))</span><br></pre></td></tr></table></figure>
+        <h1 id="ebp和esp的理解"><a href="#ebp和esp的理解" class="headerlink" title="ebp和esp的理解"></a>ebp和esp的理解</h1><p>函数的调用在cpu中是怎么执行的?<br>函数的CallStack是怎么实现的<br>其实并不复杂,如下面这个例子</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">private foo() &#123;</span><br><span class="line">    <span class="keyword">this</span>.foo1(param0, param1);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private foo1(param0, param1) &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>数学公式<br>$${x/y³+2y}\over{3}$$</li>
+<li><p>ebp是一个指针,esp是一个指针永远指向的是栈顶,ebp指向foo,当执行到this.foo1时</p>
+<ol>
+<li>push param1</li>
+<li>push param2</li>
+<li>push foo1</li>
+<li>push ebp</li>
+<li>mov ebp esp</li>
+</ol>
+</li>
+<li><p>第四步和第五步是关键,就是让ebp保存函数调用的信息,这样往会捋的时候就不迷路了</p>
+</li>
 </ul>
 
       
@@ -196,7 +207,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Algorithm</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂项</a>
         		</li>
       		
 		</ul>
@@ -206,7 +217,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/18/dontWorry/Algorithm/牛顿法求平方根/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/07/14/dontWorry/杂项/ebp和esp的理解/">展开全文 >></a>
         </p>
       
 
@@ -236,1276 +247,474 @@
 
 
   
-    <article id="ejs-dontWorry/xiaofang/建筑防火/生产和储存物品的火灾危险性分类" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
+    <article id="ejs-dontWorry/杂项/void指针" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/17/dontWorry/xiaofang/建筑防火/生产和储存物品的火灾危险性分类/">生产和储存物品的火灾危险性分类</a>
+      <a class="article-title" href="/2019/07/14/dontWorry/杂项/void指针/">void指针</a>
     </h1>
   
 
         
-        <a href="/2019/06/17/dontWorry/xiaofang/建筑防火/生产和储存物品的火灾危险性分类/" class="archive-article-date">
-  	<time datetime="2019-06-17T15:48:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-17</time>
+        <a href="/2019/07/14/dontWorry/杂项/void指针/" class="archive-article-date">
+  	<time datetime="2019-07-13T18:03:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-14</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="生产和储存物品的火灾危险性分类"><a href="#生产和储存物品的火灾危险性分类" class="headerlink" title="生产和储存物品的火灾危险性分类"></a>生产和储存物品的火灾危险性分类</h1><!-- TOC -->
+        <h1 id="void指针"><a href="#void指针" class="headerlink" title="void指针"></a>void指针</h1><ul>
+<li>void* 作为赋值语句的<strong>左值</strong>可以接受任意类型的指针</li>
+<li>void* 作为赋值语句的<strong>右值</strong>需要强制类型转换才能取到值</li>
+<li>void* 可以通过0和NULL初始化</li>
+<li>void* 作为函数的参数和返回值,可以接受任意类型的指针</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂项</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/14/dontWorry/杂项/void指针/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="ejs-dontWorry/杂项/第一段汇编程序" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/14/dontWorry/杂项/第一段汇编程序/">第一段汇编程序</a>
+    </h1>
+  
+
+        
+        <a href="/2019/07/14/dontWorry/杂项/第一段汇编程序/" class="archive-article-date">
+  	<time datetime="2019-07-13T18:03:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="第一段汇编程序"><a href="#第一段汇编程序" class="headerlink" title="第一段汇编程序"></a>第一段汇编程序</h1><ul>
+<li><a href="http://www.masm32.com/download.htm" target="_blank" rel="noopener">下载</a>masm32</li>
+<li>代码</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">; first asm program</span><br><span class="line">.386</span><br><span class="line">.model flat, stdcall</span><br><span class="line">option casemap:none</span><br><span class="line"></span><br><span class="line">include windows.inc</span><br><span class="line">include masm32.inc</span><br><span class="line">includelib masm32.lib</span><br><span class="line">include kernel32.inc</span><br><span class="line">includelib kernel32.lib</span><br><span class="line"></span><br><span class="line">.data</span><br><span class="line">msg1 BYTE &apos;Hello World&apos;,0</span><br><span class="line"></span><br><span class="line">.code</span><br><span class="line">start:</span><br><span class="line">    invoke StdOut, addr msg1</span><br><span class="line">    invoke ExitProcess, 0</span><br><span class="line">end start</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li><a href="#生产和储存物品的火灾危险性分类">生产和储存物品的火灾危险性分类</a><ul>
-<li><a href="#生产的火灾危险性分类">生产的火灾危险性分类</a><ul>
-<li><a href="#评定物质火灾危险性的主要指标">评定物质火灾危险性的主要指标</a><ul>
-<li><a href="#评定气体火灾危险性的主要指标">评定气体火灾危险性的主要指标</a></li>
-<li><a href="#评定液体火灾危险性的主要指标">评定液体火灾危险性的主要指标</a></li>
-<li><a href="#评定固体火灾危险性的主要指标">评定固体火灾危险性的主要指标</a></li>
+<li>配置环境变量</li>
+</ul>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">set</span> Masm32Dir=F:\masm32</span><br><span class="line"><span class="built_in">set</span> include=<span class="variable">%Masm32Dir%</span>\include;<span class="variable">%include%</span></span><br><span class="line"><span class="built_in">set</span> lib=<span class="variable">%Masm32Dir%</span>\lib;<span class="variable">%lib%</span></span><br><span class="line"><span class="built_in">set</span> <span class="built_in">path</span>=<span class="variable">%Masm32Dir%</span>\bin;<span class="variable">%Masm32Dir%</span>;<span class="variable">%PATH%</span></span><br><span class="line"><span class="built_in">set</span> Masm32Dir=</span><br><span class="line"><span class="built_in">echo</span> on</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>编译步骤</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ml /c /coff asmProgram.asm // 编译成功后会生成一个asmProgram.obj</span><br><span class="line">link /subsystem:console asmProgram.obj // console 表示控制台程序</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>基础理论知识ASM Structure</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Label</th>
+<th>Opcode</th>
+<th>Operand</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>num main</td>
+<td>.date DWORD .code PROC mov ret endp</td>
+<td>? num1, 5</td>
+<td>;表示注释</td>
+</tr>
+</tbody></table>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂项</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/14/dontWorry/杂项/第一段汇编程序/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="ejs-dontWorry/xiaofang/建筑消防设施/室内外消防给水系统" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/08/dontWorry/xiaofang/建筑消防设施/室内外消防给水系统/">室内外消防给水系统</a>
+    </h1>
+  
+
+        
+        <a href="/2019/07/08/dontWorry/xiaofang/建筑消防设施/室内外消防给水系统/" class="archive-article-date">
+  	<time datetime="2019-07-07T16:27:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="室内外消防给水系统"><a href="#室内外消防给水系统" class="headerlink" title="室内外消防给水系统"></a>室内外消防给水系统</h1><!-- TOC -->
+
+<ul>
+<li><a href="#室内外消防给水系统">室内外消防给水系统</a><ul>
+<li><a href="#建筑消防设施的作用及分类">建筑消防设施的作用及分类</a></li>
+<li><a href="#建筑消防设施的设置与管理">建筑消防设施的设置与管理</a></li>
+<li><a href="#消防给水设施">消防给水设施</a><ul>
+<li><a href="#消防水泵">消防水泵</a></li>
+<li><a href="#消防供水管道">消防供水管道</a></li>
+<li><a href="#消防水泵接合器">消防水泵接合器</a></li>
+<li><a href="#增稳设备">增(稳)设备</a></li>
+<li><a href="#消防水池和消防水箱">消防水池和消防水箱</a></li>
 </ul>
 </li>
-<li><a href="#生产火灾危险性分类方法">生产火灾危险性分类方法</a></li>
-</ul>
-</li>
-<li><a href="#储存物品的火灾危险性分类">储存物品的火灾危险性分类</a><ul>
-<li><a href="#储存物品的火灾危险性分类方法">储存物品的火灾危险性分类方法</a></li>
-<li><a href="#储存物品的火灾危险性特征">储存物品的火灾危险性特征</a></li>
-</ul>
-</li>
+<li><a href="#室外消火栓系统">室外消火栓系统</a></li>
+<li><a href="#室内消防栓系统">室内消防栓系统</a></li>
 </ul>
 </li>
 </ul>
 <!-- /TOC -->
-<h2 id="生产的火灾危险性分类"><a href="#生产的火灾危险性分类" class="headerlink" title="生产的火灾危险性分类"></a>生产的火灾危险性分类</h2><p>生产火灾危险性是指生产过程中发生火灾、爆炸事故的原因、因素和条件以及火灾扩大蔓延条件的总和.</p>
-<p>厂房的火灾危险性类别是以生产过程中使用和产出物质的火灾危险性类别确定的,物质火灾危险性是确定生产的火灾危险性类别的基础.</p>
-<h3 id="评定物质火灾危险性的主要指标"><a href="#评定物质火灾危险性的主要指标" class="headerlink" title="评定物质火灾危险性的主要指标"></a>评定物质火灾危险性的主要指标</h3><p>主要依据:理化性质</p>
-<h4 id="评定气体火灾危险性的主要指标"><a href="#评定气体火灾危险性的主要指标" class="headerlink" title="评定气体火灾危险性的主要指标"></a>评定气体火灾危险性的主要指标</h4><ol>
-<li>爆炸浓度极限范围,爆炸下限,容易与空气或其他助燃气体形成爆炸性气体混合物</li>
-<li>自然点越低,火灾爆炸的危险性越大   </li>
-</ol>
-<ul>
-<li>气体的比重和扩散性   </li>
-<li>化学性质活泼  </li>
-<li>带电性以及热膨胀性</li>
-</ul>
+<p>安全疏散是确保火灾中人员的生命安全具有重要作用</p>
+<h2 id="建筑消防设施的作用及分类"><a href="#建筑消防设施的作用及分类" class="headerlink" title="建筑消防设施的作用及分类"></a>建筑消防设施的作用及分类</h2><ul>
+<li><p>建筑消防设施的作用时及时发现和扑救火灾,限制火灾蔓延的范围,为扑灭火灾创造有利条件</p>
+</li>
+<li><p>建筑消防设施的分类</p>
 <ol>
-<li><p>气体化学活泼性越强,发生火灾爆炸的危险性越大</p>
-</li>
-<li><p>气体在空气中的扩散速度越快,火灾蔓延扩展的危险性越大</p>
-</li>
-<li><p>相对密度大的气体易聚集不散,遇明火容易造成火灾爆炸事故</p>
-</li>
-<li><p>易压缩液化的气体遇热后体积膨胀,容易发生火灾爆炸事故</p>
-<h4 id="评定液体火灾危险性的主要指标"><a href="#评定液体火灾危险性的主要指标" class="headerlink" title="评定液体火灾危险性的主要指标"></a>评定液体火灾危险性的主要指标</h4><p>闪点是评定液体火灾危险性的主要指标<br>对于可燃液体,通常还用自燃点作为评定火灾危险性的标志  </p>
-<p><strong>液体火灾危险性的标志</strong></p>
-</li>
+<li>建筑防火分隔设施</li>
+<li>安全疏散设施</li>
+<li>消防给水设施</li>
+<li>防烟与排烟设施</li>
+<li>消防供配电设施</li>
+<li>火灾自动报警系统</li>
+<li>自动喷水灭火系统</li>
+<li>水喷雾灭火系统</li>
+<li>细水雾灭火系统</li>
+<li>泡沫灭火系统</li>
+<li>气体灭火系统</li>
+<li>干粉灭火系统</li>
+<li>可燃气体报警系统</li>
+<li>消防通信设施</li>
+<li>移动式灭火器材</li>
 </ol>
-<ul>
-<li>爆炸温度极限</li>
-<li>受热蒸发性</li>
-<li>流动扩散性</li>
-<li>带电性</li>
-</ul>
-<h4 id="评定固体火灾危险性的主要指标"><a href="#评定固体火灾危险性的主要指标" class="headerlink" title="评定固体火灾危险性的主要指标"></a>评定固体火灾危险性的主要指标</h4><p>熔点和燃点是评定其火灾危险性的主要标志参数 </p>
-<blockquote>
-<p>许多低熔点的易燃固体还有闪燃现象  </p>
-</blockquote>
-<ul>
-<li>粉状可燃固体是以爆炸浓度下限作为标志</li>
-<li>遇水燃烧固体是以与水反应速度快慢和放热量的大小为标志</li>
-<li>自燃性固体物料师以其自燃点为标志</li>
-<li>受热分解可燃固体师以其分解温度作为评定标志</li>
-</ul>
-<h3 id="生产火灾危险性分类方法"><a href="#生产火灾危险性分类方法" class="headerlink" title="生产火灾危险性分类方法"></a>生产火灾危险性分类方法</h3><table>
-<thead>
-<tr>
-<th>类别</th>
-<th>特征</th>
-<th>举例</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>甲</td>
-<td>1.闪点小于28℃ 的液体</td>
-<td>橡胶制品涂胶和胶浆部分,苯酚厂房的磺化,蒸馏部位,甲醇,乙醇,集成电路工程的化学清洗间,植物油加工厂的浸出厂房</td>
-</tr>
-<tr>
-<td>甲</td>
-<td>2.爆炸下限小于10%的气体</td>
-<td>乙炔站,氢气站,氯乙烯厂房,乙烯聚合厂房,天然气、石油伴生气、矿井气、水煤气或焦炉煤气的净化(如脱硫)厂房压缩机室机鼓风机室,液化石油气罐瓶间,电解水或电解食盐厂房</td>
-</tr>
-<tr>
-<td>甲</td>
-<td>3.常温下自行分解或在空气中氧化即能导致迅速自燃或爆炸的物质</td>
-<td>硝化棉厂房极其应用部位,赛璐珞厂房</td>
-</tr>
-<tr>
-<td>甲</td>
-<td>4.常温下受到水或空气中水蒸气的作用,能产生可燃气体并引起燃烧或爆炸的物质</td>
-<td>金属钠,钾加工厂房极其应用部位,五氧化二磷厂房</td>
-</tr>
-<tr>
-<td>甲</td>
-<td>5.遇酸,受热,撞击,摩擦,催化以及遇有机物或硫磺等易燃无机物,极易引起燃烧或爆炸的强氧化剂</td>
-<td>氯酸钠,氯酸钾厂房及其应用部位,过氧化氢厂房,过氧化钠,过氧化钾厂房,次氯酸钙厂房</td>
-</tr>
-<tr>
-<td>甲</td>
-<td>6.受撞击,摩擦或与氧化剂,有机物接触时能引起燃烧或爆炸的物质</td>
-<td>五硫化二磷厂房及其引用部位</td>
-</tr>
-<tr>
-<td>甲</td>
-<td>7.在密闭设备内操作温度不小于物质本身自然点的生产</td>
-<td>洗涤剂厂房石蜡裂解部位</td>
-</tr>
-</tbody></table>
-<hr>
-<table>
-<thead>
-<tr>
-<th>类别</th>
-<th>特征</th>
-<th>举例</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>乙</td>
-<td>1. 闪点不小于28℃,但小于60℃的液体</td>
-<td>松节油或松香蒸馏厂房及其应用部位,甲酚厂房,樟脑提取部位,松针油精制部位,煤油灌桶间</td>
-</tr>
-<tr>
-<td>乙</td>
-<td>2. 爆炸下限不小于10% 的气体</td>
-<td>一氧化碳压缩机室及净化部位,发生炉煤气或鼓风炉煤气净化部位,氨压缩机房</td>
-</tr>
-<tr>
-<td>乙</td>
-<td>3.不属于甲类的氧化剂</td>
-<td>高锰酸钾厂房</td>
-</tr>
-<tr>
-<td>乙</td>
-<td>4. 不属于甲类的易燃固体</td>
-<td>樟脑或松香提炼厂房,硫磺回收厂房</td>
-</tr>
-<tr>
-<td>乙</td>
-<td>5. 助燃气体</td>
-<td>氧气站,空分厂房</td>
-</tr>
-<tr>
-<td>乙</td>
-<td>6. 能与空气形成爆炸性混合物的浮游状态的粉尘,闪点大于或等于60℃的液体雾滴</td>
-<td>铝粉或镁粉厂房,金属制品抛光部位,煤粉厂房,面粉厂的碾磨部位,活性炭制造及再生厂房</td>
-</tr>
-</tbody></table>
-<hr>
-<table>
-<thead>
-<tr>
-<th>类别</th>
-<th>特征</th>
-<th>举例</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>丙</td>
-<td>1. 闪点不小于60℃的液体</td>
-<td>香料厂的松油醇部位,焦化厂焦油厂房,甘油,桐油的制备厂房,油浸变压器室,机器油或变压油罐桶间,配电室(每台装油量大于60kg的设备),沥青加工厂房,植物油加工厂的精炼部位</td>
-</tr>
-<tr>
-<td>丙</td>
-<td>2. 可燃固体</td>
-<td>橡胶制品的压延,成型和硫化厂房,印染厂成品厂房,谷物加工房,集成电路工厂的氧化扩散间,光刻间,饲料加工厂房</td>
-</tr>
-</tbody></table>
-<hr>
-<table>
-<thead>
-<tr>
-<th>类别</th>
-<th>特征</th>
-<th>举例</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>丁</td>
-<td>1.对不燃烧物质进行加工,并在高温或熔化状态下经常产生强辐射热,火花或火焰的生产</td>
-<td>金属冶炼,热处理工厂</td>
-</tr>
-<tr>
-<td>丁</td>
-<td>2. 利用气体,液体,固体作为燃烧或将气体,液体进行燃烧作其他用的各种生产</td>
-<td>锅炉房,陶瓷制品的烘干,烧成厂房,石灰焙烧厂房,耐火材料烧成部位,硫酸车间焙烧部位</td>
-</tr>
-<tr>
-<td>丁</td>
-<td>3. 常温下使用或加工难燃烧物质的生产</td>
-<td>酚醛泡沫塑料的加工厂房,印染厂的漂炼部位</td>
-</tr>
-</tbody></table>
-<hr>
-<table>
-<thead>
-<tr>
-<th>类别</th>
-<th>特征</th>
-<th>举例</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>戊</td>
-<td>常温下使用或加工部燃烧物质的生产</td>
-<td>制砖车间,石棉加工车间,除镁合金外的金属冷加工车间,仪表,器械或车辆装配车间,水泥厂的轮窑厂房</td>
-</tr>
-</tbody></table>
-<hr>
-<h2 id="储存物品的火灾危险性分类"><a href="#储存物品的火灾危险性分类" class="headerlink" title="储存物品的火灾危险性分类"></a>储存物品的火灾危险性分类</h2><h3 id="储存物品的火灾危险性分类方法"><a href="#储存物品的火灾危险性分类方法" class="headerlink" title="储存物品的火灾危险性分类方法"></a>储存物品的火灾危险性分类方法</h3><p>储存物品的火灾危险性分类</p>
-<table>
-<thead>
-<tr>
-<th>储存物品的火灾危险性类别</th>
-<th>储存物品的火灾危险性特征</th>
-<th>举例</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>甲</td>
-<td>1.闪点小于28℃ 的液体</td>
-<td>己烷、戊烷，石脑油，环戊烷，二硫化碳，苯，甲苯，甲醇，乙醇，乙醚，蚁酸甲酯，醋酸甲酯，硝酸乙酯，汽油，丙酮，丙烯，酒精度为 38°以上的白酒</td>
-</tr>
-<tr>
-<td>甲</td>
-<td>2、爆炸下限＜10%的气体，受到水或空气中水蒸气的作用能产生炸下限＜10%气体的固体物质</td>
-<td>乙炔，氢，甲烷，乙烯，丙烯，丁二烯，环氧乙烷，水煤气，硫化氢，氯乙烯，液化石油气，电石，碳化铝</td>
-</tr>
-<tr>
-<td>甲</td>
-<td>常温下能自行分解或在空气中氧化能导致迅速自燃或爆炸的物质</td>
-<td>硝化棉,硝化纤维胶片,喷漆棉,火胶棉,赛璐珞棉</td>
-</tr>
-<tr>
-<td>甲</td>
-<td>4.常温下受到水或空气中水蒸气的作用能产生可燃气体并引起燃烧或爆炸的物质</td>
-<td>金属钠,钾</td>
-</tr>
-<tr>
-<td>甲</td>
-<td>5.遇酸、受热、撞击、摩擦以及遇有机物或硫磺等易燃的无机物，极易引起燃烧或爆炸的强氧化剂</td>
-<td>氯酸钠,氯酸钾,过氧化氢,过氧化钠,过氧化钾,硝酸铵</td>
-</tr>
-<tr>
-<td>甲</td>
-<td>6.受撞击、摩擦或与氧化剂、有机物接触时能引起燃烧或爆炸的物质</td>
-<td>赤磷,五硫化二磷</td>
-</tr>
-</tbody></table>
-<hr>
-<table>
-<thead>
-<tr>
-<th>储存物品的火灾危险性类别</th>
-<th>储存物品的火灾危险性特征</th>
-<th>举例</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>乙</td>
-<td>1.闪点≧28°C至＜60°C的液体</td>
-<td>煤油,松节油,樟脑油</td>
-</tr>
-<tr>
-<td>乙</td>
-<td>2、爆炸下限≧10%的气体</td>
-<td>氨气,一氧化碳</td>
-</tr>
-<tr>
-<td>乙</td>
-<td>3. 不属于甲类的氧化剂</td>
-<td>硝酸,漂白粉</td>
-</tr>
-<tr>
-<td>乙</td>
-<td>4.不属于甲类的易燃固体</td>
-<td>镁粉,铝粉,赛璐珞板(片),樟脑,硝化纤维漆布,硝化纤维色片</td>
-</tr>
-<tr>
-<td>乙</td>
-<td>5.助燃气体</td>
-<td>氧气,液氯</td>
-</tr>
-<tr>
-<td>乙</td>
-<td>6.常温下与空气接触能缓慢氧化，积热不散引起自燃的物品</td>
-<td>漆布及其制品,油布及其制品,油纸及其制品,油绸及其制品</td>
-</tr>
-</tbody></table>
-<hr>
-<table>
-<thead>
-<tr>
-<th>储存物品的火灾危险性类别</th>
-<th>储存物品的火灾危险性特征</th>
-<th>举例</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>丙</td>
-<td>1.闪点≧60°C的液体</td>
-<td>动物油,植物油,沥青,润滑油,机油</td>
-</tr>
-<tr>
-<td>丙</td>
-<td>2、可燃固体</td>
-<td>粒径大于等于2mm的工业成型硫磺,天然橡胶及其制品</td>
-</tr>
-<tr>
-<td>丁</td>
-<td>难燃烧物品</td>
-<td>酚醛泡沫塑料及其制品,水泥刨花板</td>
-</tr>
-<tr>
-<td>戊</td>
-<td>不燃烧物品</td>
-<td>不燃气体,石膏及其无纸制品,膨胀珍珠岩</td>
-</tr>
-</tbody></table>
-<hr>
-<h3 id="储存物品的火灾危险性特征"><a href="#储存物品的火灾危险性特征" class="headerlink" title="储存物品的火灾危险性特征"></a>储存物品的火灾危险性特征</h3>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">消防</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/17/dontWorry/xiaofang/建筑防火/生产和储存物品的火灾危险性分类/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="ejs-dontWorry/xiaofang/建筑防火/建筑防火" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/17/dontWorry/xiaofang/建筑防火/建筑防火/">建筑防火</a>
-    </h1>
-  
-
-        
-        <a href="/2019/06/17/dontWorry/xiaofang/建筑防火/建筑防火/" class="archive-article-date">
-  	<time datetime="2019-06-16T16:35:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="建筑防火"><a href="#建筑防火" class="headerlink" title="建筑防火"></a>建筑防火</h1><!-- TOC -->
-
-<ul>
-<li><a href="#建筑防火">建筑防火</a><ul>
-<li><a href="#建筑火灾原因">建筑火灾原因</a></li>
-<li><a href="#建筑火灾危害">建筑火灾危害</a></li>
-<li><a href="#建筑防火的原理和技术方法">建筑防火的原理和技术方法</a><ul>
-<li><a href="#总体平面布置">总体平面布置</a></li>
-<li><a href="#建筑结构防火">建筑结构防火</a></li>
-<li><a href="#建筑材料防火">建筑材料防火</a></li>
-<li><a href="#防火分区分隔">防火分区分隔</a></li>
-<li><a href="#安全疏散">安全疏散</a></li>
-<li><a href="#防排烟">防排烟</a></li>
-<li><a href="#建筑防爆和电气防火">建筑防爆和电气防火</a></li>
-</ul>
 </li>
 </ul>
-</li>
-</ul>
-<!-- /TOC -->
-<h2 id="建筑火灾原因"><a href="#建筑火灾原因" class="headerlink" title="建筑火灾原因"></a>建筑火灾原因</h2><blockquote>
-<p>电气火灾,生产作业类火灾,生活用火不慎,吸烟,玩火,放火和自燃,雷击静电等其他原因.</p>
-</blockquote>
-<h2 id="建筑火灾危害"><a href="#建筑火灾危害" class="headerlink" title="建筑火灾危害"></a>建筑火灾危害</h2><blockquote>
-<p>危害人员生命,造成经济损失,破坏文明成果,影响社会稳定</p>
-</blockquote>
-<h2 id="建筑防火的原理和技术方法"><a href="#建筑防火的原理和技术方法" class="headerlink" title="建筑防火的原理和技术方法"></a>建筑防火的原理和技术方法</h2><h3 id="总体平面布置"><a href="#总体平面布置" class="headerlink" title="总体平面布置"></a>总体平面布置</h3><ul>
-<li>综合考虑,合理选择建筑物位置</li>
-<li>尽量将火灾危险性相同或相近的建筑集中布置,便于安全管理</li>
-<li>合理防火安全距离</li>
-<li>考虑扑救火灾时所必需的消防车通道,消防水源和消防扑救面<h3 id="建筑结构防火"><a href="#建筑结构防火" class="headerlink" title="建筑结构防火"></a>建筑结构防火</h3><blockquote>
-<p>建筑物的耐火等级是研究建筑防火措施,规定不同用途建筑物需采取相应防火措施的基本依据.</p>
-</blockquote>
-</li>
-</ul>
-<blockquote>
-<p>正确选择和确定建筑的耐火等级是防止建筑火灾发生和阻止火势蔓延扩大的一项治本措施.</p>
-</blockquote>
-<blockquote>
-<p>对耐火等级和燃烧性能达不到规范要求时,常用方法:</p>
-</blockquote>
-<pre><code>1. 增加构件的截面积
-2. 对钢筋混凝土构件增加保护层厚度
-3. 在构件表面涂覆防火涂料做耐火保护层
-4. 对钢梁,钢屋架及木结构做耐火吊顶和防火保护层包敷等. </code></pre><h3 id="建筑材料防火"><a href="#建筑材料防火" class="headerlink" title="建筑材料防火"></a>建筑材料防火</h3><p>建筑材料防火遵循的原则主要时:</p>
-<ul>
-<li>控制建筑材料中可燃物数量,受条件限制或装修特殊要求必须使用可燃材料的,应当对材料进行阻燃处理.</li>
-<li>与电气线路或发热物体接触的材料采用不燃材料或进行阻燃处理</li>
-<li>楼梯间,管道井等竖向通道和供人员疏散的走道应采用不燃材料</li>
-</ul>
-<h3 id="防火分区分隔"><a href="#防火分区分隔" class="headerlink" title="防火分区分隔"></a>防火分区分隔</h3><p>防火分区的划分应根据建筑的使用性质,火灾危险性以及建筑的耐火等级,建筑内容纳人员和可燃物的数量,消防扑救能力和消防设施配置,人员疏散难易程度及建筑投资等情况综合考虑. </p>
-<h3 id="安全疏散"><a href="#安全疏散" class="headerlink" title="安全疏散"></a>安全疏散</h3><p>安全疏散的目标就是要保证建筑内人员疏散完毕的时间必须小于火灾发展到危险状态的时间.</p>
-<blockquote>
-<p>基本要求:</p>
-</blockquote>
-<pre><code>1. 每个防火分区必须设至少两个安全出口
-2. 疏散路线必须满足室内最远点到房门,房门到最近安全出口或楼梯间的行走距离极限值.
-3. 疏散方向应尽量为双向疏散,疏散出口应分散布置,减少袋型走道的设置
-4. 楼梯间因为安全的区域,不受烟火侵袭,楼梯间人口应设置可自行关闭的防火门保护
-5. 通向地下室的楼梯间不得与地上楼梯相连,如必须相连应采用防火墙分隔,通过防火门出入
-6. 疏散宽度应保证不出现拥堵,采取有效措施,在清晰空间高度内为人员疏散提供引导</code></pre><h3 id="防排烟"><a href="#防排烟" class="headerlink" title="防排烟"></a>防排烟</h3><p>防烟系统:是指采用机械加压送风方式或自然通风方式,防止烟气进入疏散通道<br>排烟系统:采用机械排烟或自然通风方式,将烟气排至建筑外</p>
-<h3 id="建筑防爆和电气防火"><a href="#建筑防爆和电气防火" class="headerlink" title="建筑防爆和电气防火"></a>建筑防爆和电气防火</h3><blockquote>
-<p>在建筑防火设计时,根据爆炸规律与爆炸效应,对有爆炸可能的建筑,提出相应的防止爆炸危险区域,合理设计防爆结构和泄爆面积,准确选用防爆设备</p>
-</blockquote>
-<blockquote>
-<p>建筑的用电负荷,供配电源,电气设备,电气线路极其安装敷设等应采用安全可靠,经济合理的防火技术措施.</p>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">消防</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/17/dontWorry/xiaofang/建筑防火/建筑防火/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-dontWorry/README" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="dontworry"><a href="#dontworry" class="headerlink" title="dontworry"></a>dontworry</h1>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/16/dontWorry/README/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="ejs-dontWorry/随笔/职场众生" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/16/dontWorry/随笔/职场众生/">禀赋</a>
-    </h1>
-  
-
-        
-        <a href="/2019/06/16/dontWorry/随笔/职场众生/" class="archive-article-date">
-  	<time datetime="2019-06-16T12:56:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="禀赋"><a href="#禀赋" class="headerlink" title="禀赋"></a>禀赋</h1><p>&emsp; &emsp; 小胡，在深圳一家互联网公司工作，是研发部一个部门的leader。计算机专业毕业，硕士学历。长相普通，个子不高，今年应该三十多岁，不超过35，看起来有点偏老。有两个孩子，老婆工资不高，生活压力比较大，虽然在武汉和惠州都买了房，可是还是住在深圳的城中村里面。他在这个公司已经工作了5年，而且以前是在腾讯工作过的，学历也比较好，所以现在主要是做管理，代码已经很少写了。本来目前他所管理的这个项目本来是CEO亲自拍板的，公司前期投入的资源也很充足，可是目前已经是一个半死不活的状态了。虽然每天也有新的需求在开发，大家也显得忙忙碌碌。可是在市场上反应很冷淡。一个月前，一个技术不错，工作能力也得到大家认可的年轻小伙子辞职了，去了阿里。另一个技术也很突出的小伙子也辞职了，大概是觉得没什么希望，所以趁早另谋高就去了吧。下面的程序员个个人心浮动，各有各的小算盘。一个好好的项目是怎么变成如此境地？</p>
-<p>&emsp;&emsp; 由于这个项目的特殊性，程序员和产品经理都是新招入公司的。小胡本应该成为这个项目的主导者，不管最后结果如何都会是一次对个人成长难得的机遇。可是小胡在几次会议的交锋和团队事务处理后，慢慢的沦为看客，很难去主导任何事情。当团队交付质量受到诟病的时候，他却说希望大家能做好自己的份内的事情，他也想安安静静的写代码，有时候周末加班居然在定位bug。如果只靠代码能解决所有事情，这个世界就太简单了。真正的领袖是把团队扛在肩上的人，是把所有责任揽在自己身上，所有委屈都自己消化的人。大家都知道一个部队的战斗力的强弱，除了优良的装备，高超的军事素养，最重要的就是战斗意志。一群懦夫就算人数再多，也只不过是一群乌合之众。而战斗意志最核心的来源就是领导的战斗意志。兵熊熊一个，将熊熊一窝就是这个道理。小胡也许并没有意识到自己应该去承担更多的责任。</p>
-<p>&emsp;&emsp; 每个人都有自己的禀赋，一个人永远不会明白自己没有见过的东西。就如同三维空间的人类永远也想象不出四维空间。人的天赋各有不同，除了少数在某方面特别突出的被称为天才的人。在大家印象中好像普通人都差不多，区别不大。其实普通人之间的区别也非常大，只是没有特别的活动来强化表现的出来而已。比如，回到古代你和乔丹都是农民，你们都以种地为生，你觉得，他除了跳的高点，跑的快点，你和他并没有什么区别。其实你们差距非常大，只是没有篮球这项运动来显示这种差距而已。小胡也许永远也不会明白他为什么管理不好一个团队？这就是禀赋。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/16/dontWorry/随笔/职场众生/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="ejs-dontWorry/随笔/钝感" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/16/dontWorry/随笔/钝感/">钝感</a>
-    </h1>
-  
-
-        
-        <a href="/2019/06/16/dontWorry/随笔/钝感/" class="archive-article-date">
-  	<time datetime="2019-06-16T12:56:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="钝感"><a href="#钝感" class="headerlink" title="钝感"></a><strong>钝感</strong></h1><p>&emsp; &emsp; “钝感力”一词出自在日本作家渡边淳一，是指面对生活中的挫折，别人的评价，或者负面的情绪的恢复能力，迟钝的能力。这个概念由日本人提出来，似乎也是理所当然，因为日本的国民性格就是敏感，压抑，害怕麻烦别人。这种个性更在乎周围的评价或者负面的情绪，会让人活的更辛苦。所以钝感力对于此种性格的人，更重要。</p>
-<p>&emsp; &emsp; 钝感本身是一个心理名称，与敏感相对，既没有褒义也没有贬义。我一直认为人的生理和心理是统一的。钝感是作为人的一种心理状态，也不过是人适应环境而产生的正常心理状态而已。生活中的挫折，事业上的失败，他人的辱骂，嘲笑这些都会折磨人的心灵。幸好人有防御机制，面对这些负面的东西，能产生抵抗能力，这种能力就是钝感力。钝感力就是脚底板厚厚的老茧，在一次次摩擦中变厚变硬，来保护自己。当然心理如同生理一样，都有自己的承受范围。练习硬气功的人，永远挡不了子弹，心理强大的人也不能毫无节制的消耗。但是现实中，只有经历的挫折和磨难才能成长，不能杀死我的终将使我更强大。</p>
-<p>&emsp; &emsp; 钝感力在人际交往中能让人坦然的面对生活中的不快，心胸更开阔，这是优点。但是钝感力也有不好的地方。在个人修养或者能力的修炼上没什么好处而且非常有害。比如会让人不再严格要求自己，得过且过。对于自己的缺点不足，产生了钝感，不再不舒服，已经习以为常，那么这个缺点永远都不会修正。那些在某个领域攀上顶峰的人，对自己技艺无一不是吹毛求疵，永远保持敏感的人。写代码的人都有这样的经验，看别人的代码总是觉得很差（当然不包括水平高出太多的人），或者隔一段时间看自己的代码，也觉得不好，这就是钝感力的表现。能<strong>敏感</strong>的感受到不好，不舒服是非常可贵的，如果不仔细的揣摩和记录下来，很快就会被钝感所取代，再也难感受的到了。那将失去一个提升的机会。同样产品也是如此，比如天天都使用的手机，让你说说它的缺点，你也许一下很难答上来。如果让你用回以前的塞班诺基亚呢，应该可以吐槽一百条不止吧。保持对产品的敏感，不要钝感，就能把握用户的痛点，说不定就能革新出下一代产品出来。所以伟大的产品的诞生是需要永远保持敏感，永远吹毛求疵，不放过任何细节。比如日本制造的产品在细节和质量的打磨程度上一直被世界所认可。这也是他们敏感的性格表现在产品中，不断的精益求精所取得。</p>
-<p>&emsp; &emsp;在滚滚红尘中去历练，不要害怕失败。练就强大的钝感力，对目标以外的东西视而不见。关注自己的内心，对自己永远保持敏感，永远吹毛求疵。</p>
-<p>&emsp; &emsp;说这么多，不就是外圆内方嘛，哈哈！</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/16/dontWorry/随笔/钝感/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="ejs-dontWorry/xiaofang/基础/爆炸" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/16/dontWorry/xiaofang/基础/爆炸/">爆炸</a>
-    </h1>
-  
-
-        
-        <a href="/2019/06/16/dontWorry/xiaofang/基础/爆炸/" class="archive-article-date">
-  	<time datetime="2019-06-16T12:56:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="爆炸"><a href="#爆炸" class="headerlink" title="爆炸"></a><strong>爆炸</strong></h1><!-- TOC -->
-
-<ul>
-<li><a href="#爆炸"><strong>爆炸</strong></a><ul>
-<li><a href="#定义-分类-危害">定义 分类 危害</a><ul>
-<li><a href="#按物质产生爆炸的原因和性质分类">按物质产生爆炸的原因和性质分类</a><ul>
-<li><a href="#物理">物理</a></li>
-<li><a href="#化学-能直接造成火灾粉尘和空气的混合危害性很大">化学 <em>能直接造成火灾,粉尘和空气的混合危害性很大.</em></a></li>
-<li><a href="#核爆炸">核爆炸</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#爆炸极限">爆炸极限</a></li>
-<li><a href="#爆炸危险源">爆炸危险源</a></li>
-</ul>
-</li>
-</ul>
-<!-- /TOC -->
-<h2 id="定义-分类-危害"><a href="#定义-分类-危害" class="headerlink" title="定义 分类 危害"></a>定义 分类 危害</h2><ul>
-<li><p>定义</p>
-<blockquote>
-<p>从一种状态迅速转变成另一种状态,瞬间放出大量能量产生高温,放出大量气体,产生声响</p>
-</blockquote>
-</li>
-</ul>
-<h3 id="按物质产生爆炸的原因和性质分类"><a href="#按物质产生爆炸的原因和性质分类" class="headerlink" title="按物质产生爆炸的原因和性质分类"></a>按物质产生爆炸的原因和性质分类</h3><h4 id="物理"><a href="#物理" class="headerlink" title="物理"></a>物理</h4><blockquote>
-<p>前后化学成分不改变,本身没有进行燃烧,但冲击力可造成火灾.</p>
-</blockquote>
-<h4 id="化学-能直接造成火灾-粉尘和空气的混合危害性很大"><a href="#化学-能直接造成火灾-粉尘和空气的混合危害性很大" class="headerlink" title="化学 能直接造成火灾,粉尘和空气的混合危害性很大."></a>化学 <em>能直接造成火灾,粉尘和空气的混合危害性很大.</em></h4><ul>
-<li><p>炸药爆炸</p>
-<blockquote>
-<p>特点: 凝聚体系爆炸,化学反应速度极快.<br>破坏:</p>
-</blockquote>
-   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. 爆炸产物直接作用,高温高压高能量的产物直接膨胀冲击作用,只在近距离有效.</span><br><span class="line">2. 冲击波,一种巨大能量的超音速压力波,是爆炸的主要破坏物质.</span><br><span class="line">3. 外壳破片.</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>可燃气体爆炸</p>
-<blockquote>
-<p>定义: 物质以气体,蒸汽状态所发生的爆炸,按爆炸原理分为1. 混合气体爆炸2. 气体单分解爆炸. </p>
-</blockquote>
-</li>
-<li><p>受能量密度的制约,爆炸威力较小*</p>
-</li>
-<li><p>可燃粉尘爆炸</p>
-<blockquote>
-<p>必备的三个条件</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">    1. 粉尘具有爆炸性.</span><br><span class="line">    2. 粉尘悬浮空气中与空气混合到爆炸浓度</span><br><span class="line">    3. 引起粉尘爆炸的火源</span><br><span class="line"></span><br><span class="line">``` </span><br><span class="line">  &gt; 3个发展阶段</span><br></pre></td></tr></table></figure>
-
-<pre><code>1. 在热源下迅速干馏或汽化产生可燃气体
-2. 可燃气体与空气混合燃烧
-3. 粉尘燃烧放出热量,循环燃烧,反应速度加快,通过剧烈的燃烧,形成爆炸</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; 粉尘燃烧的特点</span><br></pre></td></tr></table></figure>
-
+<h2 id="建筑消防设施的设置与管理"><a href="#建筑消防设施的设置与管理" class="headerlink" title="建筑消防设施的设置与管理"></a>建筑消防设施的设置与管理</h2><ul>
+<li><p>消防设施的设置要求</p>
 <ol>
-<li>连续性爆炸</li>
-<li>所需的最小点火能量较高</li>
-<li>压力持续时间长,释放能量大,破坏力强</li>
+<li>按照消防法律,法规和消化技术标准</li>
+<li>消防设施的安装单位具有相应的资质</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&gt; 制约:</span><br></pre></td></tr></table></figure>
-
-<pre><code>1. 受颗粒的尺寸,颗粒越小,爆炸危险性越大.
-2. 粉尘爆炸上限值很大
-3. 空气的含水量越高,较小引爆能量越高
-4. 含氧量越高,爆炸浓度的极限范围越大
-5. 可燃气体含量,增加危险性</code></pre><p>```</p>
-<h4 id="核爆炸"><a href="#核爆炸" class="headerlink" title="核爆炸"></a>核爆炸</h4><h2 id="爆炸极限"><a href="#爆炸极限" class="headerlink" title="爆炸极限"></a>爆炸极限</h2><ul>
-<li><p>气体和液体蒸汽的爆炸极限 <em>气体分数表示</em></p>
-<blockquote>
-<p>影响因子</p>
+</li>
+<li><p>建筑消防设施管理职责</p>
 <ol>
-<li>火源能量越大,范围越大</li>
-<li>初始压力越大,范围越大,CO相反</li>
-<li>初温越高,范围越大</li>
-<li>惰性气体是上限降低,范围变小,超过一定量后,任何比例均不发生爆炸.</li>
+<li>各级政府及相关部门职责</li>
+<li>单位自主管理职责</li>
+<li>消防监督管理职责</li>
 </ol>
-</blockquote>
 </li>
-<li><p>可燃粉尘的爆炸极限 <em>单位体积的质量表示,爆炸浓度上限太大,多数场合达不到,只应用下限</em></p>
-</li>
-<li><p>爆炸混合物浓度与危险性关系</p>
-<blockquote>
-<p>在爆炸下限 压力一般不超过 4×10⁵Pa,混合物浓度稍高于化学计量浓度时,释放热量最多,压力最大,然后呈下降趋势.</p>
-</blockquote>
-</li>
-<li><p>爆炸极限在消防上的应用</p>
+</ul>
+<h2 id="消防给水设施"><a href="#消防给水设施" class="headerlink" title="消防给水设施"></a>消防给水设施</h2><ul>
+<li>消防给水设施包括消防水源(消防水池),消防水泵,消防供水通道,增(稳)压设备(消防气压罐),消防水泵接合器和消防水箱等.</li>
+</ul>
+<h3 id="消防水泵"><a href="#消防水泵" class="headerlink" title="消防水泵"></a>消防水泵</h3><ul>
+<li><p>可不设备用泵</p>
 <ol>
-<li>爆炸极限是评定可燃气体危险性大小的依据,爆炸范围越大,下限越低,危险性越大</li>
-<li>爆炸极限是评定气体生产,储存场所火险类别的依据,选择电气防爆类型的依据</li>
-<li>确定建筑物耐火等级,层数,面积,防火墙占地面积,安全疏散距离和灭火设施</li>
-<li>确定安全操作规范</li>
+<li>工厂仓库,堆场和储罐的室外消防用水量小于或等于25L/s</li>
+<li>建筑的室内消防用水量小于或等于10L/s</li>
 </ol>
 </li>
 </ul>
-<hr>
-<h2 id="爆炸危险源"><a href="#爆炸危险源" class="headerlink" title="爆炸危险源"></a>爆炸危险源</h2><blockquote>
-<p>爆炸基本要素,1. 爆炸介质. 2. 引爆能源</p>
-</blockquote>
-<h3 id="爆炸的直接原因"><a href="#爆炸的直接原因" class="headerlink" title="爆炸的直接原因"></a>爆炸的直接原因</h3><ol>
-<li><p>物料 </p>
-</li>
-<li><p>作业行为</p>
-</li>
-<li><p>生产设备</p>
-</li>
-<li><p>生产工艺</p>
-<h3 id="常见爆炸引火源"><a href="#常见爆炸引火源" class="headerlink" title="常见爆炸引火源"></a>常见爆炸引火源</h3><ol>
-<li>机械火源</li>
-<li>热火源 (高温表面,日光照射)</li>
-<li>电火源 (电火花,静电火花,雷电)</li>
-<li>化学火源<h3 id="最小点火能量"><a href="#最小点火能量" class="headerlink" title="最小点火能量"></a>最小点火能量</h3><blockquote>
-<p>采用焦耳作为点火能量单位</p>
-</blockquote>
-</li>
-</ol>
-</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">消防</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/16/dontWorry/xiaofang/基础/爆炸/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="ejs-dontWorry/随笔/素质教育" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/16/dontWorry/随笔/素质教育/">素质教育</a>
-    </h1>
-  
-
-        
-        <a href="/2019/06/16/dontWorry/随笔/素质教育/" class="archive-article-date">
-  	<time datetime="2019-06-16T12:56:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="素质教育"><a href="#素质教育" class="headerlink" title="素质教育"></a><strong>素质教育</strong></h1><p>&emsp; &emsp;教育应该是所有父母最关心的话题，随着经济的发展，人们对这个话题的讨论只会越来越多。素质教育和应试教育是目前讨论的热点。在舆论上，大家总是提倡素质教育，素质教育在感情色彩上也是偏向褒义，而应试教育总是带有贬义，比如，衡水模式一直为人所诟病。可是在现实中，不得不承认，应试教育是占有绝对上风的，通过应试教育下的学生在升学上拥有绝对的优势。这也是由于当今的高考制度导致的，高考制度也是当今最适合中国现状的考试制度。如果全面推行素质教育，那么所有的评判标准将会变的到处都是猫腻，这样的后果是非常可怕的。</p>
-<p>&emsp; &emsp;素质教育直白点就是除了学习书本上的知识，还要注重其他许多更重要的能力的培养，比如人际交往，情商，艺术，体育等。这些能力对人非常重要，是关系到以后能不能幸福的关键。一个积极开朗，热爱艺术，喜欢运动的人，生活一定会幸福。素质教育区别与应试教育的核心应该是为人处世，这是人的安身立命之本，也是无法直接从书本中学习到和别人教授的，是不能复制的，所以极其珍贵。</p>
-<p>&emsp; &emsp;回归教育的本质，动物是不需要被教育的，它们只依照本能行事就能生存。可是人不行，人类已经演变到现代社会了，不经过教育，是无法适应现代社会的。所以教育的本质，其实就是学习生存，学习在目前的环境中更好的生存。现代社会是能保证人的基本的生存的，但需要更好的生存必须要经过教育，教育的重点也应该是更好的适应社会。正所谓时势造英雄，同样的人，放在不同环境中，生存现状可能完全不同。许多很原始的习惯记录在人的基因里。比如，喜欢甜食，懒惰，害怕改变等，甚至自卑。这些都是人类在残酷的自然选择中为了生存学习而来的，是保证人的生存的一些重要习惯。可是在现代社会，这些习惯成了伤害人身体健康，阻碍人成长的枷锁。所以教育也可以说是不断克服人动物性本能的过程。</p>
-<p>&emsp; &emsp;素质教育不应该指望学校，更应该归家庭，怎么教育是每个家庭都需要学习的。其实人是有学习的本能的。这个能力就是模仿的能力，古人云，“言传身教”即用语言传授，用行为教导，可以说道出了教育的本质。用语言传授理论知识，用行为进行实践学习，真正的是理论联系实践。作为父母在教育孩子方面一定要时刻把这个4个字放在心上，你的每个行为都可能会影响他的未来，一定要谨言慎行。</p>
-<p>&emsp; &emsp;世界的很多事情做到90分很不容易，但是努力还是能做到的，95分往上100分很难，可遇不可求。教育也是如此，期望培养出人中龙凤，是不现实的，也不可能。可是往90分的方向努力，用自己的行为去感染他，是可以将他培养成一个更幸福的人的。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/16/dontWorry/随笔/素质教育/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="ejs-dontWorry/随笔/传播媒介" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/16/dontWorry/随笔/传播媒介/">传播媒介</a>
-    </h1>
-  
-
-        
-        <a href="/2019/06/16/dontWorry/随笔/传播媒介/" class="archive-article-date">
-  	<time datetime="2019-06-16T12:56:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="传播媒介"><a href="#传播媒介" class="headerlink" title="传播媒介"></a><strong>传播媒介</strong></h1><p>&emsp; &emsp;传统媒介有文字,图画.这些媒介承载着从古至今的文化传承的任务.<br>&emsp; &emsp;新型媒介的优势对旧媒体是一个充分的补充</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/16/dontWorry/随笔/传播媒介/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="ejs-dontWorry/xiaofang/基础/易燃易爆危险品" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/16/dontWorry/xiaofang/基础/易燃易爆危险品/">易燃易爆危险品</a>
-    </h1>
-  
-
-        
-        <a href="/2019/06/16/dontWorry/xiaofang/基础/易燃易爆危险品/" class="archive-article-date">
-  	<time datetime="2019-06-16T12:56:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="易燃易爆危险品"><a href="#易燃易爆危险品" class="headerlink" title="易燃易爆危险品"></a><strong>易燃易爆危险品</strong></h1><!-- TOC -->
-
 <ul>
-<li><a href="#易燃易爆危险品"><strong>易燃易爆危险品</strong></a><ul>
-<li><a href="#爆炸品">爆炸品</a></li>
-<li><a href="#易燃气体">易燃气体</a><ul>
-<li><a href="#易燃气体分级">易燃气体分级</a></li>
-<li><a href="#易燃气体的火灾危险性">易燃气体的火灾危险性</a></li>
-<li><a href="#易燃气雾剂">易燃气雾剂</a></li>
-</ul>
+<li><p>水泵的出水量应满足消防水量的要求</p>
 </li>
-<li><a href="#易燃液体">易燃液体</a><ul>
-<li><a href="#易燃气体的火灾危险性-1">易燃气体的火灾危险性</a></li>
-</ul>
+<li><p>水泵的扬程应在满足消防流量的条件下,保证最不利点消防栓的水压要求</p>
 </li>
-<li><a href="#易燃固体易自燃的物质遇水放出自燃气体的物质">易燃固体,易自燃的物质,遇水放出自燃气体的物质</a><ul>
-<li><a href="#易燃固体">易燃固体</a></li>
-<li><a href="#易于自燃的物质">易于自燃的物质</a></li>
-<li><a href="#遇水放出自燃气体的物质">遇水放出自燃气体的物质</a></li>
-</ul>
+<li><p>最好使用Q-H特性曲线平缓的水泵</p>
 </li>
-<li><a href="#氧化性物质和有机过氧化物">氧化性物质和有机过氧化物</a><ul>
-<li><a href="#氧化性物质">氧化性物质</a></li>
-<li><a href="#有机过氧化物">有机过氧化物</a></li>
-</ul>
+<li><p>消防水泵不少于两台,一台工作,一台备用</p>
 </li>
-</ul>
+<li><p>消防泵串联增加扬程,并联增加流量</p>
 </li>
-</ul>
-<!-- /TOC -->
-<p>危险品系指爆炸,易燃,毒害,腐蚀,放射性等性质在运输,装卸和存储保管过程中,易造成人身伤亡和财产损失而需要特别防护的物品.</p>
-<h2 id="爆炸品"><a href="#爆炸品" class="headerlink" title="爆炸品"></a>爆炸品</h2><blockquote>
-<p>火药,炸药,爆炸性药品及其制品的总称</p>
-</blockquote>
-<h3 id="爆炸品分类"><a href="#爆炸品分类" class="headerlink" title="爆炸品分类"></a>爆炸品分类</h3><blockquote>
-<p>按爆炸危险性的大小分类</p>
-<ul>
-<li>具有整体危险性的物品 <em>瞬间影响几乎全部装入量的爆炸</em></li>
-<li>具有迸射危险</li>
-<li>燃烧危险并有局部爆炸危险或局部迸射危险</li>
-<li>不呈现重大危险的物质和物品</li>
-<li>有整体爆炸危险的非常不敏感物质</li>
-<li>无整体爆炸危险的极端不敏感物质</li>
-</ul>
-</blockquote>
-<h3 id="爆炸品的特性和参数"><a href="#爆炸品的特性和参数" class="headerlink" title="爆炸品的特性和参数"></a>爆炸品的特性和参数</h3><blockquote>
-<p>主要危险特性包括爆炸性和敏感性</p>
-</blockquote>
-<ul>
-<li>爆炸性 </li>
-<li>敏感度 <em>化学组成和结构决定敏感度的内在因素,外在因素还有温度,杂质,结晶,密度</em></li>
-</ul>
-<hr>
-<h2 id="易燃气体"><a href="#易燃气体" class="headerlink" title="易燃气体"></a>易燃气体</h2><h3 id="易燃气体分级"><a href="#易燃气体分级" class="headerlink" title="易燃气体分级"></a>易燃气体分级</h3><ul>
-<li>1级: 爆炸下限＜10%;或爆炸极限范围≧12个百分点</li>
-<li>2级: 10%≦爆炸下限＜13%,或爆炸极限范围＜12个百分点<blockquote>
-<p>实际应用中,通常将将爆炸下限＜10%的气体归为甲类火险物质,爆炸下限≧10%的气体归为乙类物质</p>
-</blockquote>
-<h3 id="易燃气体的火灾危险性"><a href="#易燃气体的火灾危险性" class="headerlink" title="易燃气体的火灾危险性"></a>易燃气体的火灾危险性</h3><blockquote>
-<p>易燃易爆性 </p>
-<blockquote>
-<p>1).比液体固体易燃,燃烧速度快<br>2).由简单气体组成<br>3).价键不饱和的气体比饱和气体危险性更大</p>
-</blockquote>
-</blockquote>
+<li><p>自灌式消防水泵即泵轴的高程要低于水源的最低可用水位,非自灌式吸水,水池水位低于泵轴线,启动水泵时需要引水.</p>
 </li>
-</ul>
-<blockquote>
-<p>扩散性 </p>
-<p>可缩性和膨胀性  </p>
-<blockquote>
+<li><p>消防水泵的布置要求</p>
 <ol>
-<li>气体的体积与温度成正比  </li>
-<li>气体的体积与压力成反比  </li>
-<li>气体的温度与压力成正比 </li>
+<li>吸水管保证不漏气</li>
+<li>水泵宜采用自灌式吸水</li>
+<li>直接从市政管网吸水时,应在消防水泵出水管上设置减压倒流防止器</li>
+<li>当吸水口处无吸水井时,吸水口处应设置旋转防止器</li>
+<li>每台消防水泵应独立的吸水管</li>
+<li>当消防主泵为两台或两台以上,备用泵和主泵共用一条吸水管</li>
+<li>吸水管应尽管简短</li>
+<li>吸水管宜有向水泵的上升坡度,一般坡度为0.005.</li>
+<li>吸水管直径小于DN250时,水流速度宜为1.0<del>1.2m/s,直径大于DN250时,水流速度宜为1.2</del>1.6m/s</li>
 </ol>
-</blockquote>
-</blockquote>
-<blockquote>
-<p>带电性  <em>带电性是评定可燃气体火灾危险性的参数之一</em></p>
-<blockquote>
+</li>
+<li><p>消防水泵的启动装置分为手动和自动,采用自动的应同时采用手动,手动采用按钮,自动一般为压力开关,稳压泵,变频调速水泵等</p>
+</li>
+<li><p>动力装置采用供电和内燃机,保证有不间断的动力供应</p>
+</li>
+<li><p>消防水泵房直通本单位消防控制中心的通信设备</p>
+</li>
+</ul>
+<h3 id="消防供水管道"><a href="#消防供水管道" class="headerlink" title="消防供水管道"></a>消防供水管道</h3><ul>
+<li><p>室外消化水管布置成环状,当用水量小于15L/s,可布置成枝状</p>
+</li>
+<li><p>向环状管网的进水管不应少于两条</p>
+</li>
+<li><p>环状管道应采用阀门分成若干独立段,每段室外消防栓的数量不超过5个</p>
+</li>
+<li><p>室外消防给水管道直径不应小于DN100,有条件不应小于DN150</p>
+</li>
+<li><p>室外消防的其他的要求应符合国家规定</p>
+</li>
+<li><p>管材压力小于0.6MPa时,采用内搪水泥砂浆的给水铸铁管,大于0.6MPa时,采用水球墨铸铁罐或内外壁经防腐处理的钢管</p>
+</li>
+<li><p>敷设要求</p>
 <ol>
-<li>杂质越多,产生的静电荷越多  </li>
-<li>流速越快,产生的静电荷越多</li>
+<li>根据土质和管道荷载的情况,合理确定管道基础做法</li>
+<li>管径大于或等于150mm的管道,在弯头,三通和堵头的位置应设置钢筋混凝土支墩</li>
+<li>当管道交叉时,其他压力管道应避让稳高压消防给水系统的管道</li>
+<li>在管道的积气部位应设置自动排气阀,排气阀的管径不应小于15m</li>
 </ol>
-</blockquote>
-<p>腐蚀性毒害性</p>
-</blockquote>
-<h3 id="易燃气雾剂"><a href="#易燃气雾剂" class="headerlink" title="易燃气雾剂"></a>易燃气雾剂</h3><blockquote>
-<p>分为喷雾气雾剂和泡沫气雾剂</p>
-</blockquote>
-<hr>
-<h2 id="易燃液体"><a href="#易燃液体" class="headerlink" title="易燃液体"></a>易燃液体</h2><blockquote>
-<p>闪点＜61℃的液体,液体混合物或含有固体混合物的液体</p>
-</blockquote>
-<h3 id="易燃气体的火灾危险性-1"><a href="#易燃气体的火灾危险性-1" class="headerlink" title="易燃气体的火灾危险性"></a>易燃气体的火灾危险性</h3><ul>
-<li>易燃性</li>
-<li>爆炸性</li>
-<li>受热膨胀性</li>
-<li>流动性</li>
-<li>带电性</li>
-<li>毒害性</li>
+</li>
+<li><p>室内消防给水管道是室内消火栓给水系统的重要组成部分</p>
+<ol>
+<li>单层,多层建筑消防用水与其他用水合用的室内管道,当其他用水达到最大小时流量时,仍要保证供应全部消防用水量,高层建筑应与生活,生产给水系统分开独立</li>
+<li>除有特殊规定外,建筑物的室内消防给水管道应布置成环状,且两条进水管与室外环状管网相连接</li>
+<li>室外消防给水管道应采用阀门分成若干独立段</li>
+<li>高层民用建筑内每根消防给水竖管直径小于100mm</li>
+<li>室内消防给水栓给水管网与自动喷水灭火系统(局部应用系统)的管网分开设置</li>
+<li>室内消火栓给水管材通常采用热镀锌钢管,根据压力采用无缝钢管和有缝钢管</li>
+</ol>
+</li>
 </ul>
-<hr>
-<h2 id="易燃固体-易自燃的物质-遇水放出自燃气体的物质"><a href="#易燃固体-易自燃的物质-遇水放出自燃气体的物质" class="headerlink" title="易燃固体,易自燃的物质,遇水放出自燃气体的物质"></a>易燃固体,易自燃的物质,遇水放出自燃气体的物质</h2><h3 id="易燃固体"><a href="#易燃固体" class="headerlink" title="易燃固体"></a>易燃固体</h3><blockquote>
-<p>易燃固体(低于300℃的固体)  </p>
-<blockquote>
-<p>一级  燃点低,易燃烧,燃烧迅速,并放出有毒气体<br>二级 燃点较高,燃烧较慢,燃烧产物毒性也较小 </p>
-</blockquote>
-</blockquote>
-<blockquote>
-<p>易燃固体的范围  </p>
-<blockquote>
-<p>固态退敏爆炸品<br>自反应物质  </p>
-</blockquote>
-</blockquote>
-<blockquote>
-<p>火灾危险性  </p>
-<blockquote>
-<p>燃点低,易点燃<br>遇酸,氧化剂易燃易爆<br>本身或燃烧产物有毒  </p>
-</blockquote>
-</blockquote>
-<h3 id="易于自燃的物质"><a href="#易于自燃的物质" class="headerlink" title="易于自燃的物质"></a>易于自燃的物质</h3><blockquote>
-<p>分类  </p>
-<blockquote>
-<p>发火物质<br>自热物质  </p>
-</blockquote>
-</blockquote>
-<blockquote>
-<p>火灾危险性  </p>
-<blockquote>
-<p>遇空气自燃性<br>遇湿自燃性<br>积热自燃性 </p>
-</blockquote>
-</blockquote>
-<h3 id="遇水放出自燃气体的物质"><a href="#遇水放出自燃气体的物质" class="headerlink" title="遇水放出自燃气体的物质"></a>遇水放出自燃气体的物质</h3><blockquote>
-<p>遇水或遇酸燃烧性  </p>
-<blockquote>
-<p>着火时不能用水及泡沫灭火器扑灭</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<p>自燃性  </p>
-<blockquote>
-<p>这类物质存储必循与水和潮气隔离 </p>
-</blockquote>
-</blockquote>
-<blockquote>
-<p>爆炸性  </p>
-<blockquote>
-<p>遇水放出易燃气体物质</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<p>其他  </p>
-<blockquote>
-<p>除了易燃还有毒性,放出热量巨大</p>
-</blockquote>
-</blockquote>
-<hr>
-<h2 id="氧化性物质和有机过氧化物"><a href="#氧化性物质和有机过氧化物" class="headerlink" title="氧化性物质和有机过氧化物"></a>氧化性物质和有机过氧化物</h2><h3 id="氧化性物质"><a href="#氧化性物质" class="headerlink" title="氧化性物质"></a>氧化性物质</h3><p>   氧化物分类 <em>一级二级</em></p>
-<p>氧化性物质的火灾危险性  </p>
-<ul>
-<li>受热,被撞分解性</li>
-<li>可燃性</li>
-<li>与可燃液体作用自燃性</li>
-<li>与酸作用分解性</li>
-<li>与水作用分解性</li>
-<li>强氧化性物质与弱氧化锌物质作用分解性</li>
-<li>腐蚀毒害性  <h3 id="有机过氧化物"><a href="#有机过氧化物" class="headerlink" title="有机过氧化物"></a>有机过氧化物</h3>一种含有过氧基的有机物质,也可能是过氧化氢的衍生物<br>火灾危险性:<ul>
-<li>分解爆炸性</li>
-<li>易燃性</li>
-</ul>
+<h3 id="消防水泵接合器"><a href="#消防水泵接合器" class="headerlink" title="消防水泵接合器"></a>消防水泵接合器</h3><ul>
+<li><p>以下场所使用消防水泵接合器</p>
+<ol>
+<li>高层民用建筑</li>
+<li>设有消防给水的住宅,超过5层的其他多层民用建筑</li>
+<li>超过2层或建筑面积大于10000m²的地下和半地下建筑,室内消火栓设计流量大于10L/s平战结合的人防工程</li>
+<li>高层工业建筑和超过4层的多层工业建筑</li>
+<li>城市交通隧道</li>
+</ol>
+</li>
+<li><p>消防水泵接合器的给水流量宜按每个10~15L/s计算</p>
+</li>
+<li><p>水泵接合器有地上式,地下式和墙壁式3种,方便连接消防水泵,距水泵接合器15~40m的范围,应设有室外消火栓或消防水池</p>
+</li>
+<li><p>水泵接合器是由阀门,安全阀,止回阀,栓口放水阀以及连接弯管等组成.</p>
+<h3 id="增-稳-设备"><a href="#增-稳-设备" class="headerlink" title="增(稳)设备"></a>增(稳)设备</h3></li>
+<li><p>当消防箱设置高度不能满足系统最不利点灭火设备所需的水压要求时,应设置增(稳)压设备</p>
+</li>
+<li><p>一般由稳压泵,隔膜式气压罐,管道附件及控制装置等组成</p>
+<h3 id="消防水池和消防水箱"><a href="#消防水池和消防水箱" class="headerlink" title="消防水池和消防水箱"></a>消防水池和消防水箱</h3></li>
+<li><p>室内外消防用水大于25L/s的建(构)筑物应设置消防水池</p>
+</li>
+<li><p>消防水池的有效容量应满足在火灾延续时间内建(构)筑物室内消防用水量和室外消防用水不足部分之和的要求</p>
+</li>
+<li><p>高压消防给水系统,采用临时高压消防给水系统时,高位消防水箱的设置应符合下列规定:</p>
+<ol>
+<li>高压民用建筑和总建筑面积大于10000m²,且层数超过两层的公共建筑和其他重要建筑,必须设置高位消防水箱</li>
+<li>应设置高位消防水箱,设置由困难的,应设置稳压泵</li>
+<li>当市政供水管能满足生产生活最大小时用水量后,可以不用高位消防水箱</li>
+</ol>
+</li>
+<li><p>消防用水与其他用水合用的水箱,应采取确保消防用水不作他用的技术措施</p>
+<h2 id="室外消火栓系统"><a href="#室外消火栓系统" class="headerlink" title="室外消火栓系统"></a>室外消火栓系统</h2></li>
+<li><p>室外消火栓给水系统通常是指室外消防给水系统给,是设置建筑物外墙的消防给水系统,主要承担城市,集镇,居住区等的消防室外部分消防给水任务</p>
+</li>
+<li><p>常高压消防给水系统官网应经常保持足够的压力和消防用水量</p>
+</li>
+<li><p>临时高压消防给水系统的消防泵,平时官网的压力较低</p>
+</li>
+<li><p>低压消防给水系统平时压力低,火灾发生时,通过消防车加压灭火</p>
+</li>
+<li><p>在建筑规划和设计中,同时设计消防给水系统,城市,居住区应设市政消火栓</p>
+</li>
+<li><p>民用建筑,厂房(仓库),储罐,堆场应设室外消火栓</p>
+</li>
+<li><p>耐火等级不低于二级,且建筑物面积小于或等于3000m³,居住区人数不超过500人,且建筑层数不超过两层的居住区,可不设置室外消防给水系统</p>
+</li>
+<li><p>室外消火栓应沿街道设置,当道路宽度大于60m时,宜在路的两边设置,宜靠近十字路口设置</p>
+</li>
+<li><p>甲乙类类液体储罐区和液化石油气储罐区的消火栓应设置在防火堤和防护墙后,距储罐15m范围内的消火栓不计算在内</p>
+</li>
+<li><p>间距不应大于120m</p>
+</li>
+<li><p>保护半径不应大于150m,在市政消火栓保护半径以内,室外消防用水量小于或等于15L/s的可不设置室外消火栓</p>
+</li>
+<li><p>按保护半径和消防用水量计算,每个应按10<del>15L/s计算,保护对象5</del>40m范围内的市政消火栓,计算在内</p>
+</li>
+<li><p>宜采用地上式消火栓,DN150或DN160的栓口和两个DN65的栓口,地下式的应有DN100和DN65两个,寒冷地区设置的室外消火栓应有防冻措施</p>
+</li>
+<li><p>距离路边不大于2m,距离房屋外墙不大于5m</p>
+</li>
+<li><p>工艺装置区的消火栓距离不大于60m,宽度大于120m,设置在路边</p>
+</li>
+<li><p>设置相应的永久性固定标识</p>
+</li>
+<li><p>室外消火栓设置有困难的,设置水鹤等为消火车加水的设施</p>
+<h2 id="室内消防栓系统"><a href="#室内消防栓系统" class="headerlink" title="室内消防栓系统"></a>室内消防栓系统</h2></li>
+<li><p>既可供火灾现场人员使用消火栓箱内的消防水喉,水枪扑救初期火灾,也可供消防队员扑救建筑物的大火.</p>
+</li>
+<li><p>室内消火栓包括水带水枪水喉等供消化人员使用的主要工具</p>
+</li>
+<li><p>室内消火栓通常采用临时高压消防给水系统</p>
+</li>
+<li><p>应设置室内消火栓系统的建筑</p>
+<ol>
+<li>建筑占地面积大于300m²的厂房</li>
+<li>体积大于5000³的车站,码头,机场的候车楼,展览建筑,商店,旅馆,病房,图书馆</li>
+<li>特等,甲等剧场,超过800个座位的其他等级的剧场和电影院,超过1200个座位的礼堂,体育馆</li>
+<li>建筑高度大于15m或体积大于10000m³的办公楼,教学楼,非住宅居住建筑等其他民用建筑</li>
+<li>建筑高度大于21m的住宅建筑,有困难可设置干式消防竖管和不带消火栓箱的DN65的室内消火栓,消防竖管的直径不应小于65mm</li>
+<li>国家级文物保护单位的重点砖木或木结构的古建筑</li>
+</ol>
+</li>
+<li><p>可不设置室内消火栓系统的建筑</p>
+<ol>
+<li>存在与水接触能引燃爆炸的物品</li>
+<li>耐火等级为一二级且可燃物较少的单层,多层丁戊厂房</li>
+<li>粮食仓库,金库以及远离城镇且无人值班的独立建筑</li>
+</ol>
+</li>
+<li><p>高层建筑都应设置室内消防栓</p>
+</li>
+<li><p>室内消火栓的布置应保证有两支水枪的充实水柱同时到达室内任何部位</p>
+</li>
+<li><p>建筑高度小于或等于24m,且体积小于或等于5000m³的库房,可采用一支水枪的充实水柱到达室内任何部位</p>
+</li>
+<li><p>室内消火栓应设在明显,易于取用的地点</p>
+</li>
+<li><p>冷库的室内消火栓应设在常温穿堂或楼梯间内</p>
+</li>
+<li><p>应在平屋顶设置试验和检查用的消火栓</p>
+</li>
+<li><p>消防电梯前室应设室内消火栓</p>
+</li>
+<li><p>室内消火栓的间距应由计算确定</p>
+</li>
+<li><p>高位消防水箱不能满足最不利点消火栓要求的建筑</p>
+</li>
+<li><p>消火栓应采用同一型号规格</p>
+</li>
+<li><p>高层建筑的屋顶应设有一个装有压力显示装置的检查用消火栓,采暖地区可设在顶层出口处和水箱间内</p>
+</li>
+<li><p>屋顶直升飞机停机坪和超高层建筑避难层,避难区应设置室内消火栓</p>
+</li>
+<li><p>充实水柱是指由水枪喷嘴起至射流90%的水柱水量穿过直径为380mm圆孔处的一段射流长度</p>
+</li>
+<li><p>消火栓栓口的出水压力大于0.50MPa时,应采取减压措施</p>
+</li>
+<li><p>高层建筑,厂房,库房和室内净空高度超过8m的民用建筑等场所,其消火栓口压力不应小于0.35MPa,且充实水柱应达到13m,其他场所不应小于0.25MPa,充实水柱高度应达到10m</p>
+</li>
+<li><p>消防软管卷盘的设置</p>
+<ol>
+<li>栓口直径应为25mm,配备的胶带内径不应小于19mm,长度不应超过40m,水喉喷嘴口径不应小于6mm</li>
+<li>旅馆,办公楼,商业楼,软管卷盘应设在走道内</li>
+<li>剧院,会堂闷顶内的消防软管卷盘应设在马道入口处.</li>
+</ol>
 </li>
 </ul>
 
@@ -1531,7 +740,1316 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/16/dontWorry/xiaofang/基础/易燃易爆危险品/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/07/08/dontWorry/xiaofang/建筑消防设施/室内外消防给水系统/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="ejs-dontWorry/xiaofang/建筑防火/灭火救援设施" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/08/dontWorry/xiaofang/建筑防火/灭火救援设施/">灭火救援设施</a>
+    </h1>
+  
+
+        
+        <a href="/2019/07/08/dontWorry/xiaofang/建筑防火/灭火救援设施/" class="archive-article-date">
+  	<time datetime="2019-07-07T16:19:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="灭火救援设施"><a href="#灭火救援设施" class="headerlink" title="灭火救援设施"></a>灭火救援设施</h1><!-- TOC -->
+
+<ul>
+<li><a href="#灭火救援设施">灭火救援设施</a><ul>
+<li><a href="#消防车道">消防车道</a></li>
+<li><a href="#消防登高面消防救援场地和灭火救援窗">消防登高面,消防救援场地和灭火救援窗</a></li>
+<li><a href="#消防电梯">消防电梯</a></li>
+<li><a href="#直升机停机坪">直升机停机坪</a></li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<h2 id="消防车道"><a href="#消防车道" class="headerlink" title="消防车道"></a>消防车道</h2><ul>
+<li><p>道路中心线间的距离设定不宜大于160m</p>
+</li>
+<li><p>扑救困难的建筑应设置环形消防车道,沿建筑长边设置消防车道</p>
+</li>
+<li><p>高层厂房,占地面积大于3000m²的甲乙丙类厂房和占地面积大于1500m²的乙丙仓库,设置环形消防车道</p>
+</li>
+<li><p>环形消防车道至少有两处于其他车道连通</p>
+</li>
+<li><p>沿街长度超过150m或总长度超过220m的,设置穿过建筑物的消防车道</p>
+</li>
+<li><p>有封闭内院和天井的建筑物,当其短边长度大于24m时,宜设置进入内院或天井的消防车道</p>
+</li>
+<li><p>在穿过建筑物或进入建筑物内院的消防车道两侧,不应设置影响消防车通行或人员安全疏散的设施</p>
+</li>
+<li><p>规模较大的封闭式商业街,购物中心,游乐场,进入院内的消防车道的出口不应少于2个,宽度不应小于6m</p>
+</li>
+<li><p>供消防车取水的天然水源和消防水池应设置消防车道,消防车道边缘距离取水点不宜大于2m</p>
+</li>
+<li><p>消防车道的净宽度和净空高度均不应小于4m,消防车道的坡度不宜大于8%</p>
+</li>
+<li><p>轻中系列消防车最大质量不超过11t,重系列消防车其总质量为15~50t</p>
+</li>
+<li><p>轻系列消防车转弯半径大于或等于7m,中系列大于9m,重系列大于12m</p>
+</li>
+<li><p>回车场的面积不应小于12m * 12m,高层建筑不宜小于15m * 15m,重型不宜小于18m * 18m</p>
+</li>
+<li><p>室外消防栓的保护半径在150m左右,消防车道的间距应为160m</p>
+<h2 id="消防登高面-消防救援场地和灭火救援窗"><a href="#消防登高面-消防救援场地和灭火救援窗" class="headerlink" title="消防登高面,消防救援场地和灭火救援窗"></a>消防登高面,消防救援场地和灭火救援窗</h2></li>
+<li><p>消防登高面,消防救援场地,灭火救援窗是灭火救援行动的重要设施</p>
+</li>
+<li><p>消防登高面,扑救火灾的建筑立面称为该建筑的消防登高面</p>
+</li>
+<li><p>高层建筑的消防登高面的一侧,地面必须设置消防救援场地,叫消防救援场</p>
+</li>
+<li><p>高层建筑的消防登高面一侧外墙上设置供消防人员快速进入建筑主体的救援窗口,称为消防救援窗,厂房,仓库,公共建筑的每层应设置灭火救援窗</p>
+</li>
+<li><p>高度不大于5m且进深不大于4m的裙房不会影响举高车的操作</p>
+</li>
+<li><p>建筑高度不大于50m建筑,但间隔距离不宜大于30m</p>
+</li>
+<li><p>场地与厂房,仓库,民用建筑之间不应设置妨碍消防车操作的的树木,架空管线等障碍物和车库入口</p>
+</li>
+<li><p>场地的长度宽度分别不应小于15m和10m,建筑高度大于50m的,不应小于20m和10m</p>
+</li>
+<li><p>场地下的建筑结构,管道,暗沟应能承受重型消防车的压力</p>
+</li>
+<li><p>场地边缘距离建筑外墙不宜小于5m,且不应大于10m,坡度不应大于3%</p>
+</li>
+<li><p>供消防人员进入的消防救援窗净高度和宽度不应小于1m,下沿距室内地面不应大于1.2m,间距不应大于20m,且每个防火分区不应少于2个.窗口玻璃宜破碎,且有明显标识.</p>
+<h2 id="消防电梯"><a href="#消防电梯" class="headerlink" title="消防电梯"></a>消防电梯</h2></li>
+<li><p>高层建筑和埋地较大的地下建筑应设置专供消防员使用的消防电梯</p>
+</li>
+<li><p>需要设置消防电梯</p>
+<ol>
+<li>高度大于33m的建筑</li>
+<li>一类高层公共建筑和建筑高度大于32m的二类高层建筑</li>
+<li>埋深大于10m且总面积大于3000m²的地下建筑和半地下建筑</li>
+</ol>
+</li>
+<li><p>不用设置消防电梯的</p>
+<ol>
+<li>建筑高度大于32m,装有电梯,任一工作平台的人数不超过2人的高层塔架</li>
+<li>局部高度不大于32m,且局部高出部分的每层建筑面积不大于50m²的丁戊类厂房</li>
+</ol>
+</li>
+<li><p>每个防火分区至少有一台消防电梯停靠</p>
+</li>
+<li><p>消防电梯应设在前室,靠外墙设置,直通室外的长度不大于30m,前室的短边不应小于2.4m</p>
+</li>
+<li><p>前室或合用前室的门应采用乙级防火门,不用设置卷帘</p>
+</li>
+<li><p>消防电梯井,机房和相邻的之间应设置耐火极限不应小于2.00h的防火隔墙,隔墙的门采用甲级防火门</p>
+</li>
+<li><p>消防电梯的井底应设置排水设施,排水井容量不应小于2m³,排水泵应小于10L/s,前室门口设置挡水设施</p>
+</li>
+<li><p>载重不应小于800kg,轿厢尺寸不宜小于1.5m * 2m,从首层到顶层的运行时间不宜大于60s</p>
+</li>
+<li><p>消防电梯的电源为消防电源并设备用电源,控制面板防火,设置消防专用操作按钮,设置专用消防对讲电话</p>
+</li>
+<li><p>消防电梯内部装修采用不燃材料</p>
+</li>
+</ul>
+<h2 id="直升机停机坪"><a href="#直升机停机坪" class="headerlink" title="直升机停机坪"></a>直升机停机坪</h2><ul>
+<li>建筑高度大于100m且标准建筑面积大于2000m²的公共建筑,屋顶宜设置直升机停机坪或供直升机救助的设施</li>
+<li>直升机停机坪距离设备机房,电梯机房,水箱间,公用天线等突出物不应小于5m</li>
+<li>建筑通向停机坪的出口不应小于2个,每个出口的宽度不应小于0.9m</li>
+<li>四周设置航空障碍灯,应设置应急照明</li>
+<li>在停机坪的适当位置设置消防栓</li>
+<li>符合国家现行航空管理规定</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">消防</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/08/dontWorry/xiaofang/建筑防火/灭火救援设施/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="ejs-dontWorry/xiaofang/建筑防火/建筑装修,保温材料防火" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/08/dontWorry/xiaofang/建筑防火/建筑装修,保温材料防火/">建筑装修,保温材料防火</a>
+    </h1>
+  
+
+        
+        <a href="/2019/07/08/dontWorry/xiaofang/建筑防火/建筑装修,保温材料防火/" class="archive-article-date">
+  	<time datetime="2019-07-07T16:10:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="建筑装修-保温材料防火"><a href="#建筑装修-保温材料防火" class="headerlink" title="建筑装修,保温材料防火"></a>建筑装修,保温材料防火</h1><!-- TOC -->
+
+<ul>
+<li><a href="#建筑装修保温材料防火">建筑装修,保温材料防火</a><ul>
+<li><a href="#装修材料的分类分级">装修材料的分类分级</a></li>
+<li><a href="#装修防火的通用要求">装修防火的通用要求</a></li>
+<li><a href="#特殊功能部位与用房装修防火要求">特殊功能部位与用房装修防火要求</a></li>
+<li><a href="#单层多层公共建筑装修防火">单层,多层公共建筑装修防火</a></li>
+<li><a href="#高层公共建筑装修防火">高层公共建筑装修防火</a></li>
+<li><a href="#地下民用建筑装修防火">地下民用建筑装修防火</a></li>
+<li><a href="#厂房装修防火">厂房装修防火</a></li>
+<li><a href="#仓库装修防火">仓库装修防火</a></li>
+<li><a href="#建筑外保温系统防火">建筑外保温系统防火</a></li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<h2 id="装修材料的分类分级"><a href="#装修材料的分类分级" class="headerlink" title="装修材料的分类分级"></a>装修材料的分类分级</h2><ul>
+<li><p>按燃烧性能分为A(不燃),B1(难燃),B2(可燃),B3(易燃)</p>
+</li>
+<li><p>按实际用途分为</p>
+<ol>
+<li>饰面材料,包括墙壁,柱面的贴面材料</li>
+<li>装饰件,固定悬挂在墙上,顶棚的装饰物</li>
+<li>隔断,可伸缩滑动和自由拆装,不到顶的隔断</li>
+<li>大型家具,不能轻易搬动的家具</li>
+<li>装饰织物,窗帘,家具包布,挂毯,床上用品等纺织物</li>
+</ol>
+</li>
+<li><p>按使用部位和功能分为</p>
+<ol>
+<li>顶棚装修材料,不燃的有玻璃,石膏板,氯氧镁不燃无机板,硅酸钙板,可燃有塑料制品和复合材料</li>
+<li>墙面装修材料,难燃材料有纸面石膏板,难燃胶合板,难燃双面刨花板,可燃材料分为木材,纸质装饰板,壁纸等</li>
+<li>地面材料,B1,硬PVC塑料地板,水泥刨花板,水泥木丝板,B2半硬质PVC塑料地板,PVC卷地板,木地板氯乱地毯</li>
+<li>装饰织物,B1,经阻燃处理的各类难燃织物,B2纯毛装饰布,纯麻装饰布</li>
+<li>其他装饰材料,B1,聚氯乙烯塑料,酚醛塑料,B2经阻燃处理的聚乙烯,聚丙烯,聚氨酯,聚苯乙烯,玻璃钢</li>
+</ol>
+</li>
+<li><p>纸面石膏板,安装在钢龙骨上的燃烧性能达到B1级的纸面石膏板,矿棉吸声板作为A级材料处理</p>
+</li>
+<li><p>涂刷饰面型防火涂料的胶合板能达到B1级</p>
+</li>
+<li><p>纸质壁纸和布质壁纸直接粘贴于A级基材且单位质量小于300g/m³,作B1级材料使用</p>
+</li>
+<li><p>涂料涂于A级材料的无机装饰涂料作A级材料使用,施涂于A级基材,湿涂覆比小于1.5kg/m²的有机装饰涂料,可作为B1级装修材料使用</p>
+</li>
+<li><p>顶棚或墙面局部采用多孔或泡沫状塑料时,厚度不应大于15mm,且面积不应超过10%</p>
+<h2 id="装修防火的通用要求"><a href="#装修防火的通用要求" class="headerlink" title="装修防火的通用要求"></a>装修防火的通用要求</h2></li>
+<li><p>消防控制室顶棚和墙面应使用A级材料,地面和其他不低于B1级</p>
+</li>
+<li><p>疏散走道和安全出口的顶棚应使用A级材料,其他装修应采用B1级</p>
+</li>
+<li><p>无自然光楼梯,封闭楼梯间,防烟楼梯间的顶棚,墙面和地面应采用A级</p>
+</li>
+<li><p>变形缝的两侧用A级,表面装修材料用B1</p>
+</li>
+<li><p>消火栓和墙壁颜色有明显区别</p>
+</li>
+<li><p>配电箱不应直接安装在低于B1级材料上</p>
+</li>
+<li><p>灯具靠近非A级材料,要采取隔热,散热的措施,灯饰的燃烧性能不能低于B1</p>
+</li>
+<li><p>饰物不能采用B3级,实在不行,也能靠近火源</p>
+<h2 id="特殊功能部位与用房装修防火要求"><a href="#特殊功能部位与用房装修防火要求" class="headerlink" title="特殊功能部位与用房装修防火要求"></a>特殊功能部位与用房装修防火要求</h2></li>
+<li><p>歌舞游艺场所设置在一,二级耐火等级建筑的四层及四层以上时,顶棚应采用A级材料,其他部位采用不低于B1级材料</p>
+</li>
+<li><p>歌舞游艺场所设置在地下一层,顶棚和地面应采用A级材料,其他部位采用不低于B1级材料</p>
+</li>
+<li><p>建筑物设有上下层相连同的中庭,走马廊,敞开楼梯,自动扶梯,连通部位的顶棚,墙面采用A级材料,其他部位采用不低于B1级</p>
+</li>
+<li><p>无窗房间的燃烧性能等级在原基础上提高一级</p>
+</li>
+<li><p>图书馆,资料室档案馆,顶棚,墙面采用A级材料,其他部位采用不低于B1级</p>
+</li>
+<li><p>大中型电子计算机房,中央控制室,电话机房等放置特殊贵重设备的房间,顶棚,墙面采用A级材料,其他部位采用不低于B1级</p>
+</li>
+<li><p>消防水泵房,排烟机房,固定灭火系统钢瓶间,配电室,变压器室,通风和空调机房等设备机房,在建筑中起到主控正常运转及安全的作用,内部所有装修采用A级材料</p>
+</li>
+<li><p>厨房的顶棚,地面,墙面用A级材料</p>
+</li>
+<li><p>使用明火的餐厅,科研试验室比同类建筑提高一级</p>
+</li>
+<li><p>内部装修不能妨碍消防设施,疏散标志,安全出口</p>
+<h2 id="单层-多层公共建筑装修防火"><a href="#单层-多层公共建筑装修防火" class="headerlink" title="单层,多层公共建筑装修防火"></a>单层,多层公共建筑装修防火</h2><h2 id="高层公共建筑装修防火"><a href="#高层公共建筑装修防火" class="headerlink" title="高层公共建筑装修防火"></a>高层公共建筑装修防火</h2><h2 id="地下民用建筑装修防火"><a href="#地下民用建筑装修防火" class="headerlink" title="地下民用建筑装修防火"></a>地下民用建筑装修防火</h2><h2 id="厂房装修防火"><a href="#厂房装修防火" class="headerlink" title="厂房装修防火"></a>厂房装修防火</h2><h2 id="仓库装修防火"><a href="#仓库装修防火" class="headerlink" title="仓库装修防火"></a>仓库装修防火</h2><h2 id="建筑外保温系统防火"><a href="#建筑外保温系统防火" class="headerlink" title="建筑外保温系统防火"></a>建筑外保温系统防火</h2></li>
+<li><p>建筑外保温材料的燃烧性能宜为A级,且不应低于B1级</p>
+</li>
+<li><p>矿棉和岩棉为代表的无机保温材料,不燃</p>
+</li>
+<li><p>胶粉聚苯颗粒保温浆料的有机无机复合保温材料,难燃</p>
+</li>
+<li><p>聚苯乙烯泡沫材料,硬泡聚氨酯和改性酚醛树脂为代表的有机保温材料,可燃,燃烧性能不低于B2</p>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">消防</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/08/dontWorry/xiaofang/建筑防火/建筑装修,保温材料防火/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="ejs-dontWorry/xiaofang/建筑防火/建筑设备防火防爆" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/06/dontWorry/xiaofang/建筑防火/建筑设备防火防爆/">建筑设备防火防爆</a>
+    </h1>
+  
+
+        
+        <a href="/2019/07/06/dontWorry/xiaofang/建筑防火/建筑设备防火防爆/" class="archive-article-date">
+  	<time datetime="2019-07-06T03:12:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="建筑设备防火防爆"><a href="#建筑设备防火防爆" class="headerlink" title="建筑设备防火防爆"></a>建筑设备防火防爆</h1><!-- TOC -->
+
+<ul>
+<li><a href="#建筑设备防火防爆">建筑设备防火防爆</a><ul>
+<li><a href="#采暖系统防火防爆">采暖系统防火防爆</a></li>
+<li><a href="#通风与空调系统防火防爆">通风与空调系统防火防爆</a></li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<h2 id="采暖系统防火防爆"><a href="#采暖系统防火防爆" class="headerlink" title="采暖系统防火防爆"></a>采暖系统防火防爆</h2><ul>
+<li><p>采暖系统的防火防爆设计主要式针对具有一定危险性的厂房,汽车库等采暖系统进行防火防爆设计.</p>
+</li>
+<li><p>甲乙类厂房库房严禁采用明火和电热散热器采暖</p>
+</li>
+<li><p>散发可燃粉尘可燃纤维的生产厂房对采暖的要求如下:</p>
+<ol>
+<li>散热器表面平均温度不应超过82.5℃(相当于供水温度95℃,回水温度70℃)</li>
+<li>输煤廊的采暖散热器表面平均温度不应超过130℃</li>
+<li>散发物(包括可燃气体,蒸气,粉尘)与采暖管道和散热器表面接触能引起燃烧爆炸时,应采用不循环使用的热风采暖,且不应在这些房间穿过采暖管道,如必须穿过时,应用不燃材料隔热.</li>
+<li>不应使用肋型散热器,以防止积聚粉尘</li>
+</ol>
+</li>
+<li><p>在生产过程中散发的可燃气体,可燃蒸气,可燃粉尘,可燃纤维与采暖管道,散热器表面接触能引起燃烧的厂房以及生产过程中散发受到水,水蒸气的作用能引起自燃,爆炸的粉尘或产生爆炸性气体的厂房,应采用不循环使用的热风采暖</p>
+</li>
+<li><p>采暖管道要与建筑物的可燃构件保持一定距离</p>
+</li>
+<li><p>加热送风采暖设备的防火设计</p>
+<ol>
+<li>电加热设备和送风设备应有联锁装置,以防风机停转时,加热设备继续加热</li>
+<li>在重要部位加感温自动报警器,必要时加设自动防火阀</li>
+<li>装有加热设备的送风管道应用不燃材料</li>
+</ol>
+</li>
+<li><p>采暖管道和设备的绝热材料应采用部燃材料</p>
+</li>
+<li><p>采暖管道能接触到引起爆炸的气体蒸气或粉尘的房间不能穿过采暖管道,必须穿过时,应采用不燃材料隔热</p>
+</li>
+<li><p>车库内应设置热水蒸汽或热风等采暖设备,不应采用火炉或其他炉火采暖</p>
+</li>
+<li><p>甲乙内物品运输车的汽车库,Ⅰ,Ⅱ,Ⅲ类汽车库,Ⅰ,Ⅱ类修车库</p>
+</li>
+<li><p>Ⅳ类汽车库和Ⅲ,Ⅳ类修车库可采用火墙供暖</p>
+<h2 id="通风与空调系统防火防爆"><a href="#通风与空调系统防火防爆" class="headerlink" title="通风与空调系统防火防爆"></a>通风与空调系统防火防爆</h2></li>
+<li><p>甲乙类生产厂房排出的空气不应循环使用,以防止排出的含有可燃物质的空气重新进入厂房,增加火灾危险性</p>
+</li>
+<li><p>丙类生产厂房中排出的空气,如含有燃烧或爆炸危险的粉尘,纤维,应在通风机前设置滤尘器,对空气进行净化处理.</p>
+</li>
+<li><p>甲乙类生产厂房用的送风和排风设备不应布置在同一通风机房内.</p>
+</li>
+<li><p>通风和空气调节系统的管道布置,横向宜按防火分区设置,竖向不宜超过5层</p>
+<ol>
+<li>增加各层垂直排风支管的高度,使各层排风支管穿越两层楼板</li>
+<li>排风总竖管直通屋面,小的排风只管分层与总竖管连通</li>
+<li>将排风支管顺气流方向插入竖风道,且支管到支管出口的高度不小于600mm</li>
+<li>在支管上安装止回阀</li>
+</ol>
+</li>
+<li><p>有爆炸危险厂房的排风管,严禁穿过防火墙和有爆炸危险的车间隔墙等防火分隔物</p>
+</li>
+<li><p>民用建筑内存放容易起火或爆炸物质的房间,设置排风设备时应采用独立的排风系统,且空气不应循环使用.</p>
+</li>
+<li><p>排风比空气轻的可燃气体,排气管应沿上坡敷设</p>
+</li>
+<li><p>排风口的设置应根据可燃气体的密度不同而有所区别</p>
+</li>
+<li><p>通风管道不应和可燃气体,可燃液体管道一起敷设</p>
+</li>
+<li><p>含有爆炸危险的粉尘空气,在进入排风管道之前,应先进行净化处理</p>
+</li>
+<li><p>有爆炸危险粉尘的排风机,除尘器应与其他一般风机,除尘器分开设置,且按单一粉尘分组布置.</p>
+</li>
+<li><p>净化有爆炸危险的粉尘的干式出尘器和过滤器,宜布置在厂房之外的独立建筑内.</p>
+</li>
+<li><p>含有爆炸危险的粉尘和碎屑的除尘器,过滤器,管道,均应设有泄压装置</p>
+</li>
+<li><p>甲乙丙厂房的送排风管道宜分层设置,送风管道设有防火阀时,各层可公用一个送风系统</p>
+</li>
+<li><p>排出有燃烧,爆炸危险的气体,蒸汽和粉尘的排风管道应采用易于导除静电的金属管道.明装不宜暗装</p>
+</li>
+<li><p>通风管道不宜穿过防火墙和不燃性楼板等防火分隔物</p>
+</li>
+<li><p>排风设备不应布置在地下或半地下</p>
+</li>
+<li><p>排送温度超过80℃的空气或其他易燃碎屑的管道,与可燃和难燃物体之间的距离部应小于150mm,采用厚度不小于50mm的不燃材料隔热,管道上下布置时,温度高的在上面</p>
+</li>
+<li><p>空气中有容易起火或爆炸的物质的房间,其送排风宜应采用防爆型通风设备和不产生火花的材料</p>
+</li>
+<li><p>含有易燃易爆粉尘(碎屑)的空气,在进入排风机前,采用不产生火花的除尘器处理</p>
+</li>
+<li><p>需要设置防火阀</p>
+<ol>
+<li>穿越防火分区隔墙处</li>
+<li>穿越重要房间</li>
+<li>垂直风管和水平风管交接处的水平管段上</li>
+<li>穿越变形缝的两侧风管上各设一个防火阀</li>
+</ol>
+</li>
+<li><p>防火阀的设置应符合规定</p>
+<ol>
+<li>有熔断器的防火阀的动作温度为70℃</li>
+<li>防火阀应靠近防火分隔处设置</li>
+<li>防火阀安装时可明装和暗装,暗装时应安装在方便检修的检修口</li>
+<li>防火阀两侧2m范围内的风管绝热材料应采用不燃材料且具备足够的刚性和抗变形能力</li>
+</ol>
+</li>
+<li><p>防火阀的易熔片或其他感温,感烟等控制设备一经动作,应顺气流方向严密紧闭</p>
+</li>
+<li><p>以下情况,通风空气调节系统可采用难燃材料</p>
+<ol>
+<li>接触腐蚀性介质的风管和柔性接头</li>
+<li>大空间建筑,单多层办公建筑,丙丁戊类厂房通风</li>
+</ol>
+</li>
+<li><p>车库通风,空调系统的要求</p>
+<ol>
+<li>汽车库的通风系统应独立设置</li>
+<li>喷漆间,蓄电池间应设置独立的排气系统</li>
+<li>风管采用不燃材料,不穿越防火墙,防火隔墙,必须穿越就设置防火阀</li>
+<li>风管的保温材料采用不燃和难燃材料</li>
+</ol>
+</li>
+<li><p>锅炉房应选用防爆型的事故排风机,通风量符合以下规定</p>
+<ol>
+<li>燃油锅炉换气次数不少于3次/h</li>
+<li>燃气锅炉房换气次数不少于6次/h</li>
+</ol>
+</li>
+<li><p>燃油燃气锅炉房应保持良好的通风条件,将可燃气体与空气混合气体的浓度稀释到爆炸下限的25%</p>
+</li>
+<li><p>风管的保温材料,加湿材料,消声材料,粘结剂宜采用不燃材料</p>
+</li>
+<li><p>公共建筑的浴室,卫生间,厨房的竖向排风管,应采取防止回流设施和在支管上设置防火阀</p>
+</li>
+<li><p>厨房的排烟管宜按防火分区设置,与垂直排风管连接的支管处应设置动作温度为150℃的防火阀</p>
+</li>
+<li></li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">消防</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/06/dontWorry/xiaofang/建筑防火/建筑设备防火防爆/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="ejs-dontWorry/xiaofang/建筑防火/建筑防爆" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/02/dontWorry/xiaofang/建筑防火/建筑防爆/">建筑防爆</a>
+    </h1>
+  
+
+        
+        <a href="/2019/07/02/dontWorry/xiaofang/建筑防火/建筑防爆/" class="archive-article-date">
+  	<time datetime="2019-07-02T15:43:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="建筑防爆"><a href="#建筑防爆" class="headerlink" title="建筑防爆"></a>建筑防爆</h1><!-- TOC -->
+
+<ul>
+<li><a href="#建筑防爆">建筑防爆</a><ul>
+<li><a href="#建筑防爆基本原则和措施">建筑防爆基本原则和措施</a><ul>
+<li><a href="#防爆原则">防爆原则</a></li>
+<li><a href="#防爆措施">防爆措施</a></li>
+</ul>
+</li>
+<li><a href="#爆炸危险性厂房库房的布置">爆炸危险性厂房,库房的布置</a><ul>
+<li><a href="#爆炸危险区域划分及范围">爆炸危险区域划分及范围</a></li>
+<li><a href="#爆炸危险区域的范围">爆炸危险区域的范围</a></li>
+<li><a href="#根据通风条件划分">根据通风条件划分</a></li>
+<li><a href="#爆炸危险性厂房库房的布置-1">爆炸危险性厂房,库房的布置</a></li>
+</ul>
+</li>
+<li><a href="#爆炸危险性建筑的构造防爆">爆炸危险性建筑的构造防爆</a><ul>
+<li><a href="#泄压">泄压</a></li>
+<li><a href="#抗爆">抗爆</a></li>
+</ul>
+</li>
+<li><a href="#爆炸危险环境电气防爆">爆炸危险环境电气防爆</a><ul>
+<li><a href="#电气防爆原理与措施">电气防爆原理与措施</a></li>
+<li><a href="#爆炸危险环境区域划分">爆炸危险环境区域划分</a></li>
+<li><a href="#爆炸性混合物的分类分级和分组">爆炸性混合物的分类,分级和分组</a></li>
+<li><a href="#防爆电气设备">防爆电气设备</a><ul>
+<li><a href="#电气设备的基本防爆形式">电气设备的基本防爆形式</a></li>
+<li><a href="#防爆电气设备类别">防爆电气设备类别</a></li>
+<li><a href="#防爆电气设备温度组别">防爆电气设备温度组别</a></li>
+<li><a href="#防爆标志">防爆标志</a></li>
+<li><a href="#防爆电气设备选用原则">防爆电气设备选用原则</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<h2 id="建筑防爆基本原则和措施"><a href="#建筑防爆基本原则和措施" class="headerlink" title="建筑防爆基本原则和措施"></a>建筑防爆基本原则和措施</h2><h3 id="防爆原则"><a href="#防爆原则" class="headerlink" title="防爆原则"></a>防爆原则</h3><ul>
+<li>控制可燃物的浓度,温度,压力及混触条件,避免物料处于燃爆危险状态</li>
+<li>消除一切引起起火爆炸的点火源</li>
+<li>采取各种阻隔手段,阻止火灾爆炸事故的扩大</li>
+</ul>
+<h3 id="防爆措施"><a href="#防爆措施" class="headerlink" title="防爆措施"></a>防爆措施</h3><ul>
+<li>在生产过程中尽量不用或少用具有爆炸危险的各类可燃物质</li>
+<li>生产设备尽量保持密闭状态,防止跑,冒,滴,漏</li>
+<li>加强通风除尘</li>
+<li>预防燃气泄漏,设置可燃气体浓度报警装置</li>
+<li>利用惰性介质进行保护</li>
+<li>防止碰撞摩擦产生火花</li>
+<li>防止高温表面产生火源</li>
+<li>防止日光照射</li>
+<li>防止电气火灾</li>
+<li>消除静电火花</li>
+<li>防雷电火花</li>
+<li>防止明火</li>
+<li>采取泄压措施</li>
+<li>采取抗爆性能良好的建筑结构</li>
+<li>采取合理的建筑布置<h2 id="爆炸危险性厂房-库房的布置"><a href="#爆炸危险性厂房-库房的布置" class="headerlink" title="爆炸危险性厂房,库房的布置"></a>爆炸危险性厂房,库房的布置</h2><h3 id="爆炸危险区域划分及范围"><a href="#爆炸危险区域划分及范围" class="headerlink" title="爆炸危险区域划分及范围"></a>爆炸危险区域划分及范围</h3></li>
+<li>0级区域爆炸性气体混合物连续出现或长期出现的场所</li>
+<li>1级区域正常运行可能出现爆炸性气体混合物的场所</li>
+<li>2级区域正常运行不可能出现爆炸气体混合物的场所</li>
+<li>10区,连续出现或长期出现爆炸性粉尘混合物的场所</li>
+<li>11区,偶尔出现爆炸性粉尘混合物的场所</li>
+</ul>
+<h3 id="爆炸危险区域的范围"><a href="#爆炸危险区域的范围" class="headerlink" title="爆炸危险区域的范围"></a>爆炸危险区域的范围</h3><ul>
+<li>存在连续性释放源的区域划分0级</li>
+<li>偶尔释放划分1级</li>
+<li>正常运行不释放划分2级<h3 id="根据通风条件划分"><a href="#根据通风条件划分" class="headerlink" title="根据通风条件划分"></a>根据通风条件划分</h3></li>
+<li>通风良好,可降低危险等级,通风不好,可提高危险等级</li>
+<li>局部机械通风比自然通风和一般机械通风在降低爆炸性气体混合浓度效果更好</li>
+<li>利用堤墙可以限制比空气重的可燃气体混合物,缩小危险区域的范围</li>
+<li>爆炸性粉尘环境的危险性根据爆炸性粉尘的量,爆炸极限,通风条件确定. </li>
+</ul>
+<h3 id="爆炸危险性厂房-库房的布置-1"><a href="#爆炸危险性厂房-库房的布置-1" class="headerlink" title="爆炸危险性厂房,库房的布置"></a>爆炸危险性厂房,库房的布置</h3><ul>
+<li>有爆炸危险性的甲乙类厂房库房宜独立设置,采用敞开半敞开式,其承重结构宜采用钢筋混凝土,排架结构或钢框架</li>
+<li>有爆炸危险的厂房库房要与周围建筑,构筑物保持一定距离.</li>
+<li>有爆炸危险的厂房平面布置采用矩形,与主导方向保持垂直方向或夹角不小于45°,山区应布置在迎风坡</li>
+<li>防爆厂房与非防爆厂房相邻时,只能一面墙帖邻,且用防火墙和防爆墙隔开</li>
+<li>甲乙类厂房不应设置在地下或半地下</li>
+<li>厂房设置的甲乙类厂房中间仓库的储存量不应超过一昼夜的使用量</li>
+<li>中间仓库宜靠外墙设置,用防火墙或耐火极限不小于1.50h的不燃烧体楼板与其他区域隔开,中间仓库的出口最好设置直通室外的出口</li>
+<li>甲乙类厂房不应设置办公室和休息室,甲乙类仓库不应设置办公室和休息室,且不应帖邻建造</li>
+<li>甲乙类厂房不应设置变配电所或帖邻建造</li>
+<li>乙类厂房需要设配电所的,应设置不燃体密封固定甲级观察窗</li>
+<li>分控制室可以与厂贴邻建造,但必须靠外墙设置,耐火极限不低于3.00h的的不燃烧体与其他部分隔开,考虑到防爆,还要使用防爆墙</li>
+<li>有爆炸危险的甲乙厂房部位,应设置在靠外墙或露天,泄压设施附近,远离梁柱等主要承重构件</li>
+<li>危险性大的厂房和危险性小的厂房应该用坚固的防火墙隔开</li>
+<li>生产使用存储相同的爆炸物品的房间,应尽量集中在一个区域</li>
+<li>厂房不宜设置地沟,防止可燃气体混合物子啊地沟积聚</li>
+<li>使用和生产甲乙丙类液体的厂房的管沟不能相邻的厂房相通</li>
+<li>甲乙丙类液体仓库应设置防止液体流散的设施<h2 id="爆炸危险性建筑的构造防爆"><a href="#爆炸危险性建筑的构造防爆" class="headerlink" title="爆炸危险性建筑的构造防爆"></a>爆炸危险性建筑的构造防爆</h2><h3 id="泄压"><a href="#泄压" class="headerlink" title="泄压"></a>泄压</h3>$$ A=10CV^{2/3}$$<br>式中A-泄压面积(m²)<br>V-厂房的容积(m³)<br>C-厂房容积为1000m³时的泄压比(m²/m³)  </li>
+<li>有可燃气或可燃粉尘危险性的建筑不宜建造的长径比过大,以防止爆炸产生超压,保证泄压面积能有效作用</li>
+<li>泄压设施可为轻质屋盖,轻质墙体和易于泄压的门窗</li>
+<li>泄压轻质屋盖可分别由石棉水泥波形瓦和加气混凝土等材料制成,分为保温层或防水层,无保温层或防水层</li>
+<li>泄压轻质外墙分为有保温层,无保温层两种形式</li>
+<li>泄压窗有轴心偏中上的悬泄压窗,抛物线型的塑料板泄压窗</li>
+<li>作为泄压设施的轻质屋面板和轻质墙体的单位质量不宜超过60㎏/㎡</li>
+<li>散发较空气轻的可燃气和可燃蒸气的甲类厂房,宜采用全部或局部轻质屋盖作为泄压设施</li>
+<li>泄压面应避开人员集中场所或主要交通道路,并靠近容易发生爆炸的部位</li>
+<li>当使用活动板,窗户,门,铰链装置作泄压设施,必须注意爆炸产生负压导致泄压设施关闭</li>
+<li>爆炸泄压孔不能受到其他物体的阻碍,应经常检查,泄压孔应设在距爆炸点近的地方</li>
+<li>泄压设施除了质量要求轻以外,还有爆炸时易破碎成碎片的特点.</li>
+<li>对于北方寒冷地区,泄压设施应防止积雪<h3 id="抗爆"><a href="#抗爆" class="headerlink" title="抗爆"></a>抗爆</h3></li>
+<li>现浇钢筋混凝土框架结构,造价高</li>
+<li>装配式钢筋混凝土框架结构,梁柱楼板等连接处的刚性较差,应在梁柱楼板处预留钢筋焊接头并用高强度等级混凝土现浇成刚性接头,提高耐爆强度</li>
+<li>钢框架结构,耐火极限低,加装耐火被覆层或喷刷防火涂料</li>
+<li>防爆砖墙,只用于爆炸物质较少的厂房和仓库</li>
+<li>防爆钢筋混凝土墙,理想的防爆墙的构造厚度不应小于200mm,多为500mm,800mm,甚至1m,混凝土强度等级不低于C20</li>
+<li>防爆钢板墙,以槽钢为骨架,钢板和骨架铆接或焊接在一起</li>
+<li>防爆门的骨架采用角钢和槽钢拼装焊接,门窗四周边衬贴橡皮带软垫,防止防爆门启闭因摩擦产生火花</li>
+<li>防爆窗的窗框应用角钢板制作,玻璃使用安全玻璃</li>
+</ul>
+<h2 id="爆炸危险环境电气防爆"><a href="#爆炸危险环境电气防爆" class="headerlink" title="爆炸危险环境电气防爆"></a>爆炸危险环境电气防爆</h2><h3 id="电气防爆原理与措施"><a href="#电气防爆原理与措施" class="headerlink" title="电气防爆原理与措施"></a>电气防爆原理与措施</h3><ul>
+<li><p>电气设备引燃爆炸混合物有两方面原因:1.电气设备产生的火花,电弧.2. 电气设备表面的高温,叫有爆炸危险性电气设备</p>
+</li>
+<li><p>将有危险的部位放入隔爆外壳内,或采取浇封型,充沙型,充油型或正压型等其他防爆形式</p>
+</li>
+<li><p>将油爆炸危险的电气设备布置在危险性小或没有爆炸危险的环境中</p>
+</li>
+<li><p>爆炸危险性电气设备接地</p>
+</li>
+<li><p>设置漏电火灾报警和紧急断电装置</p>
+</li>
+<li><p>安全使用防爆电气设备</p>
+</li>
+<li><p>可燃气体,可燃蒸气的甲类厂房,以及有粉尘,纤维爆炸危险的乙类厂房,应采用不发火花的地面</p>
+</li>
+<li><p>采用绝缘材料作整体面层时,应采取防静电措施</p>
+<h3 id="爆炸危险环境区域划分"><a href="#爆炸危险环境区域划分" class="headerlink" title="爆炸危险环境区域划分"></a>爆炸危险环境区域划分</h3></li>
+<li><p>按场所中存在的物质物态不同,分为爆炸性气体环境和可燃性粉尘环境</p>
+</li>
+<li><p>爆炸性气体环境分为0区,1区,2区</p>
+</li>
+<li><p>爆炸性粉尘环境分为10区,11区</p>
+</li>
+<li><p>可燃性粉尘环境分为20区,21区,22区</p>
+<h3 id="爆炸性混合物的分类-分级和分组"><a href="#爆炸性混合物的分类-分级和分组" class="headerlink" title="爆炸性混合物的分类,分级和分组"></a>爆炸性混合物的分类,分级和分组</h3></li>
+<li><p>爆炸性气体,易燃液体和闪点低于或等于环境温度的可燃液体,爆炸性粉尘或易燃纤维等统称为爆炸性物质</p>
+</li>
+<li><p>在大气条件下,气体,蒸气,薄雾,粉尘或纤维状的易燃物质与空气混合,点燃后,燃烧将在整个范围内迅速传播的混合物,称为爆炸性混合物</p>
+</li>
+<li><p>爆炸性物质分为</p>
+<ol>
+<li>矿井甲烷</li>
+<li>爆炸性气体混合物</li>
+<li>爆炸性粉尘</li>
+</ol>
+</li>
+<li><p>按最大试验安全间隙(MESG)分级,ⅡA,ⅡB,ⅡC,ⅡA安全间隙最大,危险性小</p>
+</li>
+<li><p>按最小点燃电流(MIC)分级,按最小点燃电流的大小分为ⅡA,ⅡB,ⅡC,ⅡA最小点燃电流最大,危险性最小</p>
+</li>
+<li><p>按引燃温度分组,爆炸性混合气体不需要明火引燃的最低温度为引燃温度,从高到低分为T1,T2,T3,T4,T5,T6</p>
+</li>
+<li><p>爆炸性粉尘混合物级组根据粉尘特性和引燃温度高低分为ⅢA,ⅢB二级,T11,T12,T13三组</p>
+<h3 id="防爆电气设备"><a href="#防爆电气设备" class="headerlink" title="防爆电气设备"></a>防爆电气设备</h3><h4 id="电气设备的基本防爆形式"><a href="#电气设备的基本防爆形式" class="headerlink" title="电气设备的基本防爆形式"></a>电气设备的基本防爆形式</h4></li>
+<li><p>隔爆型(d),把设备可能点燃爆炸性气体混合物的部件全部封闭在一个外壳内.用以1.2区危险环境</p>
+</li>
+<li><p>增安型(e),减少产生电弧和火花,降低设备表面温度</p>
+</li>
+<li><p>本质安全型(i),所有电路按安全标准</p>
+</li>
+<li><p>正压型(p),保持内部保护气体压强高于外部,防止外部爆炸混合气体进入外壳</p>
+</li>
+<li><p>油浸型(o),将设备部件浸在油中(保护液)</p>
+</li>
+<li><p>充沙型(q),在外壳内填充沙粒或其他规定的粉末材料</p>
+</li>
+<li><p>无火花型(n),不能点燃周围爆炸性气体环境</p>
+</li>
+<li><p>浇封型(m),将爆炸危险的部件浇封在浇封剂(复合物)中</p>
+</li>
+<li><p>特殊型(s),国家标准未包括的防爆形式</p>
+<h4 id="防爆电气设备类别"><a href="#防爆电气设备类别" class="headerlink" title="防爆电气设备类别"></a>防爆电气设备类别</h4></li>
+<li><p>Ⅰ类:煤矿用电气设备</p>
+</li>
+<li><p>Ⅱ类:出煤矿环境的其他爆炸气体环境用电气设备</p>
+</li>
+<li><p>可燃性粉尘环境用电气设备分为A型尘密设备,B型尘密设备,A型防尘设备,B型防尘设备</p>
+</li>
+</ul>
+<h4 id="防爆电气设备温度组别"><a href="#防爆电气设备温度组别" class="headerlink" title="防爆电气设备温度组别"></a>防爆电气设备温度组别</h4><table>
+<thead>
+<tr>
+<th>电气设备温度组别</th>
+<th>电气设备的最高表面温度t/℃</th>
+<th>气体或蒸气的引燃温度t/℃</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>T1</td>
+<td>450</td>
+<td>450＜t</td>
+</tr>
+<tr>
+<td>T2</td>
+<td>300</td>
+<td>300＜t≦450</td>
+</tr>
+<tr>
+<td>T3</td>
+<td>200</td>
+<td>200＜t≦300</td>
+</tr>
+<tr>
+<td>T4</td>
+<td>135</td>
+<td>135＜t≦200</td>
+</tr>
+<tr>
+<td>T5</td>
+<td>100</td>
+<td>100＜t≦135</td>
+</tr>
+<tr>
+<td>T6</td>
+<td>85</td>
+<td>85＜t≦100</td>
+</tr>
+</tbody></table>
+<h4 id="防爆标志"><a href="#防爆标志" class="headerlink" title="防爆标志"></a>防爆标志</h4><ul>
+<li>Ⅰ类隔爆型: Exd Ⅰ</li>
+<li>Ⅰ类特殊型: Exs Ⅰ</li>
+<li>Ⅱ B类隔爆型T3组: Exd Ⅱ BT3</li>
+<li>Ⅱ A类本质安全型ia等级 T5组: Exia Ⅱ AT5</li>
+</ul>
+<h4 id="防爆电气设备选用原则"><a href="#防爆电气设备选用原则" class="headerlink" title="防爆电气设备选用原则"></a>防爆电气设备选用原则</h4><ul>
+<li>电气设备的防爆型式应与爆炸危险区域相适应</li>
+<li>电气设备的防爆性能应与爆炸危险环境物质的危险性相适应</li>
+<li>与环境条件相适应</li>
+<li>应符合整体防爆的原则</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">消防</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/02/dontWorry/xiaofang/建筑防火/建筑防爆/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="ejs-dontWorry/xiaofang/建筑防火/建筑电气防火" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/02/dontWorry/xiaofang/建筑防火/建筑电气防火/">建筑电气防火</a>
+    </h1>
+  
+
+        
+        <a href="/2019/07/02/dontWorry/xiaofang/建筑防火/建筑电气防火/" class="archive-article-date">
+  	<time datetime="2019-07-01T16:06:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="建筑电气防火"><a href="#建筑电气防火" class="headerlink" title="建筑电气防火"></a>建筑电气防火</h1><!-- TOC -->
+
+<ul>
+<li><a href="#建筑电气防火">建筑电气防火</a><ul>
+<li><a href="#电气线路防火">电气线路防火</a><ul>
+<li><a href="#电线电缆的选择">电线电缆的选择</a></li>
+<li><a href="#电气线路的保护措施">电气线路的保护措施</a></li>
+</ul>
+</li>
+<li><a href="#用电设备防火">用电设备防火</a><ul>
+<li><a href="#照明器具防火">照明器具防火</a></li>
+<li><a href="#电气装置防火">电气装置防火</a></li>
+<li><a href="#电动机防火">电动机防火</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<h2 id="电气线路防火"><a href="#电气线路防火" class="headerlink" title="电气线路防火"></a>电气线路防火</h2><p>主要从电线电缆的选择,线路的敷设及连接在线路上采取保护措施等方面入手</p>
+<h3 id="电线电缆的选择"><a href="#电线电缆的选择" class="headerlink" title="电线电缆的选择"></a>电线电缆的选择</h3><ul>
+<li>根据使用场所的环境因素选择合适的的电线电缆</li>
+<li>根据载荷情况,选择合适横截面积,并流出裕量</li>
+<li>固定敷设的供电线路宜选择铜芯电缆</li>
+<li>重要电源,重要回路,高温,潮湿,爆炸及火灾危险环境,线芯横截面积为6mm²以下的不宜选择铝芯线缆</li>
+<li>对铜有腐蚀对铝腐蚀相对较轻的,选用铝芯线缆</li>
+<li>普通聚氯乙烯线缆的温度范围-15~60℃,使用场所温度超出的采用特种聚氯乙烯线缆</li>
+<li>普通聚氯乙烯线缆燃烧时会放出有毒烟气</li>
+<li>交联聚氯乙烯(XLPE)线缆不具备助燃性,但燃烧不会放出大量有毒烟气</li>
+<li>橡胶线缆的弯曲性能好,使用严寒条件,移动式电气设备,水平高差大和垂直敷设的场所</li>
+<li>助燃线缆用氧指数和发烟性两个指标,氧指数越高,阻燃性越好</li>
+<li>同一通道内应选用同一助燃等级的线缆 </li>
+<li>直埋地线缆,直埋如建筑孔洞或砌体的线缆可用普通型线缆</li>
+<li>已采取封堵,阻水,隔离等防止延燃的措施,可降低一级阻燃要求</li>
+<li>有机耐火线缆采用耐800℃高温的云母带以50%的重叠搭盖率包覆两层作为耐火层</li>
+<li>无机耐火线缆采用氧化镁作为绝缘材料,国际上称为MI线缆</li>
+<li>通过负载电流时,线芯温度不能超过线缆绝缘所允许的长期工作温度</li>
+<li>通过短路电流时,不超过所允许的短路强度,高压电缆要校验热稳定性,母线要校验动,热稳定性</li>
+<li>电压损失在允许范围内</li>
+<li>满足机械强度的要求</li>
+<li>低压电线电缆应符合负载保护的要求,TNT系统还应保持在接地故障时保护电器能断开电路</li>
+</ul>
+<h3 id="电气线路的保护措施"><a href="#电气线路的保护措施" class="headerlink" title="电气线路的保护措施"></a>电气线路的保护措施</h3><ul>
+<li>应在短路电流使导体达到允许的极限温度之前分断该短路电流</li>
+<li>保证保护电器可靠动作的电流小于或等于1.45倍熔断器熔体额定电流</li>
+</ul>
+<h2 id="用电设备防火"><a href="#用电设备防火" class="headerlink" title="用电设备防火"></a>用电设备防火</h2><h3 id="照明器具防火"><a href="#照明器具防火" class="headerlink" title="照明器具防火"></a>照明器具防火</h3><ul>
+<li>火灾危险场所应选用封闭型,闭合型,密闭型灯具</li>
+<li>爆炸危险场所应选用防爆型,隔爆型灯具</li>
+<li>腐蚀气体和特别潮湿的场所,应选用密闭型灯具,灯具各部位还要进行防腐处理</li>
+<li>潮湿厂房内和户外可采用封闭型灯具,亦可采用防水灯座的开启型灯具</li>
+<li>可能直接受外来机械损伤的场所以及移动式和携带式灯具,应采用保护罩</li>
+<li>振动场所的灯具应采用防震措施</li>
+<li>人防工程内的潮湿场所应采用防潮湿灯具</li>
+<li>柴油发电机房的储油间和蓄电池室等应采用密闭型灯具</li>
+<li>可燃物品库房,不应采用高温照明灯具</li>
+<li>行灯不应超过36V,在金属容器内及特别潮湿场所作为,不能超过12V,36V以下严禁使用自耦变压器</li>
+<li>插座不宜和照明灯接在同一分支回路上</li>
+<li>各零件必须符合电压,电流等级,不能过电压,过电流使用</li>
+<li>灯具禁止安装在可燃吊顶上</li>
+<li>舞台彩灯功率均宜在40W以下,最大不应超过60W</li>
+</ul>
+<h3 id="电气装置防火"><a href="#电气装置防火" class="headerlink" title="电气装置防火"></a>电气装置防火</h3><ul>
+<li>开关应安装在开关箱内,开关箱应设在干燥处,安全处</li>
+<li>熔断器安装在火灾危险场所外,且密闭处理</li>
+</ul>
+<h3 id="电动机防火"><a href="#电动机防火" class="headerlink" title="电动机防火"></a>电动机防火</h3><ul>
+<li><p>电动机的火灾危险性主要包括</p>
+<ol>
+<li>过载</li>
+<li>断相运行</li>
+<li>接触不良</li>
+<li>绝缘损坏</li>
+<li>机械摩擦</li>
+<li>选型不当</li>
+<li>铁心消耗过大</li>
+<li>接地不良</li>
+</ol>
+</li>
+<li><p>预防措施</p>
+<ol>
+<li>选择合理的功率和形式</li>
+<li>合理选择启动方式</li>
+<li>正确安装电动机</li>
+<li>设置符合要求的保护装置</li>
+<li>启动符合规范要求</li>
+<li>加强运行监视</li>
+<li>加强电动机的运行维护 </li>
+</ol>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">消防</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/02/dontWorry/xiaofang/建筑防火/建筑电气防火/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="ejs-dontWorry/xiaofang/建筑防火/安全疏散" class="article article-type-ejs  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/01/dontWorry/xiaofang/建筑防火/安全疏散/">安全疏散</a>
+    </h1>
+  
+
+        
+        <a href="/2019/07/01/dontWorry/xiaofang/建筑防火/安全疏散/" class="archive-article-date">
+  	<time datetime="2019-07-01T15:29:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="安全疏散"><a href="#安全疏散" class="headerlink" title="安全疏散"></a>安全疏散</h1><!-- TOC -->
+
+<ul>
+<li><a href="#安全疏散">安全疏散</a><ul>
+<li><a href="#安全疏散基本参数">安全疏散基本参数</a><ul>
+<li><a href="#人员密度计算">人员密度计算</a></li>
+<li><a href="#疏散宽度指标">疏散宽度指标</a><pre><code>- [百人宽度指标](#百人宽度指标)
+- [疏散宽度](#疏散宽度)</code></pre></li>
+<li><a href="#疏散距离指标">疏散距离指标</a><ul>
+<li><a href="#厂房仓库的安全疏散距离">厂房、仓库的安全疏散距离</a></li>
+<li><a href="#公共建筑的安全疏散距离">公共建筑的安全疏散距离</a></li>
+<li><a href="#住宅建筑安全疏散距离">住宅建筑安全疏散距离</a></li>
+<li><a href="#木结构建筑的安全疏散距离">木结构建筑的安全疏散距离</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#安全出口与疏散出口">安全出口与疏散出口</a><ul>
+<li><a href="#安全出口">安全出口</a><ul>
+<li><a href="#疏散楼梯">疏散楼梯</a></li>
+<li><a href="#疏散门">疏散门</a></li>
+<li><a href="#安全出口设置的基本要求">安全出口设置的基本要求</a></li>
+<li><a href="#公共建筑安全出口的可设置一个安全出口要求">公共建筑安全出口的可设置一个安全出口要求</a></li>
+<li><a href="#住宅建筑安全出口的可设置一个安全出口要求">住宅建筑安全出口的可设置一个安全出口要求</a></li>
+<li><a href="#厂房仓库安全出口的可设置一个安全出口要求">厂房仓库安全出口的可设置一个安全出口要求</a></li>
+</ul>
+</li>
+<li><a href="#疏散出口">疏散出口</a></li>
+</ul>
+</li>
+<li><a href="#疏散走道与避难走道">疏散走道与避难走道</a><ul>
+<li><a href="#疏散走道">疏散走道</a></li>
+<li><a href="#避难走道">避难走道</a></li>
+</ul>
+</li>
+<li><a href="#疏散楼梯与楼梯间">疏散楼梯与楼梯间</a><ul>
+<li><a href="#疏散楼梯间的一般要求">疏散楼梯间的一般要求</a></li>
+<li><a href="#敞开楼梯间">敞开楼梯间</a></li>
+<li><a href="#封闭楼梯间">封闭楼梯间</a></li>
+<li><a href="#防烟楼梯间">防烟楼梯间</a></li>
+<li><a href="#室外疏散楼梯">室外疏散楼梯</a></li>
+<li><a href="#剪刀楼梯">剪刀楼梯</a></li>
+</ul>
+</li>
+<li><a href="#避难层间">避难层(间)</a><ul>
+<li><a href="#避难层">避难层</a></li>
+<li><a href="#避难间">避难间</a></li>
+</ul>
+</li>
+<li><a href="#逃生疏散辅助设施">逃生疏散辅助设施</a><ul>
+<li><a href="#应急照明及疏散指示标志">应急照明及疏散指示标志</a></li>
+<li><a href="#避难袋">避难袋</a></li>
+<li><a href="#缓降器">缓降器</a></li>
+<li><a href="#避难滑梯">避难滑梯</a></li>
+<li><a href="#室外疏散救援舱">室外疏散救援舱</a></li>
+<li><a href="#缩放式滑道">缩放式滑道</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<p>安全疏散是确保火灾中人员的生命安全具有重要作用</p>
+<h2 id="安全疏散基本参数"><a href="#安全疏散基本参数" class="headerlink" title="安全疏散基本参数"></a>安全疏散基本参数</h2><h3 id="人员密度计算"><a href="#人员密度计算" class="headerlink" title="人员密度计算"></a>人员密度计算</h3><ul>
+<li>办公建筑有会议桌的会议室不应小于1.80㎡,无会议桌的不应小于0.80㎡</li>
+<li>录像厅、放映厅的疏散人数应根据厅、室的建筑面积按1.0人/㎡计算，其他歌舞娱乐放映游艺场所按0.5人/㎡</li>
+<li>餐饮场所,有固定座位的场所,疏散人数按实际座位数的1.1倍计算,展览厅的疏散人数根据展览厅建筑面积按0.75人/㎡.<h3 id="疏散宽度指标"><a href="#疏散宽度指标" class="headerlink" title="疏散宽度指标"></a>疏散宽度指标</h3><h5 id="百人宽度指标"><a href="#百人宽度指标" class="headerlink" title="百人宽度指标"></a>百人宽度指标</h5></li>
+</ul>
+
+$$百人宽度指标={{N}\over{At}}b$$
+
+
+<p>式中的  </p>
+<ul>
+<li>N-疏散人数(即100人)  </li>
+<li>t-允许疏散时间(min)  </li>
+<li>A-单股人流通行能力(平坡哦43人/min,阶梯地面为37人/min)  </li>
+<li>b-单股人流宽度,0.55~0.60m  <h5 id="疏散宽度"><a href="#疏散宽度" class="headerlink" title="疏散宽度"></a>疏散宽度</h5></li>
+<li>厂房疏散出口的最小净宽度不宜小于0.9m,疏散走道不宜小于1.4m,疏散楼梯的最小净宽度不宜小于1.1m.</li>
+<li>高层民用建筑的疏散宽度应按1m/百人计算.</li>
+<li>体育馆的百人疏散净宽度根据平坡阶梯楼梯增加,随着座档次增加而减少</li>
+<li>观众厅内的疏散走道的净宽度按百人不少于0.6m,不应小于1.0m,边走道的净宽度不宜小于0.8m</li>
+<li>木结构建筑的疏散宽度百人地上两层0.75m,地上三层1.0m</li>
+<li>其他民用建筑,地下或半地下人员密集的厅,室和歌舞娱乐放映游艺场所,百人不小于1.00m’</li>
+<li>建筑内疏散走道和楼梯的净宽度不应小于1.1m</li>
+<li>人员密集的公共场所,其疏散门的净宽度不应小于1.4m</li>
+</ul>
+<h3 id="疏散距离指标"><a href="#疏散距离指标" class="headerlink" title="疏散距离指标"></a>疏散距离指标</h3><p>疏散距离包括两个部分 </p>
+<ol>
+<li>房间内最远点到房门的疏散距离</li>
+<li>房门到疏散楼梯间或外部出口的距离</li>
+</ol>
+<h4 id="厂房、仓库的安全疏散距离"><a href="#厂房、仓库的安全疏散距离" class="headerlink" title="厂房、仓库的安全疏散距离"></a>厂房、仓库的安全疏散距离</h4><ul>
+<li>火灾危险性越大,安全疏散距离要求越严</li>
+<li>厂房耐火等级越低,安全疏散距离要求越严</li>
+</ul>
+<h4 id="公共建筑的安全疏散距离"><a href="#公共建筑的安全疏散距离" class="headerlink" title="公共建筑的安全疏散距离"></a>公共建筑的安全疏散距离</h4><ul>
+<li>建筑中开向敞开式外廊的房间疏散门至安全出口的距离可按规定的基础上再增加5m.</li>
+<li>建筑物全部设置自动喷水灭火系统时,可比规定的增加25%.</li>
+<li>房间位于两个楼梯间之间,应按规定的减少5m.</li>
+<li>房间位于袋型走道两侧或尽端时,应按规定减少2m.</li>
+<li>楼梯的首层应设置直通室的安全出口,或在首层采用扩大的封闭楼梯间或防烟楼梯间.</li>
+<li>当层数不超过4层,可将直通室外的安全出口设置再离楼梯间不大于15m</li>
+<li>房间内任宜点到该房间直通疏散走道的疏散门的距离,不应大于规定的袋型走道两侧或尽端的疏散门至最近安全出口的距离</li>
+<li>一二级耐火等级建筑内的疏散门或安全出口不少于2个的观众厅,展览厅,多功能厅,餐厅,其室内任一点至最近疏散门或安全出口的直线距离不应大于30m</li>
+<li>当疏散门不能直通室外地面或疏散楼梯间时,应采用长度不大于10m的疏散走道至最近的安全出口.</li>
+</ul>
+<h4 id="住宅建筑安全疏散距离"><a href="#住宅建筑安全疏散距离" class="headerlink" title="住宅建筑安全疏散距离"></a>住宅建筑安全疏散距离</h4><h4 id="木结构建筑的安全疏散距离"><a href="#木结构建筑的安全疏散距离" class="headerlink" title="木结构建筑的安全疏散距离"></a>木结构建筑的安全疏散距离</h4><ul>
+<li>丁戊类厂房内任意一点至最近安全出口的疏散距离分别不应大于50m<h2 id="安全出口与疏散出口"><a href="#安全出口与疏散出口" class="headerlink" title="安全出口与疏散出口"></a>安全出口与疏散出口</h2><h3 id="安全出口"><a href="#安全出口" class="headerlink" title="安全出口"></a>安全出口</h3>安全出口是供人员疏散用的楼梯间、室外楼梯的出口或直通室内外安全区域的出口<h4 id="疏散楼梯"><a href="#疏散楼梯" class="headerlink" title="疏散楼梯"></a>疏散楼梯</h4></li>
+<li>楼梯应设在标准层的两端</li>
+<li>疏散楼梯宜靠近电梯</li>
+<li>疏散楼梯宜靠外墙设置</li>
+<li>疏散楼梯保持上下畅通</li>
+<li>应避免不同人流路线相互交叉<h4 id="疏散门"><a href="#疏散门" class="headerlink" title="疏散门"></a>疏散门</h4></li>
+<li>疏散门应向疏散方向开启</li>
+<li>民用建筑及厂房的疏散门应采用平开门,但丙丁戊类仓库的首层靠墙外侧可采用推拉门或卷帘门.</li>
+<li>当门开启时,门扇不应影响人员的紧急疏散</li>
+<li>应设置在火灾时从内部易于开启门的装置</li>
+<li>疏散门不应设置门槛,门扇开启90°的门外1.4m处不应设置踏步</li>
+<li>疏散门应为推闩式外开门</li>
+<li>高层建筑直通室外的安全出口上方,应设置挑出宽度不小于1.0m的防护挑檐</li>
+</ul>
+<h4 id="安全出口设置的基本要求"><a href="#安全出口设置的基本要求" class="headerlink" title="安全出口设置的基本要求"></a>安全出口设置的基本要求</h4><ul>
+<li>每座建筑或每个防火分区的安全出口数目不应小于2个,且水平距离不应小于5.0m</li>
+<li>防火分区面积大于1000㎡,直通室外的安全出口数量不应小于2个,小于1000㎡不应小于1个</li>
+<li>直通室外的安全出口的总净宽度,不应小于计算所需总净宽度的70%.<h4 id="公共建筑安全出口的可设置一个安全出口要求"><a href="#公共建筑安全出口的可设置一个安全出口要求" class="headerlink" title="公共建筑安全出口的可设置一个安全出口要求"></a>公共建筑安全出口的可设置一个安全出口要求</h4></li>
+<li>除托儿所,幼儿园,面积不大于200㎡且人数不超过50人的单层建筑或多层建筑的首层可设置一个安全出口</li>
+<li>除医疗建筑,老年人建筑及托儿所,幼儿园的儿童用房和儿童游乐厅等儿童活动场所,可设置一个安全出口<h4 id="住宅建筑安全出口的可设置一个安全出口要求"><a href="#住宅建筑安全出口的可设置一个安全出口要求" class="headerlink" title="住宅建筑安全出口的可设置一个安全出口要求"></a>住宅建筑安全出口的可设置一个安全出口要求</h4></li>
+<li>建筑高度不大于27m,每个单元任一层的建筑面积小于650㎡且任一套房的户门至安全出口的距离小于15m.</li>
+<li>建筑高度大于27m且不大于54m,每个单元任一层的建筑面积小于650㎡且任一套房的户门至安全出口的距离不大于10m,户门采用乙级防火门,每个单元设置一座通向屋顶的疏散楼梯,单元之间的楼梯通过屋顶连通.</li>
+<li>建筑高度大于54m的多单元建筑,每个单元任一层的建筑面积小于650㎡且任一套房的户门至安全出口的距离不大于10m,,户门采用乙级防火门,每个单元设置一座通向屋顶的疏散楼梯,54m以上部分每层相邻单元的疏散楼梯通过阳台或凹廊连通.<h4 id="厂房仓库安全出口的可设置一个安全出口要求"><a href="#厂房仓库安全出口的可设置一个安全出口要求" class="headerlink" title="厂房仓库安全出口的可设置一个安全出口要求"></a>厂房仓库安全出口的可设置一个安全出口要求</h4></li>
+<li>甲类厂房,每层建筑面积不超过100㎡,且同一时间的生产人数不超过5人</li>
+<li>乙类厂房,每层建筑面积不超过150㎡,且同一时间的生产人数不超过10人</li>
+<li>丙类厂房,每层建筑面积不超过250㎡,且同一时间的生产人数不超过20人</li>
+<li>丁戊类厂房,每层建筑面积不超过400㎡,且同一时间的生产人数不超过30人</li>
+<li>地下,半地下厂房,其建筑面积不大于50㎡,且经常停留人数不超过15人</li>
+<li>仓库占地面积不大于300㎡或防火分区的建筑面积不大于100㎡</li>
+<li>地下,半地下仓库或仓库的地下室,半地下室,建筑面积不大于100㎡<h3 id="疏散出口"><a href="#疏散出口" class="headerlink" title="疏散出口"></a>疏散出口</h3>疏散门和安全出口,疏散门是直接通向疏散走道的房间门,直接开向疏散楼梯间的门或室外门,不包括套间内的隔间门或住宅套内的房间门.<br>疏散出口设置的基本要求</li>
+<li>安全出口和疏散门应分散设置,符合双向疏散的要求</li>
+<li>疏散门不应小于2个,每个房间的相邻2个疏散门最近边缘之间的水平距离不应小于5m</li>
+</ul>
+<h2 id="疏散走道与避难走道"><a href="#疏散走道与避难走道" class="headerlink" title="疏散走道与避难走道"></a>疏散走道与避难走道</h2><h3 id="疏散走道"><a href="#疏散走道" class="headerlink" title="疏散走道"></a>疏散走道</h3><ul>
+<li>疏散走道是指发生火灾时,建筑内人员从火灾现场逃往安全场所的通道</li>
+<li>走道应简捷,按规定设置疏散指示标志和诱导灯</li>
+<li>在1.8m的高度内不宜设置管道,门垛等突出物,走道总的门应向疏散方向开启</li>
+<li>尽量避免袋型走道</li>
+<li>疏散走道在防火分区处应设置常开甲级防火门</li>
+</ul>
+<h3 id="避难走道"><a href="#避难走道" class="headerlink" title="避难走道"></a>避难走道</h3><ul>
+<li>避难走道是指设置防烟设施且两侧采用防火墙分隔,用于人员安全通行至室外的走道</li>
+<li>走道楼板的耐火极限不应低于1.5h</li>
+<li>走道直通地面的出口不应少于2个,并设置在不同方向.</li>
+<li>走道的净宽度不应小于任一防火分区通向走道的设计疏散总净宽度</li>
+<li>走道内部的装修材料的燃烧性能因为A级</li>
+<li>防火分区至避难走道入口处应设置防烟前室,前室的使用面积不应小于6.0㎡,开前室的门应采用甲级防火门,前室开向避难走道的门应采用乙级防火门</li>
+<li>走道内应设置消火栓,消防应急照明,应急广播和消防专线电话<h2 id="疏散楼梯与楼梯间"><a href="#疏散楼梯与楼梯间" class="headerlink" title="疏散楼梯与楼梯间"></a>疏散楼梯与楼梯间</h2><h3 id="疏散楼梯间的一般要求"><a href="#疏散楼梯间的一般要求" class="headerlink" title="疏散楼梯间的一般要求"></a>疏散楼梯间的一般要求</h3></li>
+<li>楼梯间应能天然采光和自然通风.</li>
+<li>不应设置烧水间,可燃材料储藏室</li>
+<li>不应设置卷帘</li>
+<li>不应有影响疏散的突出物或其他障碍物</li>
+<li>不应敷设或穿越甲乙丙类液体的管道,当必须设置时,应采用金属配管和设置切断气源的装置保护措施</li>
+<li>除通向避难层错位的疏散楼梯外,建筑中的疏散楼梯间在各层的平面位置不应改变</li>
+<li>用作丁戊类厂房内的第二安全出口的楼梯可采用金属梯,当净宽度不小于0.90m,倾斜角度不大于45°</li>
+<li>丁戊类高层厂房,当每层工作平台上的人数不超过2人且各层工作平台上同时工作人数总和不超过10人,其疏散楼梯可采用金属楼梯或敞开楼梯</li>
+<li>不应采用螺旋楼梯和扇形踏步</li>
+<li>高度大于10m的三级耐火等级建筑应设置通向屋顶的室外消防梯,宽度不应小于0.6m,宜从距地面3.0m高处设置</li>
+<li>地下室不与地上层共用楼梯间<h3 id="敞开楼梯间"><a href="#敞开楼梯间" class="headerlink" title="敞开楼梯间"></a>敞开楼梯间</h3></li>
+<li>楼梯间与走廊或大厅都是敞开在建筑物内,火灾时不能阻挡烟气进入,安全可靠程度不大.<h3 id="封闭楼梯间"><a href="#封闭楼梯间" class="headerlink" title="封闭楼梯间"></a>封闭楼梯间</h3></li>
+</ul>
+<h3 id="防烟楼梯间"><a href="#防烟楼梯间" class="headerlink" title="防烟楼梯间"></a>防烟楼梯间</h3><h3 id="室外疏散楼梯"><a href="#室外疏散楼梯" class="headerlink" title="室外疏散楼梯"></a>室外疏散楼梯</h3><h3 id="剪刀楼梯"><a href="#剪刀楼梯" class="headerlink" title="剪刀楼梯"></a>剪刀楼梯</h3><h2 id="避难层-间"><a href="#避难层-间" class="headerlink" title="避难层(间)"></a>避难层(间)</h2><p>避难层是超高楼层建筑中专供发生火灾时的人员临时避难使用的楼层,如果作为避难使用的只有几个房间,则被称为避难间</p>
+<h3 id="避难层"><a href="#避难层" class="headerlink" title="避难层"></a>避难层</h3><ul>
+<li>封闭式避难层周围设有耐火的围栏结构,室内设有独立的空调和防排烟系统</li>
+<li>建筑高度100m以上的公共建筑和住宅建筑应设置避难层</li>
+<li>避难层净面积应该按5人/㎡的标准</li>
+<li>首层到第一层避难层的高度不能大于50m,两个避难层之间的高度不大于45m</li>
+<li>避难层楼板采用现浇混凝土楼板,耐火极限不小于2.00h</li>
+<li>楼板宜设隔热层</li>
+<li>四周的墙体和层内的隔墙的耐火极限不小于3.00h,隔墙上的门采用甲级防火门</li>
+<li>各种管道竖井,易燃可燃气体管道,排烟管道应集中布置,采用耐火极限不小于2.00h的防火隔墙与避难区分隔</li>
+<li>避难层至少有两个不同方向的疏散方向可供疏散</li>
+<li>避难层的上下楼梯应错开布置,且必须经过避难层</li>
+<li>避难层入口应有明显标志</li>
+<li>避难层应设置应急照明</li>
+<li>严禁在避难层开设电梯门</li>
+<li>避难层必须停靠消防电梯</li>
+<li>应设置对外可开启的窗口或防烟设施,外窗采用乙级防火窗或耐火极限不低于1.00h的C类防火窗</li>
+<li>配置消防栓和消防软管卷盘</li>
+<li>应设置消防专线和应急广播<h3 id="避难间"><a href="#避难间" class="headerlink" title="避难间"></a>避难间</h3></li>
+<li>建筑高度大于24m的病房楼,应在2层及2层以上各楼层设置避难间</li>
+<li>避难间的使用面积应按每个护理单元不小于25.0㎡确定</li>
+<li>当电梯前室内有1部及1部以上病床梯兼作消防梯,可利用电梯前室作为避难间</li>
+</ul>
+<h2 id="逃生疏散辅助设施"><a href="#逃生疏散辅助设施" class="headerlink" title="逃生疏散辅助设施"></a>逃生疏散辅助设施</h2><h3 id="应急照明及疏散指示标志"><a href="#应急照明及疏散指示标志" class="headerlink" title="应急照明及疏散指示标志"></a>应急照明及疏散指示标志</h3><ul>
+<li>疏散走道的地面最低水平照度不应低于1.0lx</li>
+<li>人员密集,避难层的地面最低水平照度不应低于3.0lx</li>
+<li>楼梯间,前室,合用前室,避难走道的地面最低水平照度不应低于5.0lx</li>
+<li>消防控制室,消防水泵室,自备发电机房,配电室,防烟与排烟机房以及发生火灾仍需正常工作的其他房间的消防应急照明,仍应保证正常照明的照度</li>
+<li>设置墙面上部,顶棚,或出口的顶部</li>
+<li>需要保持视觉连续的灯光疏散指示标志或蓄光疏散指示标志有总面积超过8000㎡的展览建筑,总面积超过5000㎡的地上商城,总面积超过500㎡的地下,半地下商城,歌舞娱乐放映游艺场所,座位超过1500个的电影院,剧院,座位超过3000个的体育馆,会堂或礼堂.</li>
+<li>安全出口和疏散门的正上方应采用”<strong>安全出口</strong>“作为标识</li>
+<li>灯光疏散指示标志应设在转角处距地面高度1.0m以下的墙面下,灯光间距不应大于20.0m,对于袋型走道不应大于10.0m,</li>
+<li>走道的转角区部应大于1.0m</li>
+<li>应急照明和灯光疏散指示标志,应设玻璃或其他部燃材料制作的保护罩</li>
+<li>应急照明和疏散指示标志的备用电源连续供电时间,高度超过100m的民用建筑不应小于1.5h,医疗建筑,老年人建筑,总建筑面积大于100000㎡的公共建筑不小于1.0h,其他不小于0.5h</li>
+</ul>
+<h3 id="避难袋"><a href="#避难袋" class="headerlink" title="避难袋"></a>避难袋</h3><ul>
+<li>人员通过避难袋滑至下一层或几层<h3 id="缓降器"><a href="#缓降器" class="headerlink" title="缓降器"></a>缓降器</h3></li>
+<li>由摩擦棒,套筒,自救绳和绳盒组成<h3 id="避难滑梯"><a href="#避难滑梯" class="headerlink" title="避难滑梯"></a>避难滑梯</h3></li>
+<li>螺旋形滑道<h3 id="室外疏散救援舱"><a href="#室外疏散救援舱" class="headerlink" title="室外疏散救援舱"></a>室外疏散救援舱</h3></li>
+<li>逃生救援仓和齿轨组成<h3 id="缩放式滑道"><a href="#缩放式滑道" class="headerlink" title="缩放式滑道"></a>缩放式滑道</h3></li>
+<li>耐磨,阻燃的尼龙材料和高强度金属圈骨架制作成的缩放式滑道.</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">消防</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/01/dontWorry/xiaofang/建筑防火/安全疏散/">展开全文 >></a>
         </p>
       
 
@@ -1563,7 +2081,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
     </nav>
   
 
@@ -1575,7 +2093,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 buyaojingde
+    		&copy; 2020 buyaojingde
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
